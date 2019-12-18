@@ -9,15 +9,15 @@
     if there are lots of items then show multiple ellipsis:
          1 ... 8 9 10 ... 15      NEXT
     PREV 1 ... 8 9 10 ... 15      NEXT
-    PREV 1 ... 8 9 10 ... 15 
+    PREV 1 ... 8 9 10 ... 15
 {% endcomment %}
 
 {% if pagination.paginator.num_pages > 1 %}
-    <nav class="pagination">
+    <nav class="g-pagination">
         {% if pagination.has_previous %}
-            <a class="button-ghost-blue pagination-previous" href="{{ url }}{{ page_param_name }}={{ pagination.previous_page_number}}">Previous</a>
+            <a class="g-button-ghost-blue g-pagination-previous g-pagination-page" href="{{ url }}{{ page_param_name }}={{ pagination.previous_page_number}}">Previous</a>
         {% endif %}
-            <ol class="{{ pagination.has_previous|yesno:'has-previous ,' }}{{ pagination.has_next|yesno:'has-next,' }}">
+            <ol class="g-pagination-list {{ pagination.has_previous|yesno:'has-previous ,' }}{{ pagination.has_next|yesno:'has-next,' }}">
                 {% if pagination.paginator.num_pages <= 6 %}
                     {% comment %} 1 2 3 4 5 6 {% endcomment %}
                     {% for number in pagination.paginator.page_range %}
@@ -45,7 +45,7 @@
                 {% endif %}
             </ol>
         {% if pagination.has_next %}
-            <a class="button-ghost-blue pagination-next" href="{{ url }}{{ page_param_name }}={{ pagination.next_page_number }}">Next</a>
+            <a class="g-button-ghost-blue g-pagination-page g-pagination-next" href="{{ url }}{{ page_param_name }}={{ pagination.next_page_number }}">Next</a>
         {% endif %}
     </nav>
 {% endif %}

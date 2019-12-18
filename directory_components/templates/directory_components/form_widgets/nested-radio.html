@@ -1,6 +1,10 @@
-{% include "directory_components/form_widgets/radio_option.html" %}
+
+<div class="g-nested-radio-parent">
+	{% include "directory_components/form_widgets/radio_option.html" %}
+
 {% if widget.value == widget.nested_form_choice %}
-	<div class="radio-nested govuk-inset-text">
+	<div class="g-radio-nested">
 		{{ widget.nested_form }}
 	</div>
 {% endif %}
+</div>

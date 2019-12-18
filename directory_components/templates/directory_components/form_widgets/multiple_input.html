@@ -1,10 +1,9 @@
-<div class="form-group">
 {% with id=widget.attrs.id %}
-<ul{% if id %} id="{{ id }}"{% endif %}{% if widget.attrs.class %} class="{{ widget.attrs.class }}"{% endif %}>
+<ul{% if id %} id="{{ id }}"{% endif %} class="g-select-multiple {% if widget.attrs.class %}{{ widget.attrs.class }}{% endif %}">
   {% for group, options, index in widget.optgroups %}
     {% if group %}
-      <li>
-        <ul class="form-group"{% if id %} id="{{ id }}_{{ index }}"{% endif %}>
+      <li class="form-group">
+        <ul class="m-0"{% if id %} id="{{ id }}_{{ index }}"{% endif %}>
           <label{% if id %} id="{{ id }}-{% filter force_escape|lower %}{{ group }}{% endfilter %}-label"{% endif %} class="form-label">{{ group }}</label>
     {% endif %}
     {% for option in options %}
@@ -16,4 +15,3 @@
   {% endfor %}
 </ul>
 {% endwith %}
-</div>

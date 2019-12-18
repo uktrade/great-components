@@ -1,15 +1,15 @@
 {% load static %}
 {% load i18n %}
 
-<footer id="great-footer" class="great-footer light-grey-text background-great-blue" dir="ltr" data-ga-section="footer">
+<footer id="great-footer" class="g-footer text-light-grey bg-great-blue" dir="ltr" data-ga-section="footer">
 
-  <div class="great-footer-logo-container container">
+  <div class="g-footer-logo-container container">
     {% block footer_left_logo %}{% endblock %}
     {% block footer_right_logo %}{% endblock %}
   </div>
 
-  <nav class="great-footer-links container">
-    <ul class="great-footer-site-links">
+  <nav class="g-footer-links container">
+    <ul class="g-footer-site-links">
         <li>
             <a id="footer-contact" href="{{ services_urls.contact_us }}">{% trans 'Contact us' %}</a>
         </li>
@@ -30,11 +30,11 @@
     </ul>
   </nav>
 
-  <div class="great-global-header-footer {% block global_footer_class %}{% endblock %}">
+  <div class="g-global-header-footer {% block global_footer_class %}{% endblock %}">
     <div class="container">
         {% block global_footer_logo %}
         {% endblock %}
-        <p id="great-footer-copyright" class="great-footer-copyright">&copy; Crown copyright {% now "Y" %}. All rights reserved.</p>
+        <p id="great-footer-copyright" class="g-footer-copyright">&copy; Crown copyright {% now "Y" %}. All rights reserved.</p>
     </div>
   </div>
 

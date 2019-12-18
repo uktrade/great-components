@@ -1,32 +1,32 @@
 {% load i18n %}
 {% load add_export_elements_classes from directory_components %}
 
-<div class="card{% if title and not description and not html_content %} only-title{% endif %}{% if no_padding_card %} no-padding-card{% endif %}{% if transparent_card %} transparent-card{% endif %}"
+<div class="g-card{% if title and not description and not html_content %} only-title{% endif %}{% if transparent %} bg-transparent{% else %} bg-white{% endif %}"
   {% if card_id %}id="{{ card_id }}"{% endif %}
 >
   {% if url %}
   <a
-    class="card-link"
+    class="g-card-link"
     href="{{ url }}"
     {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}
     {% if external_link %}target="_blank" rel="noopener noreferrer" title="{% trans 'Opens in a new window' %}"{% endif %}
     >
   {% endif %}
     {% block image %}
-    {% if img_src %}
-        <img class="card-image" src="{{ img_src }}" alt="{{ img_alt }}" {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
+    {% if image %}
+        <img class="g-card-image" src="{{ image }}" alt="{{ img_alt }}" {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
     {% endif %}
     {% endblock %}
-    <div class="card-inner">
+    <div class="g-card-inner {% if no_padding and image %} p-top-s{% elif no_padding and not image %} p-0{% else %} p-s{% endif %}{% if html_content %} html-content{% endif %}">
       {% block content %}
       {% if html_content %}
       {{ html_content }}
       {% else %}
         {% if subheading %}
-          <p class="subheading">{{ subheading }}</p>
+          <p class="h-sub">{{ subheading }}</p>
         {% endif %}
-        {% if title or heading %}
-          <h3 class="heading-large">{% firstof title heading %}</h3>
+        {% if title %}
+          <h3 class="heading">{{ title }}</h3>
         {% endif %}
         {% if description %}
           <p class="description">{{ description }}</p>
