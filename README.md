@@ -35,14 +35,14 @@ Then visit the demo at `components.trade.great:9013`
 | Command                       | Description |
 | ----------------------------- | ------------|
 | make clean                    | Delete pyc files |
-| make pytest                   | Run all tests. Run `pip install .[test] first` |
+| make pytest                   | Run all tests. Run `pip install '.[test]' first` |
 | make pytest test_foo.py       | Run all tests in file called test_foo.py |
 | make pytest -- --last-failed` | Run the last tests to fail |
 | make pytest -- -k foo         | Run the test called foo |
 | make pytest -- <foo>          | Run arbitrary pytest command |
 | make flake8                   | Run linting |
 | make manage <foo>             | Run arbitrary management command |
-| make webserver                | Run the demo development web server. Run `pip install .[demo] first` |
+| make webserver                | Run the demo development web server. Run `pip install '.[demo]' first` |
 | make requirements             | Compile the requirements file |
 | make install_requirements     | Installed the compile requirements file |
 | make css                      | Compile scss to css |
