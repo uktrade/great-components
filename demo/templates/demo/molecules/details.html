@@ -1,0 +1,53 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load directory_components %}
+
+{% block inner_content %}
+<h1 class="h-xl">Details and accordions</h1>
+<h2 class="h-m">Details and summary</h2>
+<p>No special classes required!</p>
+<details closed>
+  <summary>{% filter capfirst %}{% lorem 5 w %}{% endfilter %}</summary>
+  {% lorem 1 p %}
+</details>
+
+<h3 class="h-s">HTML Markup</h3>
+
+{% code 'html' %}
+<details closed>
+  <summary>Summary text</summary>
+  Details text
+</details>{% endcode %}
+      <h2 class="h-m">Accordion list</h2>
+      <p>This is a list of <code>details</code> elements each with a heading, text and optional icon. The <code>items</code> param expects a list of dictionaries like this:</p>
+
+    {% code 'python' %}
+{
+  'heading': 'Heading',
+  'content': HTML
+}
+{% endcode %}
+
+    <p>A polyfill for IE and Edge is included in the base directory_components template.</p>
+
+    {% code 'django' %}{% accordion_list items=details_list %}{% endcode %}
+
+    {% accordion_list items=details_list %}
+
+    <h3 class="h-s">HTML Markup</h3>
+    {% code 'html' %}
+<div class="g-accordion-list">
+  <details closed class="g-accordion">
+    <summary class="w-full link">Summary text</summary>
+    <div class="w-full w-2-3-m">
+      Details text
+    </div>
+  </details>
+  ... etc
+</div>
+{% endcode %}
+
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load directory_components %}
+{% load code from demo_tags %}
+
+{% block content %}
+
+<div class="container">
+  <h2 class="h-xl m-bottom-s">Fact sheet</h2>
+</div>
+<section class="bg-stone-30">
+  <div class="container">
+    <div class="flex-grid">
+      <div class="c-1-2">
+        <div class="g-fact-sheet">
+          <h3 class="g-fact-sheet-heading bg-grey text-white">Fact sheet</h3>
+          <div class="g-fact-sheet-content bg-white">
+            {% lorem 1 p random %}
+            <hr>
+            {% lorem 2 p random %}
+          </div>
+        </div>
+      </div>
+      <div class="c-1-2">
+        {% code 'html' %}
+          <div class="g-fact-sheet">
+            <h3 class="g-fact-sheet-heading">Fact sheet</h3>
+            <div class="g-fact-sheet-content">
+              [ html content ]
+            </div>
+          </div>
+        {% endcode %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

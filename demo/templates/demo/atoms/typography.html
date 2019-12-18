@@ -1,0 +1,82 @@
+{% extends 'demo/base.html' %}
+{% load breadcrumbs add_export_elements_classes from directory_components %}
+
+{% block inner_content %}
+
+
+<h1 class="h-xl">Typography</h1>
+<h2 class="h-l">Utility classes</h2>
+<table>
+  <thead>
+    <th>Class name</th>
+    <th>Description</th>
+  </thead>
+  <tr>
+    <td class="font-brand">.font-brand</td>
+    <td>Styles text with the main brand typeface.</td>
+  </tr>
+  <tr>
+    <td class="font-body">.font-body</td>
+    <td>Styles text with the body typeface.</td>
+  </tr>
+  <tr>
+    <td class="italic">.italic</td>
+    <td>Makes text italic.</td>
+  </tr>
+  <tr>
+    <td class="bold">.bold</td>
+    <td>Makes text bold.</td>
+  </tr>
+  <tr>
+    <td class="uppercase">.uppercase</td>
+    <td>Makes text uppercase.</td>
+  </tr>
+</table>
+
+<section class="w-2-3">
+  <h2 class="h-l">Example of article styling</h2>
+
+  {% filter add_export_elements_classes %}
+
+  {% lorem 1 p random %}
+
+  <h3>Heading level 3</h3>
+  {% lorem 1 p random %}
+  <ul>
+    <li>List item</li>
+    <li><a href="https://great.gov.uk">List item link</a></li>
+    <li>List item</li>
+  </ul>
+
+  <h3>Heading level 3</h3>
+  <h4>Heading level 4</h4>
+  {% lorem 2 p random %}
+  <ol>
+    <li>List item</li>
+    <li><a href="https://great.gov.uk">List item link</a></li>
+    <li>List item</li>
+  </ol>
+  <ul>
+    <li>List item</li>
+    <li><a href="https://great.gov.uk">List item link</a></li>
+    <li>List item</li>
+  </ul>
+
+  <h4>Heading level 4</h4>
+  <p>{% filter capfirst %}{% lorem 10 w random %}{% endfilter %}</p>
+  <blockquote>
+    {% filter capfirst %}{% lorem 30 w random %}{% endfilter %}
+    <cite>{% filter capfirst %}{% lorem 3 w random %}{% endfilter %}</cite>
+  </blockquote>
+
+  <h5>Heading level 5</h5>
+  {% lorem 1 p random %}
+
+  <h6>Heading level 6</h6>
+  {% lorem 1 p random %}
+
+  {% endfilter %}
+
+</section>
+
+{% endblock %}

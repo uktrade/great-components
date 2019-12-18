@@ -6,6 +6,7 @@ from unittest.mock import Mock
 from collections import namedtuple
 
 from django.core.paginator import Paginator
+from django.conf import settings
 from django.shortcuts import Http404
 from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
@@ -13,9 +14,7 @@ from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.contrib.staticfiles.templatetags.staticfiles import static
 
-from directory_components.mixins import (
-    CountryDisplayMixin, EnableTranslationsMixin
-)
+from directory_components.mixins import EnableTranslationsMixin
 
 from demo import forms
 
@@ -25,6 +24,11 @@ class BasePageView(TemplateView):
     @property
     def template_name(self):
         return self.kwargs.get('template_name')
+
+    def get_context_data(self, *args, **kwargs):
+        return super().get_context_data(
+            USE_LOCAL_STYLES=settings.USE_LOCAL_STYLES,
+            *args, **kwargs)
 
 
 class KeyFactsView(BasePageView):
@@ -107,7 +111,7 @@ class TierOneNavItem:
 
     @property
     def url(self):
-        return f'/great-international-header-footer/?section={self.name}'
+        return f'/header-footer/international/?section={self.name}'
 
 
 class TierTwoNavItem:
@@ -125,10 +129,10 @@ class TierTwoNavItem:
 
     @property
     def url(self):
-        return f'/great-international-header-footer/?section={self.parent_name}&sub_section={self.name}'
+        return f'/header-footer/international/?section={self.parent_name}&sub_section={self.name}'
 
 
-class InternationalHeaderView(CountryDisplayMixin, EnableTranslationsMixin, BasePageView):
+class InternationalHeaderView(EnableTranslationsMixin, BasePageView):
     @property
     def header_section(self):
         return self.request.GET.get('section', '')
@@ -258,14 +262,15 @@ class DemoStatsView(BasePageView):
     num_of_statistics = 6
 
 
-class DemoFormErrorsView(FormView):
-    template_name = 'demo/form-errors.html'
+class DemoFormErrorsView(FormView, BasePageView):
     form_class = forms.DemoFormErrors
-    success_url = reverse_lazy('form-errors')
+    success_url = reverse_lazy('errors')
+
+    def get_context_data(self, *args, **kwargs):
+        return super().get_context_data(*args, **kwargs)
 
 
-class DemoFormView(TemplateView):
-    template_name = 'demo/form-elements.html'
+class DemoFormView(BasePageView):
 
     def get_context_data(self, *args, **kwargs):
         return super().get_context_data(
@@ -290,8 +295,7 @@ class Trigger500ErrorView(View):
         raise Exception('triggering a server error')
 
 
-class DemoPaginationView(TemplateView):
-    template_name = 'demo/pagination.html'
+class DemoPaginationView(BasePageView):
 
     objects = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
@@ -315,11 +319,11 @@ class DemoPaginationView(TemplateView):
             pagination_page_few_pages=self.pagination_few_pages,
             pagination_page_some_pages=self.pagination_some_pages,
             pagination_page_many_pages=self.pagination_many_pages,
+            *args, **kwargs
         )
 
 
-class DomesticHeaderFooterView(TemplateView):
-    template_name = 'demo/great-domestic-header-footer.html'
+class DomesticHeaderFooterView(BasePageView):
 
     def dispatch(self, request, *args, **kwargs):
         if 'authenticated' in request.GET:
@@ -334,8 +338,7 @@ class DomesticHeaderFooterView(TemplateView):
         )
 
 
-class FullWidthBannersView(TemplateView):
-    template_name = 'demo/full-width-banners.html'
+class FeatureListView(BasePageView):
 
     def get_context_data(self, *args, **kwargs):
         return super().get_context_data(
@@ -361,12 +364,16 @@ class FullWidthBannersView(TemplateView):
                             '<a href="/full-width-banners/">Learn more.</a></p>'
                 }
             ],
-            intro_markdown="<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
-                           "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>",
+            intro_html=(
+                "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
+                "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
+                "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"),
             video={
                 'url': static('videos/hpo-food-video.mp4'),
                 'file_extension': 'mp4'
-            }
+            },
+            *args, **kwargs
         )
 
 

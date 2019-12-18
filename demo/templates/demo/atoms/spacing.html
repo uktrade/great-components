@@ -1,0 +1,118 @@
+{% extends 'demo/base.html' %}
+
+{% block inner_content %}
+
+<h1 class="h-xl">Spacing</h1>
+
+<p class="w-2-3">Spacings are based on the line height at base font size. Classes that use these spacings will switch sizes according to screen width to keep spacing proportional to the text size.</p>
+<p class="w-2-3">To see how elements on this page line up with the base line height, use the button in the bottom right to toggle the line height guide.</p>
+
+<p>For further reading see <a href="http://webtypography.net/2.2.2">webtypography.net</a>.</p>
+
+<table>
+  <thead>
+    <th>Suffix</th>
+    <th>Number of lines</th>
+    <th>px value (desktop)</th>
+    <th>px value (mobile)</th>
+  </thead>
+  <tr>
+    <td>-xxs</td>
+    <td>¼</td>
+    <td>7.5px</td>
+    <td>5.5px</td>
+  </tr>
+  <tr>
+    <td>-xs</td>
+    <td>½</td>
+    <td>15px</td>
+    <td>11px</td>
+  </tr>
+  <tr>
+    <td>-s</td>
+    <td>1</td>
+    <td>30px</td>
+    <td>22px</td>
+  </tr>
+  <tr>
+    <td>-m</td>
+    <td>1½</td>
+    <td>45px</td>
+    <td>33px</td>
+  </tr>
+  <tr>
+    <td>-l</td>
+    <td>2</td>
+    <td>60px</td>
+    <td>44px</td>
+  </tr>
+  <tr>
+    <td>-xl</td>
+    <td>3</td>
+    <td>90px</td>
+    <td>66px</td>
+  </tr>
+  <tr>
+    <td>-xxl</td>
+    <td>4</td>
+    <td>120px</td>
+    <td>88px</td>
+  </tr>
+</table>
+
+<h2 class="h-l">Padding and margin</h2>
+
+<table>
+  <thead>
+    <th>Rule</th>
+    <th>Prefix</th>
+  </thead>
+  <tr>
+    <td>Margin</td>
+    <td>m-</td>
+  </tr>
+  <tr>
+    <td>Padding</td>
+    <td>p-</td>
+  </tr>
+</table>
+
+<table>
+  <thead>
+    <th>Position</th>
+    <th>Abbreviation</th>
+  </thead>
+  <tr>
+    <td>All sides</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><u>T</u>op</td>
+    <td>t</td>
+  </tr>
+  <tr>
+    <td><u>B</u>ottom</td>
+    <td>b</td>
+  </tr>
+  <tr>
+    <td><u>R</u>ight</td>
+    <td>r</td>
+  </tr>
+  <tr>
+    <td>Le<u>f</u>t</td>
+    <td>f</td>
+  </tr>
+  <tr>
+    <td>Top and bottom (<u>v</u>ertical)</td>
+    <td>v</td>
+  </tr>
+  <tr>
+    <td>Left and right (<u>h</u>orizontal)</td>
+    <td>h</td>
+  </tr>
+</table>
+
+<p class="w-2-3">To construct a class, take the rule abbreviation, add the position, then the spacing size. E.g. for a small margin on the top and bottom use <code>m-v-s</code>. For a large padding on the left use <code>p-f-l</code>. For a medium padding on all sides use <code>p-m</code></p>
+
+
+{% endblock %}

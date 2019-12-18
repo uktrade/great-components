@@ -20,14 +20,14 @@
 </div>
 
 <div class="container">
-    <h1 class="heading-xlarge">Search page components</h1>
+    <h1 class="h-xl">Search page components</h1>
 
-    <h2 class="heading-medium">Selected filters</h2>
+    <h2 class="h-m">Selected filters</h2>
 
     {% code 'django' %}
         {% load search_page_selected_filters from directory_components %}
         <div class="grid-row">
-            <div class="column-quarter">
+            <div class="c-quarter">
                 {% search_page_selected_filters filters=filters clear_all_link="/" %}
             </div>
         </div>
@@ -36,12 +36,12 @@
     <div> The 'filters' being passed in should be a list of the options that have been selected</div>
     <br>
     <div class="grid-row">
-        <div class="column-quarter">
+        <div class="c-quarter">
             {% search_page_selected_filters filters=filters clear_all_link="/" %}
         </div>
     </div>
 
-    <h2 class="heading-medium">Expandable options</h2>
+    <h2 class="h-m">Expandable options</h2>
     <span>The file 'directory_components/js/dit.components.searchPageExpandableOptions.js' needs to be imported to use this component</span>
 
     {% code 'django' %}
@@ -53,7 +53,7 @@
         {% endblock %}
 
         <div class="grid-row">
-            <div class="column-quarter">
+            <div class="c-quarter">
                 {% search_page_expandable_options label='Sectors' field=form.colours %}
             </div>
         </div>
@@ -79,14 +79,14 @@
     {% endcode %}
 
     <div class="grid-row">
-        <div class="column-quarter">
+        <div class="c-quarter">
             {% search_page_expandable_options label='Colours' field=form.multiple_choice %}
         </div>
     </div>
 
     <div class="grid-row">
-        <h2 class="heading-large">Related components</h2>
-        <div class="column-quarter">
+        <h2 class="h-l">Related components</h2>
+        <div class="c-quarter">
             <a class="link" href="{% url 'pagination' %}">Pagination</a>
         </div>
     </div>

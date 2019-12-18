@@ -1,0 +1,137 @@
+{% extends 'demo/base.html' %}
+
+{% load message_box_with_icon from directory_components %}
+
+{% block inner_content %}
+
+<article class="w-2-3">
+<h1 class="h-xl" id="colour">Colour</h1>
+<p>When using colour, always be sure to check colour contrast meets accessibility requirements. <a href="https://wave.webaim.org/" class="link">WAVE</a> is useful for automatically checking for contrast and other accessibility issues. <a href="https://wave.webaim.org/extension/" class="link">Browser extensions for WAVE are also available</a> so it can be used in the local dev environment.</p>
+{% message_box_with_icon icon='!' description='Text and background colour combinations that have low contrast have been flagged. Please avoid these.' %}
+<h2 class="h-l">Core colours</h2>
+<ul class="list list-bullet">
+  <li><span class="bg-great-red text-white">GREAT Red</span> should only be used for the GREAT logo.</li>
+  <li><span class="bg-grey text-white">Grey</span> is used for type where possible, if not black can be used.</li>
+  <li><span class="bg-flag-red text-white">Flag Red</span> is used for red lines and can be used in type.</li>
+  <li><span class="bg-stone">Stone</span> has been introduced for use as a pale background colour on pages and tables.</li>
+</ul>
+
+<h2 class="h-l">Colour variable names</h2>
+<p>Colour utility classes have names based on the SASS colour variable names contained in <code>export_elements/sass/partials/colours</code>:</p>
+<ul class="colour-examples text-white">
+  <li class="bg-purple">$purple</li>
+  <li class="bg-great-blue">$great-blue</li>
+  <li class="bg-dark-navy">$dark-navy</li>
+  <li class="bg-mid-blue">$mid-blue</li>
+  <li class="bg-active-blue">$active-blue</li>
+  <li class="bg-light-blue">$light-blue</li>
+  <li class="bg-aqua">$aqua</li>
+  <li class="bg-teal">$teal</li>
+  <li class="bg-flag-red">$flag-red</li>
+  <li class="bg-great-red">$great-red</li>
+  <li class="bg-focus-yellow text-black">$focus-yellow</li>
+  <li class="bg-black text-white">$black</li>
+  <li class="bg-grey text-white">$grey</li>
+  <li class="bg-mid-grey text-white">$mid-grey</li>
+  <li class="text-black bg-light-grey">$light-grey</li>
+  <li class="text-black bg-offwhite">$offwhite</li>
+  <li class="text-black bg-white">$white</li>
+  <li class="text-black bg-stone-10">$stone-10</li>
+  <li class="text-black bg-stone-20">$stone-20</li>
+  <li class="text-black bg-stone-30">$stone-30</li>
+  <li class="text-black bg-stone-40">$stone-40</li>
+  <li class="text-black bg-stone-50">$stone-50</li>
+  <li class="text-black bg-stone-60">$stone-60</li>
+  <li class="text-black bg-stone-70">$stone-70</li>
+  <li class="text-black bg-stone-80">$stone-80</li>
+  <li class="text-black bg-stone-90">$stone-90</li>
+  <li class="text-black bg-stone">$stone</li>
+</ul>
+
+<h2 class="h-l">Background colour</h2>
+<div class="colour-examples text-white">
+  <p class="bg-purple">.bg-purple</p>
+  <p class="bg-great-blue">.bg-great-blue</p>
+  <p class="bg-dark-navy">.bg-dark-navy</p>
+  <p class="bg-mid-blue">.bg-mid-blue</p>
+  <p class="bg-active-blue">.bg-active-blue</p>
+  <p class="bg-light-blue">.bg-light-blue <span class="bg-great-red text-white bold-small padding-horizontal-15 margin-left-15">low contrast!</span></p>
+  <p class="bg-aqua">.bg-aqua</p>
+  <p class="bg-teal">.bg-teal <span class="bg-great-red text-white bold-small padding-horizontal-15 margin-left-15">low contrast!</span></p>
+  <p class="bg-flag-red">.bg-flag-red</p>
+  <p class="bg-great-red">.bg-great-red</p>
+  <p class="bg-focus-yellow text-black">.bg-focus-yellow</p>
+</div>
+<div class="colour-examples text-black m-bottom-s">
+  <p class="bg-black text-white">.bg-black</p>
+  <p class="bg-grey text-white">.bg-grey</p>
+  <p class="bg-mid-grey text-white">.bg-mid-grey</p>
+  <p class="bg-light-grey">.bg-light-grey</p>
+  <p class="bg-offwhite">.bg-offwhite</p>
+  <p class="bg-white">.bg-white</p>
+  <p class="bg-stone-10">.bg-stone-10</p>
+  <p class="bg-stone-20">.bg-stone-20</p>
+  <p class="bg-stone-30">.bg-stone-30</p>
+  <p class="bg-stone-40">.bg-stone-40</p>
+  <p class="bg-stone-50">.bg-stone-50</p>
+  <p class="bg-stone-60">.bg-stone-60</p>
+  <p class="bg-stone-70">.bg-stone-70</p>
+  <p class="bg-stone-80">.bg-stone-80</p>
+  <p class="bg-stone-90">.bg-stone-90</p>
+  <p class="bg-stone">.bg-stone</p>
+</div>
+
+<h2 class="h-l">Text colour</h2>
+<div class="colour-examples m-bottom-s">
+  <p class="text-purple">.text-purple</p>
+  <p class="text-great-blue">.text-great-blue</p>
+  <p class="text-dark-navy">.text-dark-navy</p>
+  <p class="text-mid-blue">.text-mid-blue</p>
+  <p class="text-active-blue">.text-active-blue</p>
+  <p class="text-light-blue">.text-light-blue <span class="bg-great-red text-white bold-small padding-horizontal-15 margin-left-15">low contrast!</span></p>
+  <p class="text-aqua">.text-aqua</p>
+  <p class="text-teal">.text-teal <span class="bg-great-red text-white bold-small padding-horizontal-15 margin-left-15">low contrast!</span></p>
+  <p class="text-flag-red">.text-flag-red</p>
+  <p class="text-great-red">.text-great-red</p>
+  <p class="text-focus-yellow bg-great-blue">.text-focus-yellow</p>
+  <p class="text-black">.text-black</p>
+  <p class="text-grey">.text-grey</p>
+  <p class="text-mid-grey">.text-mid-grey</p>
+  <p class="text-light-grey bg-black">.text-light-grey</p>
+  <p class="text-offtext-white bg-black">.text-offwhite</p>
+  <p class="text-white bg-black">.text-white</p>
+</div>
+
+<h2 class="h-l">Border colour</h2>
+<div class="colour-examples m-bottom-s">
+  <p class="border-medium border-purple">.border-purple</p>
+  <p class="border-medium border-great-blue">.border-great-blue</p>
+  <p class="border-medium border-dark-navy">.border-dark-navy</p>
+  <p class="border-medium border-mid-blue">.border-mid-blue</p>
+  <p class="border-medium border-active-blue">.border-active-blue</p>
+  <p class="border-medium border-light-blue">.border-light-blue</p>
+  <p class="border-medium border-aqua">.border-aqua</p>
+  <p class="border-medium border-teal">.border-teal</p>
+  <p class="border-medium border-flag-red">.border-flag-red</p>
+  <p class="border-medium border-great-red">.border-great-red</p>
+  <p class="border-medium border-focus-yellow">.border-focus-yellow</p>
+  <p class="border-medium border-black">.border-black</p>
+  <p class="border-medium border-grey">.border-grey</p>
+  <p class="border-medium border-mid-grey">.border-mid-grey</p>
+  <p class="border-medium border-light-grey">.border-light-grey</p>
+  <p class="border-medium border-offwhite">.border-offwhite</p>
+  <p class="border-medium border-white">.border-white</p>
+  <p class="border-medium border-stone-10">.border-stone-10</p>
+  <p class="border-medium border-stone-20">.border-stone-20</p>
+  <p class="border-medium border-stone-30">.border-stone-30</p>
+  <p class="border-medium border-stone-40">.border-stone-40</p>
+  <p class="border-medium border-stone-50">.border-stone-50</p>
+  <p class="border-medium border-stone-60">.border-stone-60</p>
+  <p class="border-medium border-stone-70">.border-stone-70</p>
+  <p class="border-medium border-stone-80">.border-stone-80</p>
+  <p class="border-medium border-stone-90">.border-stone-90</p>
+  <p class="border-medium border-stone">.border-stone</p>
+</div>
+
+</article>
+{% endblock %}

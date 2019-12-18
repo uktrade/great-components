@@ -1,0 +1,86 @@
+{% extends 'demo/base.html' %}
+
+{% block inner_content %}
+
+<h1 class="h-xl">Grid</h1>
+<p class="w-2-3">By default all column classes collapse to <code>.c-full</code> on mobile. Using multiple columns in a mobile layout is not recommended.</p>
+
+<h2 class="h-l">.grid</h2>
+<div class="bg-stone-30 p-s m-b-s">
+  <div class="grid">
+    {% for i in "x"|rjust:"6" %}
+    <div class="c-1-6">
+      <p class="p-s bg-white">c-1-6</p>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="grid">
+    {% for i in "x"|rjust:"5" %}
+    <div class="c-1-5">
+      <p class="p-s bg-white">c-1-5</p>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="grid">
+    {% for i in "x"|rjust:"4" %}
+    <div class="c-1-4">
+      <p class="p-s bg-white">c-1-4</p>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="grid">
+    {% for i in "x"|rjust:"3" %}
+    <div class="c-1-3">
+      <p class="p-s bg-white">c-1-3</p>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="grid">
+    <div class="c-2-3">
+      <p class="p-s bg-white">c-2-3</p>
+    </div>
+    <div class="c-1-3">
+      <p class="p-s bg-white">c-1-3</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="c-3-4">
+      <p class="p-s bg-white">c-3-4</p>
+    </div>
+    <div class="c-1-4">
+      <p class="p-s bg-white">c-1-4</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="c-5-12">
+      <p class="p-s bg-white">c-5-12</p>
+    </div>
+    <div class="c-7-12">
+      <p class="p-s bg-white">c-7-12</p>
+    </div>
+  </div>
+</div>
+
+<h2 class="h-l">.flex-grid</h2>
+<p>To align the heights of elements with different lengths of content, use <code>.flex-grid</code>. This adds <code>flex-grow: 1</code> to grandchildren of the <code>flex-grid</code> i.e. elements that are direct children of the grid columns.</p>
+<div class="bg-stone-30 p-s m-bottom-s">
+  <div class="flex-grid">
+    <div class="c-1-3">
+      <div class="bg-white p-s">
+        {% filter capfirst %}{% lorem 10 w random %}{% endfilter %}
+      </div>
+    </div>
+    <div class="c-1-3">
+      <div class="bg-white p-s">
+        {% filter capfirst %}{% lorem 50 w random %}{% endfilter %}
+      </div>
+    </div>
+    <div class="c-1-3">
+      <div class="bg-white p-s">
+        {% filter capfirst %}{% lorem 20 w random %}{% endfilter %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

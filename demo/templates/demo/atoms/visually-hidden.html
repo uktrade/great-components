@@ -1,0 +1,14 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load directory_components %}
+
+{% block inner_content %}
+
+<h1 class="h-xl">Visually hidden</h1>
+<p class="w-2-3">The <code>visually-hidden</code> class hides an element for sighted users but still allows it to be read by screenreaders.</p>
+<p class="w-2-3">Inspect the page or use a screenreader to read the paragraph below.</p>
+<p class="visually-hidden">This text is not visible but will be read out by a screenreader.</p>
+
+{% endblock %}

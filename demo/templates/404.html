@@ -6,9 +6,13 @@
     {% include 'demo/includes/header.html' %}
 {% endblock %}
 
+{% block head_js %}
+  {{ block.super }}
+  <script type="text/javascript" src="{% static 'js/debug.js' %}"></script>
+{% endblock %}
+
 {% block head_css %}
-    {{ block.super }}
-    <link href="{% static 'css/demo.css' %}" media="all" rel="stylesheet" />
+    {% include 'demo/includes/styles.html' %}
 {% endblock %}
 
 {% block body_footer %}

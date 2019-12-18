@@ -1,0 +1,46 @@
+{% extends 'demo/base.html' %}
+{% load static %}
+{% load breadcrumbs from directory_components %}
+
+{% block body_header %}
+    {% include 'directory_components/header_footer/domestic_header.html' %}
+{% endblock %}
+
+{% block header_js %}
+  <script src="{% static 'directory_components/js/dit.responsive.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.utils.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.classes.Modal.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.components.header.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  {% breadcrumbs 'Domestic header & footer' %}
+    <a href="{% url 'index' %}">Home</a>
+    <a href="{% url 'header-footer' %}">Header & footer</a>
+  {% endbreadcrumbs %}
+</div>
+<section class="p-top-s">
+  <div class="container">
+    <div class="w-2-3">
+      <h1 class="h-xl">Great domestic header & footer</h1>
+      <p><a href="?{{ sso_is_logged_in|yesno:'unauthenticated,authenticated' }}">Toggle authentication state</a>.</p>
+
+      <h2 class="h-m">See also:</h2>
+      <ul class="list list-bullet">
+        <li>
+          <a href="{% url 'invest-header' %}">Invest header & footer</a>
+        </li>
+        <li>
+          <a href="{% url 'great-international-header-footer' %}">International header & footer</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block body_footer %}
+    {% include 'directory_components/header_footer/domestic_footer.html' %}
+{% endblock %}

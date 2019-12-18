@@ -1,0 +1,127 @@
+{% extends 'demo/base.html' %}
+
+{% load demo_tags %}
+{% load directory_components %}
+
+{% block css_layout_class %}forms{% endblock %}
+
+{% block inner_content %}
+
+<h1 class="h-xl">Form widgets</h1>
+<p>Forms are rendered thusly:</p>
+
+{% code 'html' %}
+  <form>
+    {{ form }}
+  <input class="g-button" type="submit" value="Submit" />
+  </form>
+{% endcode %}
+
+<h2 class="h-l">Form widgets examples</h2>
+
+<article class="grid">
+  <div class="c-1-2">
+    <h3 class="h-m">Text fields</h3>
+    <form>
+      {{ text_form }}
+      <input class="g-button margin-top-30" type="submit" value="Submit" />
+    </form>
+  </div>
+  <div class="c-1-2">
+    {% code 'python' False %}
+      {{ text_form|view_instance_code }}
+    {% endcode %}
+  </div>
+</article>
+<article class="grid">
+  <div class="c-1-2">
+    <h3 class="h-m">Checkboxes</h3>
+    <form>
+      {{ checkbox_form }}
+      <input class="g-button" type="submit" value="Submit" />
+    </form>
+  </div>
+  <div class="c-1-2">
+    {% code 'python' False %}
+      {{ checkbox_form|view_instance_code }}
+    {% endcode %}
+  </div>
+</article>
+
+<article class="grid">
+  <div class="c-1-2">
+    <h3 class="h-m">Multiple choice checkboxes</h3>
+    <form>
+      {{ multiple_choice_form }}
+      <input class="g-button" type="submit" value="Submit" />
+    </form>
+  </div>
+  <div class="c-1-2">
+    {% code 'python' False %}
+      {{ multiple_choice_form|view_instance_code }}
+    {% endcode %}
+  </div>
+</article>
+
+<article class="grid">
+  <div class="c-1-2">
+    <h3 class="h-m">Radios</h3>
+    <form>
+      {{ radio_form }}
+      <input class="g-button" type="submit" value="Submit" />
+    </form>
+  </div>
+  <div class="c-1-2">
+
+  {% code 'python' False %}
+    {{ radio_form|view_instance_code }}
+  {% endcode %}
+  </div>
+</article>
+
+<article class="grid">
+  <div class="c-1-2">
+    <h3 class="h-m">Field with submit button</h3>
+    <form>
+      {{ submit_button_form }}
+    </form>
+  </div>
+  <div class="c-1-2">
+    {% code 'python' False %}
+      {{ submit_button_form|view_instance_code }}
+    {% endcode %}
+  </div>
+</article>
+
+<article class="grid">
+  <div class="c-1-2">
+    <h3 class="h-m">Nested radio field</h3>
+    <form>
+      {{ nested_radio_form }}
+    </form>
+  </div>
+  <div class="c-1-2">
+    {% code 'python' False %}
+      {{ nested_radio_form.fields.nested_field.nested_form|view_instance_code }}
+
+      {{ nested_radio_form|view_instance_code }}
+    {% endcode %}
+  </div>
+</article>
+
+<article class="grid">
+  <div class="c-1-2">
+    <h3 class="h-m">Multiselect autocomplete</h3>
+    <form>
+      {{ multiple_autocomplete_form }}
+    </form>
+  </div>
+  <div class="c-1-2">
+    {% code 'python' False %}
+      {{ multiple_autocomplete_form|view_instance_code }}
+    {% endcode %}
+  </div>
+  {{ multiple_autocomplete_form.media }}
+</article>
+
+{% endblock %}

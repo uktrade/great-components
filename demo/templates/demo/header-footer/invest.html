@@ -1,0 +1,52 @@
+{% extends 'demo/base.html' %}
+{% load static %}
+{% load breadcrumbs invest_header from directory_components %}
+
+{% block body_header %}
+    {% invest_header navigation_tree=navigation_tree site_section=header_section site_sub_section=header_sub_section %}
+{% endblock %}
+
+{% block head_css %}
+  {{ block.super }}
+  <link href="{% static 'directory_components/vendor/flag-icons/css/flag-icon.min.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block header_js %}
+  <script src="{% static 'directory_components/js/dit.responsive.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.utils.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.components.countrySelector.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.components.languageSelectorDropdown.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.components.header.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.components.greatInternationalHeader.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  {% breadcrumbs 'Invest header & footer' %}
+    <a href="{% url 'index' %}">Home</a>
+    <a href="{% url 'header-footer' %}">Header & footer</a>
+  {% endbreadcrumbs %}
+</div>
+
+<section class="p-v-s">
+  <div class="container">
+    <div class="w-2-3">
+      <h1 class="h-xl">Invest header & footer</h1>
+      <h2 class="h-m">See also:</h2>
+      <ul class="list list-bullet">
+        <li>
+          <a href="{% url 'great-domestic-header-footer' %}">Domestic header & footer</a>
+        </li>
+        <li>
+          <a href="{% url 'great-international-header-footer' %}">International header & footer</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block body_footer %}
+    {% include 'directory_components/header_footer/international_footer.html' %}
+{% endblock %}

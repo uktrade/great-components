@@ -1,0 +1,120 @@
+{% extends 'demo/base.html' %}
+{% load static %}
+{% load breadcrumbs hero international_header from directory_components %}
+{% load code from demo_tags %}
+
+{% block body_header %}
+    {% international_header navigation_tree=navigation_tree site_section=header_section site_sub_section=header_sub_section  %}
+{% endblock %}
+
+{% block header_js %}
+  <script src="{% static 'directory_components/js/dit.responsive.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.utils.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.components.countrySelector.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.components.languageSelectorDropdown.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.components.header.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.components.greatInternationalHeader.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  {% breadcrumbs 'International header footer' %}
+    <a href="{% url 'index' %}">Home</a>
+    <a href="{% url 'header-footer' %}">Header & footer</a>
+  {% endbreadcrumbs %}
+</div>
+
+<section class="p-v-s">
+  <div class="container">
+    <div class="w-2-3">
+      <h1 class="h-xl">International header and footer</h1>
+      <p>The International Header can be applied to a page by adding the following component to the header block.</p>
+
+      {% code 'django' %}
+        {% international_header
+          navigation_tree=my_navigation_tree
+          site_section='<site-></site->section'
+          site_sub_section='site-sub-section'
+        %}
+      {% endcode %}
+
+      <p>Click around the header shown to get an idea of how it works.</p>
+
+      <h2 class="h-l">How to use the header</h2>
+
+      <h3 class="h-m">Navigation Tree</h3>
+      <p>A list of 'Header Nodes'. Represents the structure of the items in the header</p>
+
+      <h3 class="h-m">Header Node</h3>
+      <p>An object containing the following fields:</p>
+      <table>
+        <thead>
+          <th>Param name</th>
+          <th>Explanation</th>
+        </thead>
+        <tr>
+          <td>tier_one_item</td>
+          <td>A 'Header Item' representing a link in the top level of the navigation (eg 'About the UK' or 'Expand to the UK')</td>
+        </tr>
+        <tr>
+          <td>tier_two_items</td>
+          <td>A list of 'Header Items' representing the links within that section of the site (eg, the lighter second level nav that appears after clicking a top level link)</td>
+        </tr>
+      </table>
+      <h3 class="h-m">Header Item</h3>
+      <p>An object containing the following fields:</p>
+      <table>
+        <thead>
+          <th>Param name</th>
+          <th>Explanation</th>
+        </thead>
+        <tr>
+          <td>title</td>
+          <td>The text for the link that appears on the page</td>
+        </tr>
+        <tr>
+          <td>name</td>
+          <td>The name of the item - used to determine the currently active areas of the site.</td>
+        </tr>
+        <tr>
+          <td>url</td>
+          <td>The URL to send the user to when they click on the item.</td>
+        </tr>
+      </table>
+
+      <h3 class="h-m">Site Section</h3>
+      <p>A string indicating which section of the site the user is currently in.</p>
+      <p>
+        If the site_section matches the 'name' of one of the top tier header items, then that item is 'active'.
+        An active item will be underlined, and the second tier navigation will show second tier items corresponding to that top tier item.
+      </p>
+      <p>
+        If the site_section is empty (or doesn't match any of the header items) then no item will be active, and the second tier will not be displayed.
+      </p>
+      <h3 class="h-m">Site Sub Section</h3>
+      <p>A string indicating which sub-section of the site the user is currently in.</p>
+      <p>
+        If the site_subsection matches the 'name' of one of the current second tier header items, then that item is 'active'.
+        An active item will be underlined.
+      </p>
+      <p>
+        If the site_subsection is empty (or doesn't match any of the header items) then no item will be active.
+      </p>
+      <h2 class="h-m">See also:</h2>
+      <ul class="list list-bullet">
+        <li>
+          <a href="{% url 'great-domestic-header-footer' %}">Domestic header & footer</a>
+        </li>
+        <li>
+          <a href="{% url 'invest-header' %}">Invest header & footer</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block body_footer %}
+    {% include 'directory_components/header_footer/international_footer.html' %}
+{% endblock %}

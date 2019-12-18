@@ -1,0 +1,100 @@
+{% extends 'demo/base.html' %}
+
+{% load view_instance_code from demo_tags %}
+{% load breadcrumbs message_box_with_icon from directory_components %}
+
+{% block content %}
+
+<h1 class="h-xl">Text style</h1>
+
+<h3 class="h-m">Headings</h3>
+
+<p>Use these heading classes to change the size of headings while still keeping HTML semantic. These are all <code>h3</code> headings with different heading classes.</p>
+<p class="h-xl">.h-xl</p>
+<p class="h-l">.h-l</p>
+<p class="h-m">.h-m</p>
+<p class="h-s">.h-s</p>
+
+<h3 class="h-m">Font size</h3>
+<p>These classes can be used to change font size and weight and are mobile responsive.</p>
+
+<div class="grid">
+  <div class="c-1-2">
+    <p class="body-xlarge">.body-xlarge</p>
+    <p class="body-large">.body-large</p>
+    <p class="body-medium">.body-medium</p>
+    <p class="body-small">.body-small</p>
+    <p class="bold">.bold</p>
+  </div>
+  <div class="c-1-2">
+    <p class="brand-xlarge">.brand-xlarge</p>
+    <p class="brand-large">.brand-large</p>
+    <p class="brand-medium">.brand-medium</p>
+    <p class="uppercase">.uppercase</p>
+    <p class="italic">.italic</p>
+  </div>
+</div>
+
+<h2 class="h-l">Lists</h2>
+
+<h3 class="h-m">ul .list</h3>
+<ul class="list">
+  <li><a href="#" class="link">Related link</a></li>
+  <li><a href="#" class="link">Another related link</a></li>
+  <li><a href="#" class="link">And another link</a></li>
+  <li><a href="#" class="link bold-xsmall">More</a></li>
+</ul>
+
+<h3 class="h-m">ul .list .list-bullet</h3>
+<ul class="list list-bullet">
+  <li>here is a bulleted list</li>
+  <li>this is another item in the list</li>
+  <li>and another item with a bit more text</li>
+</ul>
+
+<h3 class="h-m">ol .list .list-number</h3>
+<ol class="list list-number">
+  <li>Understand that this is a numbered list.</li>
+  <li>Follow the second step in this numbered list.</li>
+  <li>Make sure each item is a full sentence ending with a full stop.</li>
+</ol>
+<h2 class="h-l">Width</h2>
+
+<p class="w-2-3">A shortcut to using <code>.grid-row</code> and column classes. For when there is only one column of content. Like column classes, expands to full width on mobile.</p>
+<div class="bg-stone-30 w-1-6 p-ms m-bottom-xs">
+  <p class="brand-small">.w-1-6</p>
+</div>
+<div class="bg-stone-30 w-1-4 p-ms m-bottom-xs">
+  <p class="brand-small">.w-1-4</p>
+</div>
+<div class="bg-stone-30 w-1-3 p-ms m-bottom-xs">
+  <p class="brand-small">.w-1-3</p>
+</div>
+<div class="bg-stone-30 w-1-2 p-ms m-bottom-xs">
+  <p class="brand-small">.w-1-2</p>
+</div>
+<div class="bg-stone-30 w-2-3 p-ms m-bottom-xs">
+  <p class="brand-small">.w-2-3</p>
+</div>
+
+<h3 class="h-m">Border thickness</h3>
+<p class="border-thin border-black">.border-thin</p>
+<p class="border-medium border-black">.border-medium</p>
+<p class="border-thick border-black">.border-thick</p>
+
+<div class="underline-white bg-great-blue text-white">
+  <h2 class="h-l">Section styles</h2>
+  <h3 class="h-m">.underline-white</h3>
+</div>
+
+<div class="with-flag bg-great-blue text-white">
+  <h3 class="h-m">.with-flag</h3>
+  <p>Adds a half flag image to the bottom left of the section.</p>
+</div>
+
+<div class="underline-active-blue">
+  <h3 class="h-m">.underline-active-blue</h3>
+  <p>Underline classes are suffixed with colour names. <a href="#colour" class="link">See above for a full list of colours</a>.</p>
+</div>
+
+{% endblock %}

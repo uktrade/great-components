@@ -1,0 +1,67 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load directory_components %}
+{% load code from demo_tags %}
+
+{% block content %}
+
+{% static 'images/hero02.png' as hero_image %}
+{% static 'images/hero01.jpg' as hero_image_domestic %}
+{% static 'images/placeholder.png' as placeholder %}
+{% static 'images/hero04.jpg' as dark_hero %}
+{% static 'images/card_image01.jpg' as half_image %}
+
+<div class="container">
+  <div class="w-2-3">
+    <h1 class="h-xl">Hero</h1>
+  </div>
+</div>
+
+{% hero image=placeholder hero_text="Hero" %}
+
+<div class="container">
+  <p>Load this template tag to use the hero.</p>
+
+  {% code 'django' %}
+    {% load hero from directory_components %}
+  {% endcode %}
+
+  <h2 class="h-l">Subheadings</h2>
+  <p>Hero title can also be split into heading and subheading.</p>
+</div>
+
+{% hero image=placeholder hero_subheading="Exporting to" hero_text="Germany" %}
+
+<div class="container">
+{% code 'django' %}
+
+{% hero image=placeholder hero_subheading="Exporting to" hero_text="Germany" %}
+{% endcode %}
+
+  <h2 class="h-l">No image</h2>
+  <p>If an image is not provided a background colour will be used.</p>
+
+</div>
+
+{% hero hero_text="No image" %}
+
+<div class="container">
+{% code 'django' %}
+
+{% hero hero_text="Hero banner with no background image" %}
+{% endcode %}
+
+  <h2 class="h-l">Hero with CTA button</h2>
+</div>
+
+{% hero_with_cta heading="Heading" subheading="Subheading" image=placeholder cta_text="Continue" cta_link="/foo" %}
+
+<div class="container">
+{% code 'django' %}
+
+{% hero_with_cta heading="Heading" subheading="Subheading" image=placeholder cta_text="Continue" cta_link="/foo" %}
+{% endcode %}
+
+{% endblock %}

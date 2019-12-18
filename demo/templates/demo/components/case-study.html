@@ -1,0 +1,38 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load directory_components %}
+{% load code from demo_tags %}
+
+{% block content %}
+
+{% static 'images/hero02.png' as hero_image %}
+{% static 'images/hero01.jpg' as hero_image_domestic %}
+{% static 'images/placeholder.png' as placeholder %}
+{% static 'images/hero04.jpg' as dark_hero %}
+{% static 'images/card_image01.jpg' as half_image %}
+
+<div class="container">
+  <h1 class="h-xl">Case study</h1>
+</div>
+
+{% case_study background_image=placeholder heading='Subheading and CTA' subtitle='This component works best with a dark background image or an image where the left side is darker than the right so that this white text is legible. On tablet and smaller the image is displayed separately from the text.'  cta_link='/'  cta_text='Continue' %}
+
+<div class="container">
+{% code 'django' %}
+
+{% case_study background_image=placeholder heading='Heading text' subtitle='Lorem ipsum dolor sit amet ...'  cta_link='/'  cta_text='Continue' %}
+{% endcode %}
+
+</div>
+
+{% case_study background_tint=True background_image=hero_image_domestic heading='Background tint' subtitle='If an image is too bright a background tint can be used to make text more legible. On tablet and smaller it displays the same as above.'  cta_link='www.google.com'  cta_text='Continue' %}
+
+<div class="container">
+{% code 'django' %}
+
+{% case_study background_tint=True background_image=hero_image_domestic heading='Heading text' subtitle='Lorem ipsum dolor sit amet ...'  cta_link='/'  cta_text='Continue' %}
+{% endcode %}
+
+{% endblock %}
