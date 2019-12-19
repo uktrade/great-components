@@ -7,13 +7,10 @@ from django.template.loader import render_to_string
 from django.utils import translation
 
 from directory_components.forms import fields
-from directory_components import helpers
 
 __all__ = [
-    'CountryForm',
     'DirectoryComponentsFormMixin',
     'Form',
-    'get_country_form_initial_data',
     'get_language_form_initial_data',
     'LanguageForm',
 ]
@@ -27,6 +24,7 @@ class DirectoryComponentsFormMixin:
 
     use_required_attribute = False
     error_css_class = 'form-group-error'
+    error_summary_heading = None
 
     def __str__(self):
         return render_to_string('directory_components/form_widgets/form.html', {'form': self})
@@ -34,20 +32,6 @@ class DirectoryComponentsFormMixin:
 
 class Form(DirectoryComponentsFormMixin, forms.Form):
     pass
-
-
-class CountryForm(Form):
-    country = fields.ChoiceField(
-        label='Country',
-        widget=Select(attrs={'id': 'great-header-country-select'}),
-        choices=COUNTRIES
-    )
-
-
-def get_country_form_initial_data(request):
-    return {
-        'country': helpers.get_user_country(request).upper() or None
-    }
 
 
 class LanguageForm(forms.Form):

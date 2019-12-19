@@ -120,6 +120,11 @@ UUIDField = field_factory(forms.UUIDField)
 class BooleanField(DirectoryComponentsFieldMixin, forms.BooleanField):
     widget = widgets.CheckboxWithInlineLabel
 
+    @property
+    def container_css_classes(self):
+        widget_class = getattr(self.widget, 'container_css_classes', '')
+        return widget_class
+
     def __init__(self, label='', help_text='', *args, **kwargs):
         super().__init__(label=label, *args, **kwargs)
         if isinstance(self.widget, widgets.CheckboxWithInlineLabel):

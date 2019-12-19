@@ -69,15 +69,14 @@ def add_href_target(value, request):
 def add_export_elements_classes(value):
     soup = BeautifulSoup(value, 'html.parser')
     mapping = [
-        ('h1', 'heading-xlarge'),
-        ('h2', 'heading-large'),
-        ('h3', 'heading-medium'),
-        ('h4', 'heading-small'),
-        ('h5', 'heading-small'),
-        ('h6', 'heading-small'),
+        ('h1', 'h-xl'),
+        ('h2', 'h-l'),
+        ('h3', 'h-m'),
+        ('h4', 'h-s'),
+        ('h5', 'h-s'),
+        ('h6', 'h-s'),
         ('ul', 'list list-bullet'),
         ('ol', 'list list-number'),
-        ('p', 'body-text'),
         ('a', 'link'),
         ('blockquote', 'quote'),
         ('strong', 'bold-small'),
@@ -122,10 +121,10 @@ def error_box(**kwargs):
     return {
         'icon': '✕',
         'border_colour': 'flag-red',
-        'heading_class': 'heading-xlarge flag-red-text',
-        'box_class': 'width-full background-white flag-red-text',
-        'heading': '.heading-large .flag-red-text',
-        'description': '.width-two-thirds .background-white .flag-red-text',
+        'heading_class': 'h-xl text-flag-red',
+        'box_class': 'w-full bg-white text-flag-red',
+        'heading': '.h-l .text-flag-red',
+        'description': '.w-2-3 .bg-white .text-flag-red',
         'heading_level': 'h3',
         **kwargs,
     }
@@ -145,11 +144,6 @@ def message_box_with_icon(**kwargs):
     return kwargs
 
 
-@register.inclusion_tag('directory_components/banner.html')
-def banner(**kwargs):
-    return kwargs
-
-
 @register.inclusion_tag('directory_components/hero.html')
 def hero(**kwargs):
     return kwargs
@@ -157,21 +151,6 @@ def hero(**kwargs):
 
 @register.inclusion_tag('directory_components/card.html')
 def card(**kwargs):
-    return kwargs
-
-
-@register.inclusion_tag('directory_components/card_with_icon.html')
-def card_with_icon(**kwargs):
-    return kwargs
-
-
-@register.inclusion_tag('directory_components/labelled_card.html')
-def labelled_card(**kwargs):
-    return kwargs
-
-
-@register.inclusion_tag('directory_components/labelled_image_card.html')
-def labelled_image_card(**kwargs):
     return kwargs
 
 
@@ -286,7 +265,7 @@ def breadcrumbs(parser, token):
 
 class Breadcrumbs(template.Node):
     template = """
-        <nav aria-label="Breadcrumb" class="breadcrumbs">
+        <nav aria-label="Breadcrumb" class="g-breadcrumbs">
           <ol>
           </ol>
         </nav>
@@ -409,7 +388,7 @@ def search_page_expandable_options(**kwargs):
 
 
 @register.inclusion_tag('directory_components/full-width-image-with-list-and-media.html')
-def full_width_image_with_list_and_media(**kwargs):
+def feature_list(**kwargs):
     return kwargs
 
 
@@ -421,24 +400,3 @@ def key_facts(**kwargs):
 @register.inclusion_tag('directory_components/accordion_list.html')
 def accordion_list(**kwargs):
     return kwargs
-
-
-@register.inclusion_tag('directory_components/featured_articles.html')
-def featured_articles(**kwargs):
-    return kwargs
-
-
-@register.inclusion_tag('directory_components/errors/content_404.html')
-def content_404(feedback_url, home_page_url):
-    return {
-        'feedback_url': feedback_url,
-        'home_page_url': home_page_url,
-    }
-
-
-@register.inclusion_tag('directory_components/errors/content_500.html')
-def content_500(feedback_url, home_page_url):
-    return {
-        'feedback_url': feedback_url,
-        'home_page_url': home_page_url,
-    }

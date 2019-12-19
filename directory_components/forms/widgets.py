@@ -65,12 +65,13 @@ class ChoiceWidget(PrettyIDsMixin, widgets.ChoiceWidget):
 class RadioSelect(ChoiceWidget):
     template_name = 'directory_components/form_widgets/multiple_input.html'
     option_template_name = 'directory_components/form_widgets/radio_option.html'
-    css_class_name = 'select-multiple'
+    css_class_name = 'g-select-multiple'
     input_type = 'radio'
 
 
 class CheckboxWithInlineLabel(forms.widgets.CheckboxInput):
     template_name = 'directory_components/form_widgets/checkbox_inline.html'
+    container_css_classes = 'form-group'
 
     def __init__(self, label='', help_text=None, *args, **kwargs):
         self.label = label
@@ -87,7 +88,7 @@ class CheckboxWithInlineLabel(forms.widgets.CheckboxInput):
 class CheckboxSelectInlineLabelMultiple(PrettyIDsMixin, widgets.CheckboxSelectMultiple):
     template_name = 'directory_components/form_widgets/multiple_input.html'
     option_template_name = 'directory_components/form_widgets/checkbox_inline_multiple.html'
-    css_class_name = 'select-multiple'
+    css_class_name = 'g-select-multiple'
     input_type = 'checkbox'
 
     def __init__(self, attrs=None, use_nice_ids=False):
@@ -97,7 +98,7 @@ class CheckboxSelectInlineLabelMultiple(PrettyIDsMixin, widgets.CheckboxSelectMu
 
 class SelectMultipleAutocomplete(widgets.SelectMultiple):
 
-    container_css_classes = 'multi-select-autocomplete'
+    container_css_classes = 'g-multi-select-autocomplete'
 
     class Media:
         css = {
@@ -111,7 +112,7 @@ class SelectMultipleAutocomplete(widgets.SelectMultiple):
 
 class RadioNestedWidget(RadioSelect):
     option_template_name = 'directory_components/form_widgets/nested-radio.html'
-    container_css_classes = 'form-group radio-nested-container'
+    container_css_classes = 'form-group g-radio-nested-container'
 
     def create_option(self, *args, **kwargs):
         return {
