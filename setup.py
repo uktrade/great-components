@@ -2,11 +2,11 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name='directory_components',
-    version='35.5.0',
-    url='https://github.com/uktrade/directory-components',
+    name='great_components',
+    version='1.0.0',
+    url='https://github.com/uktrade/great-components',
     license='MIT',
-    author='Department for International Trade',
+    author='DIT',
     description='Shared components library for Great services.',
     packages=find_packages(exclude=['tests.*', 'tests', 'scripts', 'demo.*', '*.css.map']),
     long_description=open('README.md').read(),
@@ -29,10 +29,12 @@ setup(
             'pytest-sugar',
             'pytest==3.6.0',
             'requests-toolbelt==0.8.0',
-            'requests==2.18.1',
+            'requests==2.21.0',
             'twine>=1.11.0,<2.0.0',
             'wheel>=0.31.0,<1.0.0',
-            'setuptools>=38.6.0,<39.0.0'
+            'setuptools>=38.6.0,<39.0.0',
+            'vulture>=1.0.0,<2.0.0',
+            'hvac>=0.9.5,<1.0.0',
         ],
         'demo': [
             'lorem==0.1.1',
@@ -42,8 +44,6 @@ setup(
             'django-pygments==0.3.0',
         ],
         'janitor': [
-            'hvac>=0.9.5,<1.0.0',
-            'vulture>=1.0.0,<2.0.0',
             'ansicolors>=1.1.8,<2.0.0',
         ]
     },
