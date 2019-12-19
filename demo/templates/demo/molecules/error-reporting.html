@@ -2,7 +2,7 @@
 
 {% load static %}
 {% load demo_tags %}
-{% load directory_components %}
+{% load great_components %}
 
 {% block content %}
 <div class="container">
@@ -10,10 +10,10 @@
   <p>This element goes at the bottom of the page and links to a feedback form.</p>
 
   {% code 'django' %}
-  {% include 'directory_components/error-reporting.html' %}
+  {% include 'great_components/error-reporting.html' %}
   {% endcode %}
 </div>
 
-{% include 'directory_components/error-reporting.html' %}
+{% include 'great_components/error-reporting.html' %}
 
 {% endblock %}

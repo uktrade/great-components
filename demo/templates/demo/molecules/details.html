@@ -2,7 +2,7 @@
 
 {% load static %}
 {% load demo_tags %}
-{% load directory_components %}
+{% load great_components %}
 
 {% block inner_content %}
 <h1 class="h-xl">Details and accordions</h1>
@@ -30,7 +30,7 @@
 }
 {% endcode %}
 
-    <p>A polyfill for IE and Edge is included in the base directory_components template.</p>
+    <p>A polyfill for IE and Edge is included in the base great_components template.</p>
 
     {% code 'django' %}{% accordion_list items=details_list %}{% endcode %}
 

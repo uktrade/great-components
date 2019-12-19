@@ -1,6 +1,6 @@
 {% extends 'demo/base.html' %}
 {% load static %}
-{% load breadcrumbs hero international_header from directory_components %}
+{% load breadcrumbs hero international_header from great_components %}
 {% load code from demo_tags %}
 
 {% block body_header %}
@@ -8,12 +8,12 @@
 {% endblock %}
 
 {% block header_js %}
-  <script src="{% static 'directory_components/js/dit.responsive.js' %}"></script>
-  <script src="{% static 'directory_components/js/dit.utils.js' %}"></script>
-  <script src="{% static 'directory_components/js/dit.components.countrySelector.js' %}"></script>
-  <script src="{% static 'directory_components/js/dit.components.languageSelectorDropdown.js' %}"></script>
-  <script src="{% static 'directory_components/js/dit.components.header.js' %}"></script>
-  <script src="{% static 'directory_components/js/dit.components.greatInternationalHeader.js' %}"></script>
+  <script src="{% static 'great_components/js/dit.responsive.js' %}"></script>
+  <script src="{% static 'great_components/js/dit.utils.js' %}"></script>
+  <script src="{% static 'great_components/js/dit.components.countrySelector.js' %}"></script>
+  <script src="{% static 'great_components/js/dit.components.languageSelectorDropdown.js' %}"></script>
+  <script src="{% static 'great_components/js/dit.components.header.js' %}"></script>
+  <script src="{% static 'great_components/js/dit.components.greatInternationalHeader.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -116,5 +116,5 @@
 {% endblock %}
 
 {% block body_footer %}
-    {% include 'directory_components/header_footer/international_footer.html' %}
+    {% include 'great_components/header_footer/international_footer.html' %}
 {% endblock %}

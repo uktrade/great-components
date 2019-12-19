@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 
-from directory_components.decorators import skip_ga360
+from great_components.decorators import skip_ga360
 
 
 @skip_ga360

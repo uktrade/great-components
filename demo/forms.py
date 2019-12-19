@@ -1,6 +1,6 @@
 from django.forms import Textarea
 
-from directory_components import forms
+from great_components import forms
 from directory_constants import choices
 
 

@@ -3,11 +3,11 @@
 {% load static %}
 {% load i18n %}
 {% load demo_tags %}
-{% load breadcrumbs search_page_selected_filters search_page_expandable_options from directory_components %}
+{% load breadcrumbs search_page_selected_filters search_page_expandable_options from great_components %}
 
 {% block header_js %}
     {{ block.super }}
-    <script src="{% static 'directory_components/js/dit.components.searchPageExpandableOptions.js' %}"></script>
+    <script src="{% static 'great_components/js/dit.components.searchPageExpandableOptions.js' %}"></script>
 {% endblock %}
 
 {% block css_layout_class %}components{% endblock css_layout_class %}
@@ -19,7 +19,7 @@
 <h2 class="h-l">Selected filters</h2>
 
 {% code 'django' %}
-{% load search_page_selected_filters from directory_components %}
+{% load search_page_selected_filters from great_components %}
 
 <div class="grid">
   <div class="c-1-4">
@@ -35,13 +35,13 @@
 
 <h2 class="h-l">Expandable options</h2>
 
-<p class="w-2-3">The file <code>directory_components/js/dit.components.searchPageExpandableOptions.js</code> needs to be imported to use this component</p>
+<p class="w-2-3">The file <code>great_components/js/dit.components.searchPageExpandableOptions.js</code> needs to be imported to use this component</p>
 {% code 'django' %}
-{% load search_page_expandable_options from directory_components %}
+{% load search_page_expandable_options from great_components %}
 
 {% block header_js %}
   {{ block.super }}
-  <script src="{% static 'directory_components/js/dit.components.searchPageExpandableOptions.js' %}"></script>
+  <script src="{% static 'great_components/js/dit.components.searchPageExpandableOptions.js' %}"></script>
 {% endblock %}
 
 <div class="grid">

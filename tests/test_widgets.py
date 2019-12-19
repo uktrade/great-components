@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 
-from directory_components import forms
+from great_components import forms
 
 
 TEST_CHOICES = (

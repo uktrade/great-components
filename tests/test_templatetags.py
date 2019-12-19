@@ -4,9 +4,9 @@ from bs4 import BeautifulSoup
 from django.core.paginator import Paginator
 from django.template import Context, Template
 
-from directory_components import forms
-from directory_components.templatetags import directory_components
-from directory_components.templatetags.directory_components import international_header
+from great_components import forms
+from great_components.templatetags import great_components
+from great_components.templatetags.great_components import international_header
 
 REQUIRED_MESSAGE = forms.PaddedCharField.default_error_messages['required']
 
@@ -17,21 +17,21 @@ class PaddedTestForm(forms.Form):
 
 def test_static_absolute(rf):
     template = Template(
-        '{% load static_absolute from directory_components %}'
-        '{% static_absolute "directory_components/images/favicon.ico" %}'
+        '{% load static_absolute from great_components %}'
+        '{% static_absolute "great_components/images/favicon.ico" %}'
     )
 
     context = Context({'request': rf.get('/')})
     html = template.render(context)
 
     assert html == (
-        'http://testserver/static/directory_components/images/favicon.ico'
+        'http://testserver/static/great_components/images/favicon.ico'
     )
 
 
 def test_add_anchors():
     template = Template(
-        '{% load add_anchors from directory_components %}'
+        '{% load add_anchors from great_components %}'
         '{{ html|add_anchors:"-section" }}'
     )
 
@@ -52,7 +52,7 @@ def test_add_href_target(rf):
     request = rf.get('/')
     request.META['HTTP_HOST'] = 'example.com'
     template = Template(
-        '{% load add_href_target from directory_components %}'
+        '{% load add_href_target from great_components %}'
         '{{ html|add_href_target:request|safe }}'
 
     )
@@ -83,7 +83,7 @@ def test_add_href_target(rf):
 
 def test_add_anchors_no_suffix():
     template = Template(
-        '{% load add_anchors from directory_components %}'
+        '{% load add_anchors from great_components %}'
         '{{ html|add_anchors }}'
     )
 
@@ -102,7 +102,7 @@ def test_add_anchors_no_suffix():
 
 def test_add_anchors_to_all_headings():
     template = Template(
-        '{% load add_anchors_to_all_headings from directory_components %}'
+        '{% load add_anchors_to_all_headings from great_components %}'
         '{{ html|add_anchors_to_all_headings:"-section" }}'
     )
 
@@ -126,7 +126,7 @@ def test_add_anchors_to_all_headings():
 
 def test_add_anchors_to_all_headings_no_suffix():
     template = Template(
-        '{% load add_anchors_to_all_headings from directory_components %}'
+        '{% load add_anchors_to_all_headings from great_components %}'
         '{{ html|add_anchors_to_all_headings }}'
     )
 
@@ -161,7 +161,7 @@ def test_add_anchors_to_all_headings_no_suffix():
 ))
 def test_add_export_elements_classes(input_html, expected_html):
     template = Template(
-        '{% load add_export_elements_classes from directory_components %}'
+        '{% load add_export_elements_classes from great_components %}'
         '{{ html|add_export_elements_classes }}'
 
     )
@@ -180,7 +180,7 @@ def test_card():
         'img_alt': 'img_alt',
     }
     string = (
-        "{{% load card from directory_components %}}"
+        "{{% load card from great_components %}}"
         "{{% card title='{title}' url='{url}' description='{description}' "
         "image='{image}' img_alt='{img_alt}' %}}"
         ).format(**card_content)
@@ -211,7 +211,7 @@ def test_card_html():
         'html_content': html_content,
     }
     string = (
-        "{{% load card from directory_components %}}"
+        "{{% load card from great_components %}}"
         "{{% card html_content='{html_content}' %}}"
         ).format(**card_content)
 
@@ -229,7 +229,7 @@ def test_card_with_external_link():
         'url': 'url',
     }
     string = (
-        "{{% load card from directory_components %}}"
+        "{{% load card from great_components %}}"
         "{{% card external_link='{external_link}' url='{url}' %}}"
         ).format(**card_content)
 
@@ -254,7 +254,7 @@ def test_card_no_padding_transparent():
         'transparent': True
     }
     string = (
-        "{{% load card from directory_components %}}"
+        "{{% load card from great_components %}}"
         "{{% card no_padding='{no_padding}' transparent='{transparent}' %}}"
         ).format(**card_content)
 
@@ -273,7 +273,7 @@ def test_message_box_default():
         'description': 'description',
     }
     string = (
-        "{{% load message_box from directory_components %}}"
+        "{{% load message_box from great_components %}}"
         "{{% message_box heading='{heading}' "
         "description='{description}' %}}"
         ).format(**box_content)
@@ -300,7 +300,7 @@ def test_message_box_custom():
         'box_class': 'border-great-red bg-offwhite',
     }
     string = (
-        "{{% load message_box from directory_components %}}"
+        "{{% load message_box from great_components %}}"
         "{{% message_box heading='{heading}' heading_level='{heading_level}' "
         "heading_class='{heading_class}' description='{description}' "
         "box_class='{box_class}' %}}"
@@ -329,7 +329,7 @@ def test_error_box():
         'description': 'description',
     }
     string = (
-        "{{% load error_box from directory_components %}}"
+        "{{% load error_box from great_components %}}"
         "{{% error_box heading='{heading}' "
         "description='{description}' %}}"
         ).format(**box_content)
@@ -357,7 +357,7 @@ def test_success_box():
         'description': 'description',
     }
     string = (
-        "{{% load success_box from directory_components %}}"
+        "{{% load success_box from great_components %}}"
         "{{% success_box heading='{heading}' "
         "description='{description}' %}}"
         ).format(**box_content)
@@ -388,7 +388,7 @@ def test_cta_box_default():
         'button_url': 'button_url',
     }
     string = (
-        "{{% load cta_box from directory_components %}}"
+        "{{% load cta_box from great_components %}}"
         "{{% cta_box box_id='{box_id}' heading='{heading}' "
         "description='{description}' "
         "button_text='{button_text}' button_url='{button_url}' %}}"
@@ -426,7 +426,7 @@ def test_cta_box_custom():
         'button_url': 'button_url',
     }
     string = (
-        "{{% load cta_box from directory_components %}}"
+        "{{% load cta_box from great_components %}}"
         "{{% cta_box box_id='{box_id}' heading='{heading}' "
         "box_class='{box_class}' heading_level='{heading_level}' "
         "heading_class='{heading_class}' description='{description}' "
@@ -464,7 +464,7 @@ def test_hero():
         'description': 'description',
     }
     string = (
-        "{{% load hero from directory_components %}}"
+        "{{% load hero from great_components %}}"
         "{{% hero background_image_url='{background_image_url}' "
         "hero_text='{hero_text}' description='{description}' %}}"
         ).format(**hero_content)
@@ -483,22 +483,22 @@ def test_hero():
 
 
 @pytest.mark.parametrize('template_tag', (
-    directory_components.cta_box,
-    directory_components.message_box,
-    directory_components.message_box_with_icon,
-    directory_components.hero,
-    directory_components.card,
-    directory_components.image_with_caption,
-    directory_components.cta_card,
-    directory_components.cta_link,
-    directory_components.statistics_card_grid,
-    directory_components.hero_with_cta,
-    directory_components.case_study,
-    directory_components.informative_banner,
-    directory_components.search_page_selected_filters,
-    directory_components.search_page_expandable_options,
-    directory_components.feature_list,
-    directory_components.accordion_list,
+    great_components.cta_box,
+    great_components.message_box,
+    great_components.message_box_with_icon,
+    great_components.hero,
+    great_components.card,
+    great_components.image_with_caption,
+    great_components.cta_card,
+    great_components.cta_link,
+    great_components.statistics_card_grid,
+    great_components.hero_with_cta,
+    great_components.case_study,
+    great_components.informative_banner,
+    great_components.search_page_selected_filters,
+    great_components.search_page_expandable_options,
+    great_components.feature_list,
+    great_components.accordion_list,
 ))
 def test_template_tag_kwargs(template_tag):
     test_kwargs = {
@@ -511,7 +511,7 @@ def test_template_tag_kwargs(template_tag):
 
 @pytest.mark.parametrize('heading', ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
 def test_convert_headings_to(heading):
-    actual = directory_components.convert_headings_to(
+    actual = great_components.convert_headings_to(
         '<' + heading + '></' + heading + '>',
         'figure'
     )
@@ -520,7 +520,7 @@ def test_convert_headings_to(heading):
 
 
 def test_convert_headings_to_does_not_convert_non_headings():
-    actual = directory_components.convert_headings_to(
+    actual = great_components.convert_headings_to(
         '<span></span>', 'figure'
     )
     expected = '<span></span>'
@@ -528,7 +528,7 @@ def test_convert_headings_to_does_not_convert_non_headings():
 
 
 def test_override_elements_css_class():
-    actual = directory_components.override_elements_css_class(
+    actual = great_components.override_elements_css_class(
         '<h2 class="existing-class"></h2>',
         'h2,test-class'
     )
@@ -537,7 +537,7 @@ def test_override_elements_css_class():
 
 
 def test_override_elements_css_class_does_not_override_non_targets():
-    actual = directory_components.override_elements_css_class(
+    actual = great_components.override_elements_css_class(
         '<h4 class="existing-class"></h4>',
         'h2,test-class'
     )
@@ -547,7 +547,7 @@ def test_override_elements_css_class_does_not_override_non_targets():
 
 def test_lazyload():
     template = Template(
-        '{% load lazyload from directory_components %}'
+        '{% load lazyload from great_components %}'
         '{% lazyload %}'
         '<img class="foo" src="/bar"/>'
         '{% endlazyload %}'
@@ -563,7 +563,7 @@ def test_lazyload():
 
 def test_lazyload_no_img_class():
     template = Template(
-        '{% load lazyload from directory_components %}'
+        '{% load lazyload from great_components %}'
         '{% lazyload %}'
         '<img src="/bar"/>'
         '{% endlazyload %}'
@@ -579,7 +579,7 @@ def test_lazyload_no_img_class():
 
 def test_lazyload_no_img_src():
     template = Template(
-        '{% load lazyload from directory_components %}'
+        '{% load lazyload from great_components %}'
         '{% lazyload %}'
         '<img class="foo"/>'
         '{% endlazyload %}'
@@ -595,7 +595,7 @@ def test_lazyload_no_img_src():
 
 def test_lazyload_context_variables():
     template = Template(
-        '{% load lazyload from directory_components %}'
+        '{% load lazyload from great_components %}'
         '{% lazyload %}'
         '<img class="{{ foo.class }}" src="{{ foo.src }}"/>'
         '{% endlazyload %}'
@@ -615,7 +615,7 @@ def test_lazyload_context_variables():
 
 def test_breadcrumbs():
     template = Template(
-        '{% load breadcrumbs from directory_components %}'
+        '{% load breadcrumbs from great_components %}'
         '{% breadcrumbs "Current Page" %}'
         '<a href="/foo"></a>'
         '<a href="/bar"></a>'
@@ -640,7 +640,7 @@ def test_breadcrumbs():
 
 def test_breadcrumbs_context_variables():
     template = Template(
-        '{% load breadcrumbs from directory_components %}'
+        '{% load breadcrumbs from great_components %}'
         '{% breadcrumbs "Current Page" %}'
         '<a href="{{ foo.url }}">{{ foo.title }}</a>'
         '<a href="{{ bar.url }}">{{ bar.title }}</a>'
@@ -671,7 +671,7 @@ def test_breadcrumbs_context_variables():
 
 def test_breadcrumbs_empty_href():
     template = Template(
-        '{% load breadcrumbs from directory_components %}'
+        '{% load breadcrumbs from great_components %}'
         '{% breadcrumbs "Current Page" %}'
         '<a href=""></a>'
         '{% endbreadcrumbs %}'
@@ -682,7 +682,7 @@ def test_breadcrumbs_empty_href():
 
 def test_breadcrumbs_missing_href():
     template = Template(
-        '{% load breadcrumbs from directory_components %}'
+        '{% load breadcrumbs from great_components %}'
         '{% breadcrumbs "Current Page" %}'
         '<a></a>'
         '{% endbreadcrumbs %}'
@@ -693,7 +693,7 @@ def test_breadcrumbs_missing_href():
 
 def test_breadcrumbs_missing_links():
     template = Template(
-        '{% load breadcrumbs from directory_components %}'
+        '{% load breadcrumbs from great_components %}'
         '{% breadcrumbs "Current Page" %}'
         '{% endbreadcrumbs %}'
     )
@@ -704,7 +704,7 @@ def test_breadcrumbs_missing_links():
 def test_breadcrumbs_missing_current_page():
     with pytest.raises(ValueError):
         Template(
-            '{% load breadcrumbs from directory_components %}'
+            '{% load breadcrumbs from great_components %}'
             '{% breadcrumbs %}'
             '<a href="/foo"></a>'
             '{% endbreadcrumbs %}'
@@ -713,7 +713,7 @@ def test_breadcrumbs_missing_current_page():
 
 def test_ga360_data_with_no_optional_parameters():
     template = Template(
-        '{% load ga360_data from directory_components %}'
+        '{% load ga360_data from great_components %}'
         '{% ga360_data "a" %}'
         '<div>'
         '    <a href="example.com">Click Me</a>'
@@ -732,7 +732,7 @@ def test_ga360_data_with_no_optional_parameters():
 
 def test_ga360_data_with_all_optional_parameters():
     template = Template(
-        '{% load ga360_data from directory_components %}'
+        '{% load ga360_data from great_components %}'
         '{% ga360_data "a" action="link" type="CTA" element="pageSection" value="Click Me" include_form_data="True" %}'  # noqa
         '<div>'
         '    <a href="example.com">Click Me</a>'
@@ -782,7 +782,7 @@ def test_ga360_data_with_all_optional_parameters():
 ))
 def test_pagination(count, current, expected, rf):
     template = Template(
-        '{% load pagination from directory_components %}'
+        '{% load pagination from great_components %}'
         '{% pagination pagination_page=pagination_page %}'
     )
 
@@ -890,7 +890,7 @@ def test_international_header_active_section_and_subsection():
 
 def test_international_header_tag():
     template = Template(
-        '{% load international_header from directory_components %}'
+        '{% load international_header from great_components %}'
         '{% international_header navigation_tree=tree site_section=section site_sub_section=sub_section %}'
     )
     context = {
@@ -907,7 +907,7 @@ def test_international_header_tag():
 
 def test_invest_header_tag():
     template = Template(
-        '{% load invest_header from directory_components %}'
+        '{% load invest_header from great_components %}'
         '{% invest_header navigation_tree=tree site_section=section site_sub_section=sub_section %}'
     )
     context = {

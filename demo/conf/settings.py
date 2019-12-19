@@ -45,8 +45,8 @@ APPEND_SLASH = True
 INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'demo',
-    'directory_components',
-    'directory_components.janitor',
+    'great_components',
+    'great_components.janitor',
     'django_pygments',
 ]
 
@@ -55,10 +55,10 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'directory_components.middleware.LocaleQuerystringMiddleware',
-    'directory_components.middleware.PersistLocaleMiddleware',
-    'directory_components.middleware.ForceDefaultLocale',
-    'directory_components.middleware.CountryMiddleware',
+    'great_components.middleware.LocaleQuerystringMiddleware',
+    'great_components.middleware.PersistLocaleMiddleware',
+    'great_components.middleware.ForceDefaultLocale',
+    'great_components.middleware.CountryMiddleware',
 ]
 
 ROOT_URLCONF = 'demo.conf.urls'
@@ -73,11 +73,11 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.template.context_processors.i18n',
-                'directory_components.context_processors.header_footer_processor',
-                'directory_components.context_processors.urls_processor',
-                'directory_components.context_processors.sso_processor',
-                'directory_components.context_processors.cookie_notice',
-                'directory_components.context_processors.feature_flags',
+                'great_components.context_processors.header_footer_processor',
+                'great_components.context_processors.urls_processor',
+                'great_components.context_processors.sso_processor',
+                'great_components.context_processors.cookie_notice',
+                'great_components.context_processors.feature_flags',
             ],
         },
     },
@@ -122,7 +122,7 @@ LANGUAGES = [
 ]
 
 LOCALE_PATHS = (
-    os.path.abspath(os.path.join(BASE_DIR, '../directory_components/locale')),
+    os.path.abspath(os.path.join(BASE_DIR, '../great_components/locale')),
 )
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')

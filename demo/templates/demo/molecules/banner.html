@@ -2,7 +2,7 @@
 
 {% load static %}
 {% load demo_tags %}
-{% load directory_components %}
+{% load great_components %}
 {% load code from demo_tags %}
 
 {% block inner_content %}
@@ -21,7 +21,7 @@
 {% informative_banner banner_content='<p>An informative banner with separate lines <a>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></p><p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>' %}
 
 {% code 'django' %}
-  {% load informative_banner from directory_components %}
+  {% load informative_banner from great_components %}
 
   {% informative_banner banner_label='Banner Label' banner_content='<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, <a href="#">sed do eiusmod tempor incididunt </a> ut labore et dolore magna aliqua.</p>' %}
 

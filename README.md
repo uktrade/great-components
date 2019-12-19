@@ -63,7 +63,7 @@ Then visit the demo at `components.trade.great:9013`
 
 ### Middleware
 
-Middleware can be found in `directory_components.middleware.FooBar`.
+Middleware can be found in `great_components.middleware.FooBar`.
 
 | Middleware | Notes |
 |------------|-------|
@@ -74,14 +74,14 @@ Middleware can be found in `directory_components.middleware.FooBar`.
 
 ### Context processors
 
-Middleware can be found in `directory_components.context_processors.foo_bar`.
+Middleware can be found in `great_components.context_processors.foo_bar`.
 
 | Processor | Context variable name | Notes |
 |-----------|-----------------------|-------|
 | `sso_processor` | | Exposes the state of the SSO user. |
-| `analytics` | `directory_components_analytics` | GA details. Used by base template. |
+| `analytics` | `great_components_analytics` | GA details. Used by base template. |
 | `header_footer_processor` | `header_footer_urls` | Urls used by base template's header and footer. |
-| `urls_processor` | `directory_components_urls` | More urls used by base template's header and footer. |
+| `urls_processor` | `great_components_urls` | More urls used by base template's header and footer. |
 | `feature_flags` | `feature_flags` | Exposes the service's feature flags. |
 
 ### Exception handlers
@@ -89,9 +89,9 @@ Middleware can be found in `directory_components.context_processors.foo_bar`.
 Add the following to your urls.py for directory components templates to be used on 404 and 500
 
 ```
-handler404 = 'directory_components.views.handler404'
+handler404 = 'great_components.views.handler404'
 
-handler500 = 'directory_components.views.handler500'
+handler500 = 'great_components.views.handler500'
 ```
 
 Without doing this the 500 and 400 pages would not receive context data provided by context processors
@@ -101,7 +101,7 @@ Without doing this the 500 and 400 pages would not receive context data provided
 Management commands are provided to assist in the maintenance of settings. Install by `pip install directory-components[janitor]` and then add the following to `settings.py`:
 
     if some_predicate_is_met:  # feature flagged so it's not used in prod
-        INSTALLED_APPS.append('directory_components.janitor')
+        INSTALLED_APPS.append('great_components.janitor')
 
 ### Diff vaults
 

@@ -419,6 +419,6 @@ urlpatterns = [
     ),
 ]
 
-handler404 = 'directory_components.views.handler404'
+handler404 = 'great_components.views.handler404'
 
-handler500 = 'directory_components.views.handler500'
+handler500 = 'great_components.views.handler500'

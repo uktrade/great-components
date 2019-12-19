@@ -2,7 +2,7 @@ from django.conf.urls import include, url
 from django.views import View
 from django.views.generic.base import RedirectView
 
-import directory_components.views
+import great_components.views
 import demo.views
 
 
@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^admin/', include(admin_urls)),
     url(
         r"^robots\.txt$",
-        directory_components.views.RobotsView.as_view(),
+        great_components.views.RobotsView.as_view(),
         name='robots'
     ),
     url(
@@ -49,6 +49,6 @@ urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
 ]
 
-handler404 = 'directory_components.views.handler404'
+handler404 = 'great_components.views.handler404'
 
-handler500 = 'directory_components.views.handler500'
+handler500 = 'great_components.views.handler500'

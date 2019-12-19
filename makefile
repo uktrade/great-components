@@ -17,7 +17,7 @@ pytest:
 
 flake8:
 	flake8 . \
-	--exclude=.venv,venv,.idea-env,setup.py,directory_components/version.py,node_modules \
+	--exclude=.venv,venv,.idea-env,setup.py,great_components/version.py,node_modules \
 	--max-line-length=120
 
 manage:

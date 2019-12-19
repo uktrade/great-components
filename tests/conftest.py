@@ -14,7 +14,7 @@ def pytest_configure():
             }
         },
         MIDDLEWARE=[
-            'directory_components.middleware.ForceDefaultLocale',
+            'great_components.middleware.ForceDefaultLocale',
         ],
         SESSION_ENGINE='django.contrib.sessions.backends.cache',
         ROOT_URLCONF='tests.urls',
@@ -31,8 +31,8 @@ def pytest_configure():
             'django.contrib.contenttypes',  # required by auth, not using DB
             'django.contrib.auth',
             'django.contrib.staticfiles',
-            'directory_components',
-            'directory_components.janitor',
+            'great_components',
+            'great_components.janitor',
             'django.contrib.sessions',
         ],
         STATIC_URL='/static/',
@@ -44,15 +44,15 @@ def pytest_configure():
                     'context_processors': [
                         'django.template.context_processors.request',
                         (
-                            'directory_components.context_processors.'
+                            'great_components.context_processors.'
                             'urls_processor'
                         ),
                         (
-                            'directory_components.context_processors.'
+                            'great_components.context_processors.'
                             'header_footer_processor'
                         ),
                         (
-                            'directory_components.context_processors.'
+                            'great_components.context_processors.'
                             'feature_flags'
                         ),
                     ],

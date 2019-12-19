@@ -109,10 +109,10 @@ npm-debug.log
 .DS_Store
 /*.env
 
-directory_components/static/directory_components/export_elements/images/crests
-directory_components/static/directory_components/export_elements/images/examples
-directory_components/static/directory_components/export_elements/javascripts
-directory_components/static/directory_components/export_elements/stylesheets/vendor/prism*
-directory_components/static/directory_components/export_elements/stylesheets/demo*
-directory_components/static/directory_components/export_elements/stylesheets/elements-documentation*
-directory_components/static/directory_components/export_elements/stylesheets/*-ie*
+great_components/static/great_components/export_elements/images/crests
+great_components/static/great_components/export_elements/images/examples
+great_components/static/great_components/export_elements/javascripts
+great_components/static/great_components/export_elements/stylesheets/vendor/prism*
+great_components/static/great_components/export_elements/stylesheets/demo*
+great_components/static/great_components/export_elements/stylesheets/elements-documentation*
+great_components/static/great_components/export_elements/stylesheets/*-ie*

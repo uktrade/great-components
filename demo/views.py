@@ -13,7 +13,7 @@ from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.contrib.staticfiles.templatetags.staticfiles import static
 
-from directory_components.mixins import EnableTranslationsMixin
+from great_components.mixins import EnableTranslationsMixin
 
 from demo import forms
 

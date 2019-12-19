@@ -6,7 +6,7 @@ import pytest
 from django.urls import reverse
 from django.conf import settings
 
-from directory_components import helpers
+from great_components import helpers
 
 
 @pytest.mark.parametrize('target,expected', (

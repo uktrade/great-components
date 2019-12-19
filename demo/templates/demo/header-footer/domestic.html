@@ -1,15 +1,15 @@
 {% extends 'demo/base.html' %}
 {% load static %}
-{% load breadcrumbs from directory_components %}
+{% load breadcrumbs from great_components %}
 
 {% block body_header %}
-    {% include 'directory_components/header_footer/domestic_header.html' %}
+    {% include 'great_components/header_footer/domestic_header.html' %}
 {% endblock %}
 
 {% block header_js %}
-  <script src="{% static 'directory_components/js/dit.responsive.js' %}"></script>
-  <script src="{% static 'directory_components/js/dit.utils.js' %}"></script>
-  <script src="{% static 'directory_components/js/dit.components.header.js' %}"></script>
+  <script src="{% static 'great_components/js/dit.responsive.js' %}"></script>
+  <script src="{% static 'great_components/js/dit.utils.js' %}"></script>
+  <script src="{% static 'great_components/js/dit.components.header.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -41,5 +41,5 @@
 {% endblock %}
 
 {% block body_footer %}
-    {% include 'directory_components/header_footer/domestic_footer.html' %}
+    {% include 'great_components/header_footer/domestic_footer.html' %}
 {% endblock %}
