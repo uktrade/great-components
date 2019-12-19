@@ -62,7 +62,7 @@ dit.components.header = (new function() {
   self.moveFocusToFirstMenuItem = function() {
     self.getMenuItem(self.MENU_ITEMS_TAG, 0).focus();
   };
-  
+
   self.moveFocusToSubMenu = function(target) {
     var mainMenuItemContainer = $(target).closest(self.MENU_ITEM_CONTAINER);
     mainMenuItemContainer.find(self.dataAttributeSelector(self.SUB_MENU_ITEMS_TAG)).first().focus();
@@ -83,7 +83,7 @@ dit.components.header = (new function() {
       self.getMenuItem(self.MENU_ITEMS_TAG, currentIndex - 1).focus();
     }
   };
-  
+
   self.moveFocusToPreviousSubMenuItem = function(target) {
     var currentIndex = parseInt($(target).data(self.SUB_MENU_ITEMS_TAG));
     if (currentIndex === 0) {
@@ -104,7 +104,7 @@ dit.components.header = (new function() {
      self.moveFocusToFirstMenuItem();
     }
   };
-  
+
   self.moveFocusToNextSubMenuItem = function(target) {
     var currentIndex = parseInt($(target).data(self.SUB_MENU_ITEMS_TAG));
     var subMenu = $(target).closest(self.SUB_MENU);
@@ -148,7 +148,7 @@ dit.components.header = (new function() {
       event.preventDefault();
     }
   };
-  
+
   self.handleSubMenuItemKeyDownEvents = function(event) {
     if (event.key === "Escape" || event.key === "Esc") {
       self.closeMenu();

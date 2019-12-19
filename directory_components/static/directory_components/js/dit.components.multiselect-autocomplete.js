@@ -8,7 +8,7 @@ dit.components.multiselectAutocomplete = (function() {
     var autocompleteId = selectInputElement.id + '_autocomplete';
 
     var selectedValuesElement = document.createElement('div');
-    selectedValuesElement.setAttribute('class', 'multi-select-autocomplete-selected-values');
+    selectedValuesElement.setAttribute('class', 'g-multi-select-autocomplete-selected-values');
     var container = document.createElement('div');
     container.appendChild(selectedValuesElement);
     var accessibleAutocompleteElement = document.createElement('span');
@@ -72,7 +72,7 @@ dit.components.multiselectAutocomplete = (function() {
       removeElement.addEventListener('click', handleRemove);
       removeElement.value = label;
       var element = document.createElement('span');
-      element.setAttribute('class', 'multi-select-autocomplete-selected-item')
+      element.setAttribute('class', 'g-multi-select-autocomplete-selected-item')
       element.setAttribute('tabindex', 0);
       element.innerHTML = label
       element.appendChild(removeElement);
@@ -105,7 +105,7 @@ dit.components.multiselectAutocomplete = (function() {
 })();
 
 (function() {
-  var elements = document.querySelectorAll('.multi-select-autocomplete select');
+  var elements = document.querySelectorAll('.g-multi-select-autocomplete select');
   for (var i = 0; i < elements.length; i++) {
     dit.components.multiselectAutocomplete({selectInputElement: elements[i]});
   }

@@ -55,9 +55,9 @@ dit.components.cookieNotice = (new function() {
   }
 
   createCloseButton = function() {
-    var $container = $('.cookie-notice-container');
+    var $container = $('#cookie-notice-container');
     var $closeButton = $('<button>', {
-      'class': 'cookie-close',
+      'class': 'close',
       'aria-controls': COOKIE_NOTICE_ID,
       'aria-label': 'Close this message',
       id: COOKIE_CLOSE_BUTTON_ID
