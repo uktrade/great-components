@@ -21,6 +21,14 @@ DEFAULT_UNSAFE_SETTINGS = [
 ]
 
 
+def list_vault_paths(client, root):
+    response = client.list(path=root)
+    for project in response['data']['keys']:
+        response = client.list(path=f'{root}/{project}')
+        for environment in response['data']['keys']:
+            yield f'{root}/{project}{environment}'
+
+
 def get_secrets_wizard(client, root):
     response = client.list(path=root)
     project = prompt_user_choice(
@@ -52,7 +60,8 @@ def clean_secrets(secrets):
         'DIRECTORY_COMPONENTS_VAULT_IGNORE_SETTINGS_REGEX',
         DEFAULT_UNSAFE_SETTINGS
     )
-    for key in secrets.copy():
+    secrets = secrets.copy()
+    for key in secrets:
         for entry in ignore_settings:
             if entry.match(key):
                 secrets[key] = '💀' * 5
@@ -62,13 +71,17 @@ def clean_secrets(secrets):
 
 def get_secrets(client, path):
     response = client.read(path=path)
-    return clean_secrets(response['data'])
+    return response['data']
+
+
+def write_secrets(client, path, secrets):
+    client.write(path=path, wrap_ttl=None, **secrets)
 
 
 def diff_dicts(dict_a, dict_b):
     return difflib.ndiff(
-       pformat(dict_a).splitlines(),
-       pformat(dict_b).splitlines()
+       pformat(clean_secrets(dict_a)).splitlines(),
+       pformat(clean_secrets(dict_b)).splitlines(),
     )
 
 

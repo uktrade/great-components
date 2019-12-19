@@ -1,5 +1,54 @@
 # Changelog
 
+## 35.9.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/321)
+### Fixed bugs
+- TT-2225 - Fix `vault_update` so obfuscations are not upload to vault
+
+## 35.9.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/320)
+### Implemented enhancements
+- TT-2225 - Add `vault_update` command for bulk updating vault values
+
+## 35.8.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/319)
+### Implemented enhancements
+- CI-606 - Make international header sub nav not sticky
+
+## 35.7.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/318)
+### Implemented enhancements
+- TT-1818 - Fix mobile header links height
+
+## 35.7.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/317)
+### Implemented enhancements
+- No ticket - remove override border-radius styles on checkboxes
+
+## 35.7.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/316)
+### Implemented enhancements
+- No ticket - add smaller checkbox style
+
+## 35.6.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/315)
+
+### Fixed bugs
+- No ticket - Fix bad details collapsed style
+
+
+## 35.6.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/314)
+
+### Fixed bugs
+- No ticket - Fix bad sass importing
+
+## 35.6.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/313)
+### Implemented enhancements
+- TT-1132 - Improved contrast of breadcrumbs and error reporting components
+- No ticket - Added error reporting component
+
 ## 35.5.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/309)
 ### Implemented enhancements

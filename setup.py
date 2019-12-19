@@ -23,7 +23,7 @@ setup(
             'lorem==0.1.1',
             'ansicolors==1.1.8',
             'codecov==2.0.9',
-            'flake8==3.0.4',
+            'flake8==3.7.8',
             'pytest-cov==2.6.1',
             'pytest-django==3.3.0',
             'pytest-sugar',
