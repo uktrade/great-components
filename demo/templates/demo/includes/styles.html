@@ -1,7 +1,4 @@
+{% load static %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'django_pygments/css/pygments_default.css' %}" />
-{% if USE_LOCAL_STYLES %}
-  <link href="http://localhost:8111/great-styles.css" media="all" rel="stylesheet" />
-  <link href="http://localhost:8111/demo.css" media="all" rel="stylesheet" />
-{% else %}
-  <link href="{% static 'demo/static/styles/demo.css' %}" media="all" rel="stylesheet" />
-{% endif %}
+<link href="{% static 'styles/demo.css' %}" media="all" rel="stylesheet" />

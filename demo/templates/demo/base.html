@@ -13,8 +13,7 @@
 {% endblock %}
 
 {% block head_css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'django_pygments/css/pygments_default.css' %}" />
-    <link href="{% static 'styles/demo.css' %}" media="all" rel="stylesheet" />
+    {% include 'demo/includes/styles.html' %}
 {% endblock %}
 
 {% block head_title %}great-components{% endblock %}
