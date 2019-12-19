@@ -6,7 +6,6 @@ from unittest.mock import Mock
 from collections import namedtuple
 
 from django.core.paginator import Paginator
-from django.conf import settings
 from django.shortcuts import Http404
 from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
@@ -24,11 +23,6 @@ class BasePageView(TemplateView):
     @property
     def template_name(self):
         return self.kwargs.get('template_name')
-
-    def get_context_data(self, *args, **kwargs):
-        return super().get_context_data(
-            USE_LOCAL_STYLES=settings.USE_LOCAL_STYLES,
-            *args, **kwargs)
 
 
 class KeyFactsView(BasePageView):

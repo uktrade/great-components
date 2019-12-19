@@ -1,0 +1,56 @@
+
+$one-line-desktop: $line-height-desktop * $base-font-size-desktop;
+$one-line-mobile: $line-height-mobile * $base-font-size-mobile;
+
+.debug {
+  position: absolute;
+  z-index: 50;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0.3;
+  font-size: $base-font-size-mobile;
+  background: repeating-linear-gradient(
+    to bottom,
+    $mid-grey,
+    $mid-grey 1px,
+    transparent 1px,
+    transparent $one-line-mobile,
+    $mid-grey $one-line-mobile,
+  );
+
+  @media (min-width: $mobile-min-breakpoint) {
+    font-size: $base-font-size-desktop;
+    background: repeating-linear-gradient(
+      to bottom,
+      $mid-grey,
+      $mid-grey 1px,
+      transparent 1px,
+      transparent $one-line-desktop,
+      $mid-grey $one-line-desktop,
+    );
+  }
+}
+
+#debug-activator {
+  @include button-reset;
+  @include body-small;
+  border-radius: 2px solid $black;
+  background-color: $active-blue;
+  color: $white;
+  padding: $space-xxs $space-s;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: $space-xs;
+  z-index: 100;
+
+  &:after {
+    content: '+';
+  }
+
+  &.active:after {
+    content: '-';
+  }
+}
