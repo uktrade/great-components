@@ -19,7 +19,7 @@ def test_form_render():
     form = Form()
 
     expected = """
-        <div class=" form-group" id="id_field-container">
+        <div class="form-group form-field-container" id="id_field-container">
             <label class=" form-label" for="id_field">Field</label>
             <input type="text" name="field" class=" form-control" id="id_field">
         </div>
@@ -38,7 +38,7 @@ def test_form_render_hidden():
     form = Form()
 
     expected = """
-        <div class=" form-group" id="id_field_one-container">
+        <div class="form-group form-field-container" id="id_field_one-container">
             <label class=" form-label" for="id_field_one">Field one</label>
             <input type="text" name="field_one" class=" form-control" id="id_field_one">
         </div>

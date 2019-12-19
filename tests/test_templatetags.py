@@ -149,13 +149,13 @@ def test_add_anchors_to_all_headings_no_suffix():
 
 
 @pytest.mark.parametrize('input_html,expected_html', (
-    ('<h1>content</h1>', '<h1 class="heading-xlarge">content</h1>'),
-    ('<h2>content</h2>', '<h2 class="heading-large">content</h2>'),
-    ('<h3>content</h3>', '<h3 class="heading-medium">content</h3>'),
-    ('<h4>content</h4>', '<h4 class="heading-small">content</h4>'),
+    ('<h1>content</h1>', '<h1 class="h-xl">content</h1>'),
+    ('<h2>content</h2>', '<h2 class="h-l">content</h2>'),
+    ('<h3>content</h3>', '<h3 class="h-m">content</h3>'),
+    ('<h4>content</h4>', '<h4 class="h-s">content</h4>'),
     ('<ul>content</ul>', '<ul class="list list-bullet">content</ul>'),
     ('<ol>content</ul>', '<ol class="list list-number">content</ol>'),
-    ('<p>content</p>', '<p class="body-text">content</p>'),
+    ('<p>content</p>', '<p>content</p>'),
     ('<a>content</a>', '<a class="link">content</a>'),
     ('<blockquote>a</blockquote>', '<blockquote class="quote">a</blockquote>')
 ))
@@ -176,13 +176,13 @@ def test_card():
         'title': 'title',
         'url': 'url',
         'description': 'description',
-        'img_src': 'img_src',
+        'image': 'image',
         'img_alt': 'img_alt',
     }
     string = (
         "{{% load card from directory_components %}}"
         "{{% card title='{title}' url='{url}' description='{description}' "
-        "img_src='{img_src}' img_alt='{img_alt}' %}}"
+        "image='{image}' img_alt='{img_alt}' %}}"
         ).format(**card_content)
 
     template = Template(string)
@@ -191,14 +191,14 @@ def test_card():
     html = template.render(context)
     soup = BeautifulSoup(html, 'html.parser')
 
-    card_link = soup.select('.card-link')[0]
+    card_link = soup.select('.g-card-link')[0]
     assert 'url' in card_link['href']
 
-    card_image = soup.select('.card-image')[0]
-    assert 'img_src' in card_image['src']
+    card_image = soup.select('.g-card-image')[0]
+    assert 'image' in card_image['src']
     assert card_image['alt'] == 'img_alt'
 
-    card_heading = soup.select('h3.heading-large')[0]
+    card_heading = soup.select('h3')[0]
     assert card_heading.string == 'title'
 
     card_description = soup.select('p.description')[0]
@@ -223,133 +223,6 @@ def test_card_html():
     assert html_content in html
 
 
-def test_labelled_card_with_image():
-    card_content = {
-        'title': 'title',
-        'url': 'url',
-        'description': 'description',
-        'img_src': 'img_src',
-        'img_alt': 'img_alt',
-    }
-    string = (
-        "{{% load labelled_card from directory_components %}}"
-        "{{% labelled_card title='{title}' url='{url}' img_src='{img_src}' "
-        "description='{description}' img_alt='{img_alt}' %}}"
-        ).format(**card_content)
-
-    template = Template(string)
-    context = Context({})
-
-    html = template.render(context)
-    soup = BeautifulSoup(html, 'html.parser')
-
-    card_link = soup.select('.labelled-card')[0]
-    assert 'url' in card_link['href']
-
-    card_inner = soup.select('div.card-inner')[0]
-    assert 'with-image' in card_inner['class']
-
-    card_image = soup.select('.card-image')[0]
-    assert 'img_src' in card_image['src']
-    assert card_image['alt'] == 'img_alt'
-
-    card_heading = soup.select('h3.title')[0]
-    assert card_heading.string == 'title'
-
-    card_description = soup.select('p.description')[0]
-    assert card_description.string == 'description'
-
-
-def test_labelled_card_without_image():
-    card_content = {
-        'title': 'title',
-        'url': 'url',
-        'description': 'description',
-    }
-    string = (
-        "{{% load labelled_card from directory_components %}}"
-        "{{% labelled_card title='{title}' url='{url}' "
-        "description='{description}' %}}"
-        ).format(**card_content)
-
-    template = Template(string)
-    context = Context({})
-
-    html = template.render(context)
-    soup = BeautifulSoup(html, 'html.parser')
-
-    card_inner = soup.select('div.card-inner')[0]
-    assert 'with-image' not in card_inner['class']
-
-
-def test_labelled_image_card():
-    card_content = {
-        'title': 'title',
-        'url': 'url',
-        'description': 'description',
-        'img_src': 'img_src',
-        'img_alt': 'img_alt',
-    }
-    string = (
-        "{{% load labelled_image_card from directory_components %}}"
-        "{{% labelled_image_card title='{title}' url='{url}' "
-        "img_src='{img_src}' "
-        "description='{description}' img_alt='{img_alt}' %}}"
-        ).format(**card_content)
-
-    template = Template(string)
-    context = Context({})
-
-    html = template.render(context)
-    soup = BeautifulSoup(html, 'html.parser')
-
-    card_link = soup.select('.labelled-image-card')[0]
-    assert 'url' in card_link['href']
-
-    card_image = soup.select('.card-image')[0]
-    assert card_image.name == 'img'
-    assert 'img_src' in card_image['src']
-    assert card_image['alt'] == 'img_alt'
-
-    card_heading = soup.select('h3.title')[0]
-    assert card_heading.string == 'title'
-
-
-def test_card_with_icon():
-    card_content = {
-        'title': 'title',
-        'url': 'url',
-        'description': 'description',
-        'img_src': 'img_src',
-        'img_alt': 'img_alt',
-    }
-    string = (
-        "{{% load card_with_icon from directory_components %}}"
-        "{{% card_with_icon title='{title}' url='{url}' "
-        "description='{description}' "
-        "img_src='{img_src}' img_alt='{img_alt}' %}}"
-        ).format(**card_content)
-
-    template = Template(string)
-    context = Context({})
-
-    html = template.render(context)
-    soup = BeautifulSoup(html, 'html.parser')
-
-    card_link = soup.select('.card-link')[0]
-    assert 'url' in card_link['href']
-
-    card_image = soup.find('img')
-    assert card_image['src'] == 'img_src'
-    assert card_image['alt'] == 'img_alt'
-
-    card_heading = soup.select('h3.heading-large')[0]
-    assert card_heading.string == 'title'
-
-    card_description = soup.select('p.description')[0]
-    assert card_description.string == 'description'
-
-
 def test_card_with_external_link():
     card_content = {
         'external_link': True,
@@ -366,7 +239,7 @@ def test_card_with_external_link():
     html = template.render(context)
     soup = BeautifulSoup(html, 'html.parser')
 
-    card_link = soup.select('.card-link')[0]
+    card_link = soup.select('.g-card-link')[0]
 
     assert card_link['target'] == '_blank'
     assert card_link['rel'] == ['noopener', 'noreferrer']
@@ -377,12 +250,12 @@ def test_card_no_padding_transparent():
     card_content = {
         'title': 'title',
         'url': 'url',
-        'no_padding_card': True,
-        'transparent_card': True
+        'no_padding': True,
+        'transparent': True
     }
     string = (
         "{{% load card from directory_components %}}"
-        "{{% card no_padding_card='{no_padding_card}' transparent_card='{transparent_card}' %}}"
+        "{{% card no_padding='{no_padding}' transparent='{transparent}' %}}"
         ).format(**card_content)
 
     template = Template(string)
@@ -390,7 +263,8 @@ def test_card_no_padding_transparent():
 
     html = template.render(context)
 
-    assert 'card no-padding-card transparent-card' in html
+    assert 'g-card bg-transparent' in html
+    assert 'p-0' in html
 
 
 def test_message_box_default():
@@ -410,7 +284,7 @@ def test_message_box_default():
     html = template.render(context)
     soup = BeautifulSoup(html, 'html.parser')
 
-    box_heading = soup.select('h3.heading-medium')[0]
+    box_heading = soup.select('h3.h-m')[0]
     assert box_heading.string == 'heading'
 
     box_description = soup.select('p.box-description')[0]
@@ -421,9 +295,9 @@ def test_message_box_custom():
     box_content = {
         'heading': 'heading',
         'heading_level': 'h4',
-        'heading_class': 'great-red-text',
+        'heading_class': 'text-great-red',
         'description': 'description',
-        'box_class': 'border-great-red background-offwhite',
+        'box_class': 'border-great-red bg-offwhite',
     }
     string = (
         "{{% load message_box from directory_components %}}"
@@ -438,12 +312,12 @@ def test_message_box_custom():
     html = template.render(context)
     soup = BeautifulSoup(html, 'html.parser')
 
-    box_heading = soup.select('h4.great-red-text')[0]
+    box_heading = soup.select('h4.text-great-red')[0]
     assert box_heading.string == 'heading'
 
-    box = soup.select('.message-box')[0]
+    box = soup.select('.g-message-box')[0]
     assert 'border-great-red' in box['class']
-    assert 'background-offwhite' in box['class']
+    assert 'bg-offwhite' in box['class']
 
     box_description = soup.select('p.box-description')[0]
     assert box_description.string == 'description'
@@ -466,12 +340,12 @@ def test_error_box():
     html = template.render(context)
     soup = BeautifulSoup(html, 'html.parser')
 
-    box_heading = soup.select('h3.flag-red-text')[0]
+    box_heading = soup.select('h3.text-flag-red')[0]
     assert box_heading.string == 'heading'
 
-    box = soup.select('.message-box-with-icon')[0]
+    box = soup.select('.g-message-box-with-icon')[0]
     assert 'border-flag-red' in box['class']
-    assert 'background-white' in box['class']
+    assert 'bg-white' in box['class']
 
     box_description = soup.select('p.box-description')[0]
     assert box_description.string == 'description'
@@ -494,12 +368,12 @@ def test_success_box():
     html = template.render(context)
     soup = BeautifulSoup(html, 'html.parser')
 
-    box_heading = soup.select('h3.teal-text')[0]
+    box_heading = soup.select('h3.text-teal')[0]
     assert box_heading.string == 'heading'
 
-    box = soup.select('.message-box-with-icon')[0]
+    box = soup.select('.g-message-box-with-icon')[0]
     assert 'border-teal' in box['class']
-    assert 'background-white' in box['class']
+    assert 'bg-white' in box['class']
 
     box_description = soup.select('p.box-description')[0]
     assert box_description.string == 'description'
@@ -529,13 +403,13 @@ def test_cta_box_default():
     box_id = soup.find(id='box_id')
     assert box_id['id'] == 'box_id'
 
-    box_heading = soup.select('h3.heading-medium')[0]
+    box_heading = soup.select('h3.h-m')[0]
     assert box_heading.string == 'heading'
 
     box_description = soup.select('p.box-description')[0]
     assert box_description.string == 'description'
 
-    box_button = soup.select('a.button')[0]
+    box_button = soup.select('a.g-button')[0]
     assert box_button.string == 'button_text'
     assert box_button['href'] == 'button_url'
 
@@ -543,10 +417,10 @@ def test_cta_box_default():
 def test_cta_box_custom():
     box_content = {
         'box_id': 'box_id',
-        'box_class': 'background-great-blue white-text',
+        'box_class': 'bg-great-blue text-white',
         'heading': 'heading',
         'heading_level': 'h4',
-        'heading_class': 'heading-small',
+        'heading_class': 'h-s',
         'description': 'description',
         'button_text': 'button_text',
         'button_url': 'button_url',
@@ -565,53 +439,22 @@ def test_cta_box_custom():
     html = template.render(context)
     soup = BeautifulSoup(html, 'html.parser')
 
-    box = soup.select('.cta-box')[0]
+    box = soup.select('.g-cta-box')[0]
     assert box['id'] == 'box_id'
 
-    assert 'background-great-blue' in box['class']
-    assert 'white-text' in box['class']
+    assert 'bg-great-blue' in box['class']
+    assert 'text-white' in box['class']
 
-    box_heading = soup.select('h4.heading-small')[0]
+    box_heading = soup.select('h4.h-s')[0]
     assert box_heading.string == 'heading'
 
     box_description = soup.select('p.box-description')[0]
     assert box_description.string == 'description'
 
-    box_button = soup.select('a.button')[0]
+    box_button = soup.select('a.g-button')[0]
     assert box_button.string == 'button_text'
     assert box_button['href'] == 'button_url'
     assert box_button['id'] == 'box_id-button'
-
-
-def test_banner():
-    banner_content = {
-        'badge_content': 'Badge content',
-        'banner_content': '<p>Banner content with a <a href="#">link</a></p>',
-    }
-    string = (
-        "{{% load banner from directory_components %}}"
-        "{{% banner badge_content='{badge_content}' "
-        "banner_content='{banner_content}' %}}"
-        ).format(**banner_content)
-
-    template = Template(string)
-    context = Context({})
-
-    html = template.render(context)
-    soup = BeautifulSoup(html, 'html.parser')
-
-    banner = soup.select('.information-banner')[0]
-    assert banner['id'] == 'information-banner'
-
-    badge = soup.select('.banner-badge span')[0]
-    assert badge.string == 'Badge content'
-
-    exp_banner_content = (
-        '<div><p class="body-text">Banner content with a '
-        '<a class="link" href="#">link</a></p></div>')
-
-    banner_content = soup.select('.banner-content div:nth-of-type(2)')[0]
-    assert str(banner_content) == exp_banner_content
 
 
 def test_hero():
@@ -634,24 +477,17 @@ def test_hero():
 
     banner = soup.find(id='hero-heading')
     assert 'hero_text' in banner.string
-    assert 'great-hero-heading' in banner['class']
+    assert 'h-l' in banner['class']
 
-    assert 'great-hero-title' in html
-
-    banner = soup.find(id='hero-description')
-    assert banner.string == 'description'
+    assert 'g-hero-title' in html
 
 
 @pytest.mark.parametrize('template_tag', (
     directory_components.cta_box,
     directory_components.message_box,
     directory_components.message_box_with_icon,
-    directory_components.banner,
     directory_components.hero,
     directory_components.card,
-    directory_components.card_with_icon,
-    directory_components.labelled_card,
-    directory_components.labelled_image_card,
     directory_components.image_with_caption,
     directory_components.cta_card,
     directory_components.cta_link,
@@ -661,10 +497,8 @@ def test_hero():
     directory_components.informative_banner,
     directory_components.search_page_selected_filters,
     directory_components.search_page_expandable_options,
-    directory_components.full_width_image_with_list_and_media,
-    directory_components.key_facts,
+    directory_components.feature_list,
     directory_components.accordion_list,
-    directory_components.featured_articles,
 ))
 def test_template_tag_kwargs(template_tag):
     test_kwargs = {
@@ -792,7 +626,7 @@ def test_breadcrumbs():
     rendered_html = template.render(Context())
 
     expected_html = (
-        '<nav aria-label="Breadcrumb" class="breadcrumbs">'
+        '<nav aria-label="Breadcrumb" class="g-breadcrumbs">'
         '<ol>'
         '<li><a href="/foo"></a></li>'
         '<li><a href="/bar"></a></li>'
@@ -823,7 +657,7 @@ def test_breadcrumbs_context_variables():
     rendered_html = template.render(Context(context))
 
     expected_html = (
-        '<nav aria-label="Breadcrumb" class="breadcrumbs">'
+        '<nav aria-label="Breadcrumb" class="g-breadcrumbs">'
         '<ol>'
         '<li><a href="/foo">Foo</a></li>'
         '<li><a href="/bar">Bar</a></li>'
@@ -967,18 +801,18 @@ def test_pagination(count, current, expected, rf):
     soup = BeautifulSoup(html, 'html.parser')
 
     items = []
-    if soup.findAll('a', {'class': 'pagination-previous'}):
+    if soup.findAll('a', {'class': 'g-pagination-previous'}):
         items.append('P')
     for element in soup.find_all('li'):
         if element.find('span'):
             items.append('...')
         else:
             button = element.find('a')
-            if 'button' in button['class']:
+            if 'g-button' in button['class']:
                 items.append(f'[{button.string}]')
             else:
                 items.append(button.string)
-    if soup.findAll('a', {'class': 'pagination-next'}):
+    if soup.findAll('a', {'class': 'g-pagination-next'}):
         items.append('N')
     assert ' '.join(items) == expected
 
@@ -1086,29 +920,3 @@ def test_invest_header_tag():
 
     soup = BeautifulSoup(html, 'html.parser')
     assert soup.find('a', {'href': '/root-1/'}) is not None
-
-
-def test_content_404_tag():
-    template = Template(
-        '{% load content_404 from directory_components %}'
-        '{% content_404 feedback_url="/feedback/" home_page_url="/" %}'
-    )
-
-    html = template.render(Context({}))
-
-    soup = BeautifulSoup(html, 'html.parser')
-    assert soup.find('a', {'href': '/feedback/'}) is not None
-    assert soup.find('a', {'href': '/'}) is not None
-
-
-def test_content_500_tag():
-    template = Template(
-        '{% load content_500 from directory_components %}'
-        '{% content_500 feedback_url="/feedback/" home_page_url="/" %}'
-    )
-
-    html = template.render(Context({}))
-
-    soup = BeautifulSoup(html, 'html.parser')
-    assert soup.find('a', {'href': '/feedback/'}) is not None
-    assert soup.find('a', {'href': '/'}) is not None
