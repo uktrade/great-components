@@ -3,6 +3,8 @@
 {% load static %}
 {% load code from demo_tags %}
 
+{% block head_title %}Analytics{% endblock %}
+
 {% block head_js_ga360 %}
     {{ block.super }}
     <script>dit.tagging.base.init(true)</script>

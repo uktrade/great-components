@@ -37,3 +37,12 @@ pre {
   height: 4px;
   background-color:$flag-red;
 }
+
+.demo-heading-table {
+  td,
+  th {
+    padding: initial;
+    border: 0;
+    vertical-align: middle;
+  }
+}
