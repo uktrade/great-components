@@ -1,0 +1,31 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load great_components %}
+{% load code from demo_tags %}
+
+{% block inner_content %}
+
+<section>
+    <h1 class="h-xl">Statistics</h1>
+    <p>A grid of statistics:</p>
+    {% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics %}
+
+    {% code 'django' %}
+      {% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics %}
+    {% endcode %}
+
+
+    <div class="margin-top-60">
+      <p>You can also put the number first:</p>
+      {% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics number_first=True %}
+    </div>
+
+    {% code 'django' %}
+      {% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics number_first=True %}
+    {% endcode %}
+
+</section>
+
+{% endblock %}

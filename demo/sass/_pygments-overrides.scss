@@ -1,0 +1,31 @@
+
+.highlight {
+  padding: $space-xs-m - 2;
+  margin: $space-s-m 0;
+
+  @include tablet {
+    padding: $space-xs - 2;
+    margin: $space-s 0;
+  }
+
+  background-color:$stone-20;
+  border: 2px solid $stone;
+
+  pre {
+    background: inherit;
+    padding: 0;
+  }
+
+  ol {
+    margin: 0;
+    list-style: none;
+  }
+}
+
+
+.h-xl + .highlight,
+.h-l + .highlight,
+.h-m + .highlight,
+.h-s + .highlight {
+  margin-top: 0;
+}

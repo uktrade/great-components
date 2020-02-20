@@ -1,0 +1,65 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load great_components %}
+{% load code from demo_tags %}
+
+{% block content %}
+
+{% static 'images/hero02.png' as hero_image %}
+{% static 'images/hero01.jpg' as hero_image_domestic %}
+{% static 'images/placeholder.png' as placeholder %}
+{% static 'images/hero04.jpg' as dark_hero %}
+{% static 'images/card_image01.jpg' as half_image %}
+
+<div class="container">
+  <h1 class="h-xl">Feature list</h1>
+
+  <p>The intro is expected to be HTML.</p>
+  <p>The list of items are expected to be a dictionary with a title and text e.g.</p>
+
+  {% code 'python' %}
+  items_list=[
+    {
+        'title': 'Item One Title',
+        'text': '<p>Lorem ipsum ... <a href="/full-width-banners/">Learn more.</a></p>'
+    },
+    {
+        'title': 'Item Two Title',
+        'text': '<p>Lorem ipsum ... <a href="/full-width-banners/">Learn more.</a></p>'
+    },
+  ]
+  {% endcode %}
+
+
+</div>
+
+{% feature_list title="Feature list" background_image=dark_hero intro_html=intro_html items_list=items_list %}
+
+<div class="container">
+{% code 'django' %}
+
+{% feature_list title="Full width image with a list of items" background_image=dark_hero intro_html=intro_html items_list=items_list %}
+{% endcode %}
+
+</div>
+
+{% feature_list title="With inset image" background_image=dark_hero image=half_image intro_html=intro_html items_list=items_list %}
+
+<div class="container">
+  {% code 'django' %}
+    {% feature_list title="Full width image with a list of items and an image" background_image=dark_hero image=half_image intro_html=intro_html items_list=items_list %}
+  {% endcode %}
+
+</div>
+
+{% feature_list title="With inset video" background_image=dark_hero video=video intro_html=intro_html items_list=items_list %}
+
+<div class="container">
+  {% code "django" %}
+    {% feature_list title="Full width image with a list of items and a video" background_image=dark_hero video=video intro_html=intro_html items_list=items_list %}
+  {% endcode %}
+</div>
+
+{% endblock %}

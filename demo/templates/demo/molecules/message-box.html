@@ -1,0 +1,99 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load message_box message_box_with_icon error_box success_box breadcrumbs cta_box from great_components %}
+{% load code from demo_tags %}
+
+{% block inner_content %}
+
+<div class="w-2-3">
+  <h1 class="h-xl">Message box</h1>
+  <h2 class="h-l">Generic message box</h2>
+  <p>Message boxes can have their text and border colours modified in various ways using <a href="{% url 'elements' %}" class="link">utility classes</a>.</p>
+</div>
+
+{% message_box heading="Complete" description="Your account has been created." heading_level='h3' %}
+{% code 'django' %}
+  {% message_box heading="Complete" description="Your account has been created." heading_level='h3' %}
+{% endcode %}
+<p class="w-2-3">An example using custom classes for <code>box_class</code> and <code>heading_class</code>.</p>
+{% message_box heading_class='h-l text-grey' box_class='border-thin w-2-3 bg-stone-30 border-stone text-grey' heading=".h-l .text-grey" description=".w-2-3 .bg-stone-30 .border-stone .text-grey" heading_level='h3' %}
+{% code 'django' %}
+  {% message_box heading_class='h-l text-grey' box_class='w-2-3 bg-stone-30 border-stone text-grey' heading=".h-l .text-grey" description=".w-2-3 .bg-stone-30 .border-stone .text-grey" heading_level='h3' %}
+{% endcode %}
+
+<h3 class="h-m">HTML markup</h3>
+{% code 'html' %}
+  <div class="g-message-box p-m border-medium border-teal bg-white">
+    <h3 class="box-heading h-m text-teal">[heading text]</h3>
+    <p class="box-description">[description text]</p>
+  </div>
+{% endcode %}
+
+<h2 class="h-l w-2-3">Message box with icon</h2>
+<p class="w-2-3">As above but with an icon on the left. Classes work slightly differently.</p>
+
+<h3 class="h-m">Error</h3>
+
+{% error_box heading="Error" description="Please try again" %}
+{% code 'django' %}
+  {% error_box heading="Error" description="Please try again" %}
+{% endcode %}
+
+<h3 class="h-m">Success</h3>
+{% success_box heading="Success" description="Wonderful things have occurred" %}
+{% code 'django' %}
+  {% success_box heading="Success" description="Wonderful things have occurred" %}
+{% endcode %}
+
+
+<h3 class="h-m">Custom</h3>
+<p class="w-2-3"><a href="{% url 'elements' %}#colour" class="link">Check the colours section</a> for possible values for <code>border_colour</code>.</p>
+{% message_box_with_icon icon="🗣" heading="Stop yelling" description="Why are you yelling."  border_colour="purple" heading_class='h-xl text-purple' box_class='bg-white text-purple' heading_level='h3' %}
+{% code 'django' %}
+  {% message_box_with_icon icon="🗣" heading="Stop yelling" description="Why are you yelling."  border_colour="purple" heading_class='h-xl text-purple' box_class='bg-white text-purple' heading_level='h3' %}
+{% endcode %}
+
+<h3 class="h-m">HTML markup</h3>
+{% code 'django' %}
+  <div class="g-message-box-with-icon border-medium border-teal w-full bg-white">
+    <div class="g-message-box-icon font-large text-white bg-teal" aria-hidden="true">[icon]</div>
+    <div class="g-message-box-content padding-15 padding-30-m">
+      <h3 class="box-heading h-m text-teal">[heading text]</h3>
+      <p class="box-description">[description text]</p>
+    </div>
+  </div>
+{% endcode %}
+
+<h2 class="h-l">CTA boxes</h2>
+<p class="w-2-3">CTA boxes work in a similar way but have two columns - one for text and another for a button.</p>
+{% cta_box box_id='example-cta-box' heading='Need help?' description='If you need more information please get in touch.' button_text='Contact us' button_url='/' %}
+{% code 'django' %}
+  {% cta_box box_id='example-cta-box' heading='Need help?' description='If you need more information please get in touch.' button_text='Contact us' button_url='/' %}
+{% endcode %}
+
+<p class="w-2-3">These can be modified with utility classes in the same way as message boxes.</p>
+{% cta_box heading_class='h-l text-active-blue' box_class='border-stone bg-stone-20 text-active-blue' button_class='button-arrow-large' box_id='example-cta-box-two' heading='.h-l .text-active-blue' description='.border-stone .bg-stone-20 .text-active-blue' button_text='.g-button' button_url='/' %}
+{% code 'django' %}
+  {% cta_box heading_class='h-l text-active-blue' box_class='border-stone bg-stone-20 text-active-blue' button_class='button-arrow-large' box_id='example-cta-box-two' heading='.h-l .text-active-blue' description='.border-stone .bg-stone-20 .text-active-blue' button_text='.g-button' button_url='/' %}
+{% endcode %}
+
+
+<h3 class="h-m">HTML markup</h3>
+{% code 'html' %}
+  <div id="example-cta-box" class="g-cta-box padding-45 bg-stone-60">
+    <div class="grid-row">
+      <div class="c-half-m c-full">
+          <h3 class="box-heading h-m">[heading text]</h3>
+        <p class="box-description">[description text]</p>
+      </div>
+      <div class="c-quarter-xl c-half-m c-full button-container">
+        <a id="example-cta-box-button" class="g-button button-blue" href="[button url]">[button text]</a>
+      </div>
+    </div>
+  </div>
+{% endcode %}
+
+
+{% endblock %}

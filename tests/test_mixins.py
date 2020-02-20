@@ -1,51 +1,15 @@
-from unittest.mock import patch, Mock
-
-from directory_constants.choices import COUNTRY_CHOICES
-import pytest
+from unittest.mock import Mock
 
 from django.contrib.auth.models import AnonymousUser
 from django.utils import translation
 from django.views.generic import TemplateView
 
-from directory_components import mixins
-
-
-@pytest.mark.parametrize('country_code,country_name', COUNTRY_CHOICES)
-@patch('directory_components.helpers.get_user_country')
-def test_country_display_mixin(
-    mock_country, country_code, country_name, rf
-):
-    class TestView(mixins.CountryDisplayMixin, TemplateView):
-        template_name = 'directory_components/base.html'
-
-    mock_country.return_value = country_code
-
-    request = rf.get('/')
-    response = TestView.as_view()(request)
-
-    assert response.context_data['hide_country_selector']
-    assert response.context_data['country']['name'] == country_name
-    assert response.context_data['country']['code'] == country_code.lower()
-
-
-@patch('directory_components.helpers.get_user_country')
-def test_country_display_mixin_no_country(mock_country, rf):
-    class TestView(mixins.CountryDisplayMixin, TemplateView):
-        template_name = 'directory_components/base.html'
-
-    mock_country.return_value = ''
-
-    request = rf.get('/')
-    response = TestView.as_view()(request)
-
-    assert not response.context_data['hide_country_selector']
-    assert not response.context_data['country']['name']
-    assert not response.context_data['country']['code']
+from great_components import mixins
 
 
 def test_language_display_mixin(rf, settings):
     class TestView(mixins.EnableTranslationsMixin, TemplateView):
-        template_name = 'directory_components/base.html'
+        template_name = 'great_components/base.html'
 
     # Test with usual settings first
     request = rf.get('/')
@@ -66,7 +30,7 @@ def test_language_display_mixin(rf, settings):
 def test_cms_language_switcher_one_language(rf):
     class MyView(mixins.CMSLanguageSwitcherMixin, TemplateView):
 
-        template_name = 'directory_components/base.html'
+        template_name = 'great_components/base.html'
         page = {
             'meta': {'languages': [('en-gb', 'English')]}
         }
@@ -84,7 +48,7 @@ def test_cms_language_switcher_active_language_unavailable(rf):
 
     class MyView(mixins.CMSLanguageSwitcherMixin, TemplateView):
 
-        template_name = 'directory_components/base.html'
+        template_name = 'great_components/base.html'
 
         page = {
             'meta': {
@@ -105,7 +69,7 @@ def test_cms_language_switcher_active_language_available(rf):
 
     class MyView(mixins.CMSLanguageSwitcherMixin, TemplateView):
 
-        template_name = 'directory_components/base.html'
+        template_name = 'great_components/base.html'
 
         page = {
             'meta': {
@@ -126,7 +90,7 @@ def test_cms_language_switcher_active_language_available(rf):
 
 def test_ga360_mixin_for_logged_in_user_old_style(rf):
     class TestView(mixins.GA360Mixin, TemplateView):
-        template_name = 'directory_components/base.html'
+        template_name = 'great_components/base.html'
 
         def __init__(self):
             super().__init__()
@@ -159,7 +123,7 @@ def test_ga360_mixin_for_logged_in_user_old_style(rf):
 
 def test_ga360_mixin_for_logged_in_user(rf):
     class TestView(mixins.GA360Mixin, TemplateView):
-        template_name = 'directory_components/base.html'
+        template_name = 'great_components/base.html'
 
         def __init__(self):
             super().__init__()
@@ -193,7 +157,7 @@ def test_ga360_mixin_for_logged_in_user(rf):
 
 def test_ga360_mixin_for_anonymous_user_old_style(rf):
     class TestView(mixins.GA360Mixin, TemplateView):
-        template_name = 'directory_components/base.html'
+        template_name = 'great_components/base.html'
 
         def __init__(self):
             super().__init__()
@@ -218,7 +182,7 @@ def test_ga360_mixin_for_anonymous_user_old_style(rf):
 
 def test_ga360_mixin_for_anonymous_user(rf):
     class TestView(mixins.GA360Mixin, TemplateView):
-        template_name = 'directory_components/base.html'
+        template_name = 'great_components/base.html'
 
         def __init__(self):
             super().__init__()

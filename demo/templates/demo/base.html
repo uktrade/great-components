@@ -1,4 +1,4 @@
-{% extends 'directory_components/base.html' %}
+{% extends 'great_components/base.html' %}
 
 {% load static from staticfiles %}
 {% load code from demo_tags %}
@@ -9,24 +9,27 @@
 
 {% block head_js %}
   {{ block.super }}
-  <script src="{% static 'directory_components/js/dit.components.dismissible-banner.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/debug.js' %}"></script>
 {% endblock %}
 
 {% block head_css %}
-    <link href="{% static 'directory_components/export_elements/stylesheets/govuk-elements-styles.min.css' %}" media="all" rel="stylesheet" />
-    <link href="{% static 'directory_components/export_elements/stylesheets/elements-components.min.css' %}" media="all" rel="stylesheet" />
-    <link href="{% static 'css/demo.css' %}" media="all" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="{% static 'django_pygments/css/pygments_default.css' %}" />
+    {% include 'demo/includes/styles.html' %}
 {% endblock %}
 
-{% block feedback_reporter %}
-  <div class="container padding-top-30">
-    <a href="{% url 'index' %}" class="link-back link">Go back</a>
+{% block head_title %}great-components{% endblock %}
+
+{% block body_content_container %}
+<main id="content" class="index p-t-s p-b-xxl">
+  {% block content %}
+  <div class="container">
+    {% block inner_content %}{% endblock %}
   </div>
-  {{ block.super }}
-{% endblock %}
+  {% endblock %}
+</main>
 
-{% block head_title %}directory-components{% endblock %}
+{% block content_after %}{% endblock %}
+
+{% endblock %}
 
 {% block body_footer %}
     {% include 'demo/includes/footer.html' %}

@@ -1,0 +1,37 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load great_components %}
+
+{% block inner_content %}
+
+<h1 class="h-xl">Content list</h1>
+<div class="grid">
+  <div class="c-3-4">
+    <p>Use this to list related pages next to a larger body of content.</p>
+    <h2 class="h-l">Example content</h2>
+    {% lorem 3 p random %}
+  </div>
+  <div class="c-1-4">
+    <div class="g-panel-vertical g-content-list">
+      <h2 class="heading h-s">Related content</h2>
+      <ul id="related-content">
+        <li>
+          <a class="h-s" href="#foo">{% filter capfirst %}{% lorem 3 w random %}{% endfilter %}</a>
+        </li>
+        <li>
+          <a class="h-s" href="#foo">{% filter capfirst %}{% lorem 3 w random %}{% endfilter %}</a>
+        </li>
+        <li>
+          <a class="h-s" href="#foo">{% filter capfirst %}{% lorem 3 w random %}{% endfilter %}</a>
+        </li>
+        <li>
+          <a class="h-s" href="#foo">{% filter capfirst %}{% lorem 3 w random %}{% endfilter %}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

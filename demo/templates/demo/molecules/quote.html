@@ -1,0 +1,28 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load great_components %}
+
+{% block inner_content %}
+
+<h1 class="h-xl">Panel</h1>
+
+<div class="w-2-3 g-panel">
+  <h2 class="g-interstate bold">.g-panel</h2>
+  <p>{% filter capfirst %}{% lorem 25 w random %}{% endfilter %}</p>
+</div>
+
+<div class="w-2-3 g-panel-vertical">
+  <h2 class="g-interstate bold">.g-panel-vertical</h2>
+  <p>{% filter capfirst %}{% lorem 25 w random %}{% endfilter %}</p>
+</div>
+
+<h2 class="h-m">See also:</h2>
+<ul class="list list-bullet">
+  <li>
+    <a href="{% url 'content-list' %}">Content list</a>
+  </li>
+</ul>
+
+{% endblock %}

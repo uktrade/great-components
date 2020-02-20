@@ -1,0 +1,48 @@
+
+#content {
+  z-index: 0;
+}
+
+code {
+  font-size: 14px;
+  font-family: Monaco, 'Lucida Console', monospace;
+  background-color: $black;
+  color: $focus-yellow;
+  padding-left: 2px;
+  padding-right: 2px;
+
+  @include desktop {
+    font-size: 16px;
+  }
+}
+
+
+pre {
+  background-color: $black;
+  padding: $space-s-m;
+  @include tablet {
+    padding: $space-s;
+  }
+  white-space: pre-wrap;
+  font-family: Monaco, 'Lucida Console', monospace;
+}
+
+.colour-examples p {
+  margin: 0;
+}
+
+.red-border {
+  z-index: 1;
+  position: relative;
+  height: 4px;
+  background-color:$flag-red;
+}
+
+.demo-heading-table {
+  td,
+  th {
+    padding: initial;
+    border: 0;
+    vertical-align: middle;
+  }
+}

@@ -1,0 +1,17 @@
+{% extends 'demo/base.html' %}
+
+{% load view_instance_code from demo_tags %}
+{% load breadcrumbs from great_components %}
+
+{% block inner_content %}
+<div class="w-2-3">
+  <h1 class="h-xl">Form error examples</h1>
+  <p>All the following fields are required. Try submitting the form to see the error messages.</p>
+  <form method="post" action="{% url 'errors' %}">
+    {% csrf_token %}
+    {{ form }}
+    <input class="g-button" type="submit" value="Submit" />
+  </form>
+</div>
+
+{% endblock %}

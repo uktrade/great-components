@@ -620,7 +620,7 @@ See the [google tag manager demo page](https://directory-components-dev.herokuap
 ```
 {% block header_js %}
     {{ block.super }}
-    <script src="{% static 'directory_components/js/dit.components.greatDomesticHeader.js' %}"></script>
+    <script src="{% static 'great_components/js/dit.components.greatDomesticHeader.js' %}"></script>
 {% endblock %}
 ```
 
@@ -629,7 +629,7 @@ Or for international-facing services:
 ```
 {% block header_js %}
     {{ block.super }}
-    <script src="{% static 'directory_components/js/dit.components.greatInternationalHeader.js' %}"></script>
+    <script src="{% static 'great_components/js/dit.components.greatInternationalHeader.js' %}"></script>
 {% endblock %}
 ```
 
@@ -768,7 +768,7 @@ Or for international-facing services:
 
 ### Breaking Changes
 
-- Rename all instances of `directory_components_tags` to `directory_components`
+- Rename all instances of `great_components_tags` to `great_components`
 
 The best way to do the rest of the upgrade is to switch to using the latest header/footer.
 

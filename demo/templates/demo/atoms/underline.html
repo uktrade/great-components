@@ -1,0 +1,52 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load great_components %}
+
+{% block content %}
+
+<section>
+  <div class="container">
+    <h1 class="h-xl">Underline</h1>
+    <p>Use an <code>underline-</code> class on a full width element to add a coloured underline that is the same width as the inner <code>container</code>.</p>
+    <p>For a list of possible colour suffixes see the section on <a href="{% url 'colour' %}">colour</a>.</p>
+  </div>
+</section>
+
+<section class="bg-stone-30 p-v-s m-v-s underline-active-blue">
+  <div class="container">
+    <p class="h-m">.underline-active-blue</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="h-l">Flag</h2>
+    <p>Use this class to add a half flag to the bottom left of the element.</p>
+  </div>
+</section>
+
+<section class="with-flag p-v-s m-v-s bg-great-blue text-white">
+  <div class="container">
+    <p class="h-m">.with-flag</p>
+  </div>
+</section>
+
+<section class="p-t-s">
+  <div class="container">
+    <h2 class="h-l">Markup</h2>
+
+    {% code 'html' %}
+    <section class="bg-stone-30 p-v-s underline-active-blue">
+      <div class="container">
+        <p>.underline-active-blue</p>
+      </div>
+    </section>
+    {% endcode %}
+
+  </div>
+</section>
+
+
+{% endblock %}

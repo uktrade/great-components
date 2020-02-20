@@ -1,0 +1,193 @@
+
+.top-navigation {
+  background-color: $stone-80;
+
+  ul li {
+    display: block;
+    float: left;
+
+    a {
+      color: $grey;
+      display: block;
+      @include brand-small;
+      padding: $space-xs-m;
+
+      @include tablet {
+        padding: $space-xs;
+      }
+
+      text-decoration: none;
+      position: relative;
+
+      &:hover {
+        background-color: $stone-30;
+      }
+    }
+
+    .current,
+    .current:hover {
+      background-color: $stone-30;
+    }
+
+    .current:before {
+      display: block;
+      content: '';
+      height: 4px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color:$flag-red;
+    }
+  }
+
+  ul:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
+
+.sub-navigation {
+  background-color: $stone-30;
+
+  ul li {
+    a {
+      @include body-medium;
+      padding: $space-xs-m;
+
+      @include tablet {
+        padding: $space-xs;
+      }
+
+      &:hover {
+        background-color: $white;
+        text-decoration: underline;
+      }
+    }
+
+    .current {
+      background-color: $white;
+
+      &:before {
+        display: block;
+        content: '';
+        height: 4px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color:$flag-red;
+      }
+
+      &:hover {
+        background-color: $white;
+      }
+    }
+
+  }
+}
+
+.demo-footer {
+  margin-top: -4px;
+
+  & > .footer-main {
+    background-color: $great-blue;
+  }
+
+  .footer-main > .container {
+    padding: $space-l 0;
+  }
+
+  .copyright {
+    color: $light-grey;
+    float: right;
+    height: 70px;
+    font-size: 15px;
+
+    p {
+      margin-top: 50px;
+      margin-bottom: 0;
+    }
+  }
+
+}
+
+.demo-header {
+  position: relative;
+
+  img {
+    display: block;
+  }
+
+  .header-footer-logo {
+    height: $space-l-m;
+    @include tablet {
+      height: $space-l;
+    }
+  }
+
+  .header-main > .container {
+    padding: $space-s-m 0;
+
+    @include tablet {
+      padding: $space-s 0;
+    }
+  }
+
+  & > .header-main {
+    background-color: $great-blue;
+  }
+
+  .logo-container {
+    float: left;
+  }
+
+  .home-link {
+    @include brand-medium;
+
+    @include tablet {
+      line-height: $space-l;
+    }
+
+    color: $white;
+    text-decoration: none;
+    display: inline;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:active:focus {
+      color: $great-blue;
+    }
+  }
+
+  .home-link-container {
+    float: right;
+    width: 50%;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .demo-footer .copyright {
+    font-size: 13px;
+
+    p {
+      margin-top: 15px;
+    }
+  }
+
+  .header-footer-logo {
+    height: 60px;
+  }
+
+  nav.pagination > ol:not(.has-previous) {
+    padding-left: unset;
+  }
+
+  nav.pagination > ol:not(.has-next) {
+    padding-right: unset;
+  }
+}

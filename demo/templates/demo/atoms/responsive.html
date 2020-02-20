@@ -1,0 +1,44 @@
+{% extends 'demo/base.html' %}
+
+{% block inner_content %}
+
+<h1 class="h-xl">Responsive classes</h1>
+<p>All classes are mobile first.</p>
+
+<p id="list-description" class="margin-top-30">Add the following suffixes to apply the styles below only to specific screen sizes:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Size</th>
+      <th>Suffix</th>
+    </tr>
+    <tr>
+      <td>Tablet and up</td>
+      <td>-m</td>
+    </tr>
+    <tr>
+      <td>Desktop and up</td>
+      <td>-l</td>
+    </tr>
+    <tr>
+      <td>Extra wide screens</td>
+      <td>-xl</td>
+    </tr>
+  </thead>
+</table>
+
+<p class="w-2-3">E.g. to make an element ⅔ width only on tablet you would add the class <code>w-2-3-m</code>. Or for a grid column use <code>c-2-3-m</code>.</p>
+
+<div>
+  <h2 class="h-l">Conditional display</h2>
+  <p class="w-2-3">Use these classes to show/hide elements according to screen size. Bear in mind this will <i>also</i> hide the elements for screen readers.</p>
+
+  <div class="display-mobile">.display-mobile</div>
+  <div class="display-tablet">.display-tablet</div>
+  <div class="display-desktop">.display-desktop</div>
+
+</div>
+
+
+{% endblock %}

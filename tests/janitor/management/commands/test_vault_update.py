@@ -6,7 +6,7 @@ from colors import red, green
 
 from django.core.management import call_command
 
-from directory_components.janitor.management.commands import helpers
+from great_components.janitor.management.commands import helpers
 
 
 @pytest.fixture(autouse=True)

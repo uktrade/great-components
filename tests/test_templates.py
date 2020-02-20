@@ -4,20 +4,20 @@ import pytest
 
 from django.template.loader import render_to_string
 
-from directory_components import context_processors, forms, helpers
+from great_components import context_processors, forms, helpers
 
 
 def test_google_tag_manager_project_id():
     context = {
-        'directory_components_analytics': {
+        'great_components_analytics': {
             'GOOGLE_TAG_MANAGER_ID': '123456',
         }
     }
     head_html = render_to_string(
-        'directory_components/google_tag_manager_head.html', context
+        'great_components/google_tag_manager_head.html', context
     )
     body_html = render_to_string(
-        'directory_components/google_tag_manager_body.html', context
+        'great_components/google_tag_manager_body.html', context
     )
 
     assert '123456' in head_html
@@ -26,13 +26,13 @@ def test_google_tag_manager_project_id():
 
 def test_google_tag_manager():
     expected_head = render_to_string(
-        'directory_components/google_tag_manager_head.html', {}
+        'great_components/google_tag_manager_head.html', {}
     )
     expected_body = render_to_string(
-        'directory_components/google_tag_manager_body.html', {}
+        'great_components/google_tag_manager_body.html', {}
     )
 
-    html = render_to_string('directory_components/base.html', {'services_urls': {'feedback': None}})
+    html = render_to_string('great_components/base.html', {'services_urls': {'feedback': None}})
 
     assert expected_head in html
     assert expected_body in html
@@ -44,16 +44,16 @@ def test_google_tag_manager():
 def test_google_tag_manager_env():
 
     context = {
-        'directory_components_analytics': {
+        'great_components_analytics': {
             'GOOGLE_TAG_MANAGER_ID': '123456',
             'GOOGLE_TAG_MANAGER_ENV': '&gtm_auth=hello'
         }
     }
     head_html = render_to_string(
-        'directory_components/google_tag_manager_head.html', context
+        'great_components/google_tag_manager_head.html', context
     )
     body_html = render_to_string(
-        'directory_components/google_tag_manager_body.html', context
+        'great_components/google_tag_manager_body.html', context
     )
 
     assert '&gtm_auth=hello' in head_html
@@ -62,7 +62,7 @@ def test_google_tag_manager_env():
 
 def test_base_page_links(settings):
     context = context_processors.urls_processor(None)
-    html = render_to_string('directory_components/base.html', context)
+    html = render_to_string('great_components/base.html', context)
 
     assert urls.domestic.FEEDBACK in html
 
@@ -98,7 +98,7 @@ def test_social_share_links():
         page_title='Do research first',
         app_title='Export Readiness',
     )
-    template_name = 'directory_components/social_share_links.html'
+    template_name = 'great_components/social_share_links.html'
     context = {
         'social_links': social_links_builder.links
     }
@@ -114,7 +114,7 @@ def test_social_share_links():
     ('', 'Share')
 ))
 def test_social_share_title(title, expected):
-    template_name = 'directory_components/social_share_links.html'
+    template_name = 'great_components/social_share_links.html'
     context = {
         'title': title
     }
@@ -135,7 +135,7 @@ def test_form_field_container():
 
     form = Form()
 
-    template_name = 'directory_components/form_widgets/form_field.html'
+    template_name = 'great_components/form_widgets/form_field.html'
     context = {
         'field': form['field']
     }
@@ -145,7 +145,7 @@ def test_form_field_container():
 
 
 def test_image_with_caption_displays_caption():
-    template_name = 'directory_components/image_with_caption.html'
+    template_name = 'great_components/image_with_caption.html'
     context = {
             'main_caption': 'Hello'
         }
@@ -157,7 +157,7 @@ def test_image_with_caption_displays_caption():
 
 
 def test_image_with_caption_does_not_have_caption_without_caption_text():
-    template_name = 'directory_components/image_with_caption.html'
+    template_name = 'great_components/image_with_caption.html'
     context = {
             'main_caption': None
         }

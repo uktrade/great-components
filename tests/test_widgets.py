@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 
-from directory_components import forms
+from great_components import forms
 
 
 TEST_CHOICES = (
@@ -104,7 +104,7 @@ def test_radio_select_class_has_attrs():
         attrs={'id': 'radio-test'}
     )
     assert radio.input_type == 'radio'
-    assert radio.css_class_name == 'select-multiple'
+    assert radio.css_class_name == 'g-select-multiple'
     assert radio.attrs['id'] == 'radio-test'
 
 

@@ -2,7 +2,7 @@ from unittest import mock
 
 import pytest
 
-from directory_components.janitor.management.commands import helpers
+from great_components.janitor.management.commands import helpers
 
 
 def test_prompt_user_choice(monkeypatch):
@@ -168,5 +168,5 @@ def test_list_vault_paths():
 
 
 def tet_import_by_string():
-    imported = helpers.import_by_string('directory_components.janitor.management.commands.helpers')
+    imported = helpers.import_by_string('great_components.janitor.management.commands.helpers')
     assert imported is helpers

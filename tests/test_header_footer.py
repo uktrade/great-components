@@ -4,14 +4,14 @@ import pytest
 
 from django.template.loader import render_to_string
 
-from directory_components import context_processors
+from great_components import context_processors
 
 
 @pytest.mark.parametrize('template_name', [
-    'directory_components/header_footer/international_header.html',
-    'directory_components/header_footer/international_footer.html',
-    'directory_components/header_footer/domestic_header.html',
-    'directory_components/header_footer/domestic_footer.html',
+    'great_components/header_footer/international_header.html',
+    'great_components/header_footer/international_footer.html',
+    'great_components/header_footer/domestic_header.html',
+    'great_components/header_footer/domestic_footer.html',
 ])
 def test_templates_rendered(template_name):
     html = render_to_string(template_name)
@@ -21,7 +21,7 @@ def test_templates_rendered(template_name):
 
 
 @pytest.mark.parametrize('template_name', (
-    'directory_components/header_footer/domestic_header.html',
+    'great_components/header_footer/domestic_header.html',
     )
 )
 def test_header_logged_in(template_name):
@@ -39,7 +39,7 @@ def test_header_logged_in(template_name):
 
 
 @pytest.mark.parametrize('template_name', (
-    'directory_components/header_footer/domestic_header.html',
+    'great_components/header_footer/domestic_header.html',
     )
 )
 def test_header_logged_out(template_name):
@@ -62,7 +62,7 @@ def test_header_domestic_news_section_off(settings):
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None)
     }
-    template_name = 'directory_components/header_footer/domestic_header.html'
+    template_name = 'great_components/header_footer/domestic_header.html'
     html = render_to_string(template_name, context)
     assert urls.domestic.GREAT_DOMESTIC_NEWS not in html
 
@@ -73,7 +73,7 @@ def test_header_international_news_section_off(settings):
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None)
     }
-    template_name = 'directory_components/header_footer/domestic_header.html'
+    template_name = 'great_components/header_footer/domestic_header.html'
     html = render_to_string(template_name, context)
     assert urls.international.NEWS not in html
 
@@ -92,7 +92,7 @@ def test_urls_exist_in_domestic_header(url, settings):
         **context_processors.urls_processor(None)
     }
     template_name = (
-        'directory_components/header_footer/domestic_header.html')
+        'great_components/header_footer/domestic_header.html')
     assert url in render_to_string(template_name, context)
 
 
@@ -112,7 +112,7 @@ def test_urls_exist_in_domestic_footer(url, settings):
         **context_processors.feature_flags(None),
     }
     template_name = (
-        'directory_components/header_footer/domestic_footer.html')
+        'great_components/header_footer/domestic_footer.html')
     assert url in render_to_string(template_name, context)
 
 
@@ -131,7 +131,7 @@ def test_urls_exist_in_international_footer(url, settings):
         **context_processors.feature_flags(None),
     }
     template_name = (
-        'directory_components/header_footer/international_footer.html')
+        'great_components/header_footer/international_footer.html')
     assert url in render_to_string(template_name, context)
 
 
@@ -164,7 +164,7 @@ def test_domestic_header_ids_match_urls_and_text(
     }
 
     html = render_to_string(
-        'directory_components/header_footer/domestic_header.html', context
+        'great_components/header_footer/domestic_header.html', context
     )
     soup = BeautifulSoup(html, 'html.parser')
 
@@ -216,7 +216,7 @@ def test_domestic_footer_ids_match_urls_and_text(
         **context_processors.feature_flags(None),
     }
     html = render_to_string(
-        'directory_components/header_footer/domestic_footer.html', context
+        'great_components/header_footer/domestic_footer.html', context
     )
     soup = BeautifulSoup(html, 'html.parser')
 
@@ -267,7 +267,7 @@ def test_international_footer_ids_match_urls_and_text(
         **context_processors.feature_flags(None),
     }
     html = render_to_string(
-        'directory_components/header_footer/international_footer.html',
+        'great_components/header_footer/international_footer.html',
         context
     )
     soup = BeautifulSoup(html, 'html.parser')

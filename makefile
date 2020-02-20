@@ -17,14 +17,14 @@ pytest:
 
 flake8:
 	flake8 . \
-	--exclude=.venv,venv,.idea-env,setup.py,directory_components/version.py,node_modules \
+	--exclude=.venv,venv,.idea-env,setup.py,great_components/version.py,node_modules \
 	--max-line-length=120
 
 manage:
 	ENV_FILES='dev' ./manage.py $(ARGUMENTS)
 
 webserver:
-	ENV_FILES='dev' python manage.py runserver 0.0.0.0:9013 $(ARGUMENTS)
+	ENV_FILES='dev' python manage.py collectstatic --no-input && ENV_FILES='dev' python manage.py runserver 0.0.0.0:9013 $(ARGUMENTS)
 
 requirements:
 	pip-compile requirements.in
@@ -37,6 +37,9 @@ install_requirements:
 
 css:
 	./node_modules/.bin/gulp styles
+
+sass_lint:
+	./node_modules/.bin/gulp test
 
 publish:
 	rm -rf build dist; \

@@ -2,7 +2,7 @@ import pytest
 
 from django.forms import TextInput
 
-from directory_components import forms
+from great_components import forms
 
 
 REQUIRED_MESSAGE = forms.PaddedCharField.default_error_messages['required']

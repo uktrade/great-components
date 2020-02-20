@@ -3,13 +3,96 @@
 <header class="demo-header">
   <div class="header-main">
     <div class="container">
-      <div class="grid-row">
-        <img class="header-footer-logo" src="{% static 'directory_components/images/dfit-logo-white.png' %}" height="70" alt="Department for International Trade">
+      <div class="grid">
+        <div class="logo-container">
+          <img class="header-footer-logo" src="{% static 'great_components/images/dfit-logo-white.png' %}" height="70" alt="Department for International Trade">
+        </div>
         <div class="home-link-container">
-          <a href="{% url 'index' %}" class="link home-link heading-medium">directory-components</a>
+          <a href="{% url 'index' %}" class="link home-link">great-components</a>
         </div>
       </div>
     </div>
   </div>
-  <div class="red-border container"></div>
+
+  <div class="top-navigation">
+    <nav>
+      <ul class="container">
+        <li><a href="{% url 'atoms' %}" class="{% if site_section == 'atoms' %}current{% endif %}">Atoms</a></li>
+        <li><a href="{% url 'molecules' %}" class="{% if site_section == 'molecules' %}current{% endif %}">Molecules</a></li>
+        <li><a href="{% url 'forms' %}" class="{% if site_section == 'forms' %}current{% endif %}">Forms</a></li>
+        <li><a href="{% url 'components' %}" class="{% if site_section == 'components' %}current{% endif %}">Components</a></li>
+        <li><a href="{% url 'header-footer' %}" class="{% if site_section == 'header-footer' %}current{% endif %}">Header & footer</a></li>
+        <li><a href="{% url 'pages' %}" class="{% if site_section == 'pages' %}current{% endif %}">Pages</a></li>
+        <li><a href="{% url 'analytics' %}" class="{% if site_section == 'analytics' %}current{% endif %}">Analytics</a></li>
+      </ul>
+    </nav>
+
+    <nav class="sub-navigation">
+
+      {% if site_section == 'atoms' %}
+      <ul class="list container">
+        <li><a class="link {% if site_subsection == 'typography' %}current{% endif %}" href="{% url 'typography' %}">Typography</a></li>
+        <li><a class="link {% if site_subsection == 'list' %}current{% endif %}" href="{% url 'list' %}">List</a></li>
+        <li><a class="link {% if site_subsection == 'table' %}current{% endif %}" href="{% url 'table' %}">Table</a></li>
+        <li><a class="link {% if site_subsection == 'button' %}current{% endif %}" href="{% url 'button' %}">Button</a></li>
+        <li><a class="link {% if site_subsection == 'colour' %}current{% endif %}" href="{% url 'colour' %}">Colour</a></li>
+        <li><a class="link {% if site_subsection == 'underline' %}current{% endif %}" href="{% url 'underline' %}">Underline</a></li>
+        <li><a class="link {% if site_subsection == 'grid' %}current{% endif %}" href="{% url 'grid' %}">Grid</a></li>
+        <li><a class="link {% if site_subsection == 'spacing' %}current{% endif %}" href="{% url 'spacing' %}">Spacing</a></li>
+        <li><a class="link {% if site_subsection == 'responsive' %}current{% endif %}" href="{% url 'responsive' %}">Responsive</a></li>
+        <li><a class="link {% if site_subsection == 'visually-hidden' %}current{% endif %}" href="{% url 'visually-hidden' %}">Visually hidden</a></li>
+      </ul>
+      {% endif %}
+
+      {% if site_section == 'molecules' %}
+      <ul class="list container">
+        <li><a class="link {% if site_subsection == 'details' %}current{% endif %}" href="{% url 'details' %}">Details</a></li>
+        <li><a class="link {% if site_subsection == 'fact-sheet' %}current{% endif %}" href="{% url 'fact-sheet' %}">Fact sheet</a></li>
+        <li><a class="link {% if site_subsection == 'content-list' %}current{% endif %}" href="{% url 'content-list' %}">Content list</a></li>
+        <li><a class="link {% if site_subsection == 'panel' %}current{% endif %}" href="{% url 'panel' %}">Panel</a></li>
+        <li><a class="link {% if site_subsection == 'banner' %}current{% endif %}" href="{% url 'banner' %}">Banner</a></li>
+        <li><a class="link {% if site_subsection == 'message_box' %}current{% endif %}" href="{% url 'message-box' %}">Message box</a></li>
+        <li><a class="link {% if site_subsection == 'breadcrumbs' %}current{% endif %}" href="{% url 'breadcrumbs' %}">Breadcrumbs</a></li>
+        <li><a class="link {% if site_subsection == 'error-reporting' %}current{% endif %}" href="{% url 'error-reporting' %}">Error reporting</a></li>
+      </ul>
+      {% endif %}
+
+      {% if site_section == 'components' %}
+      <ul class="list container">
+        <li><a class="link {% if site_subsection == 'card' %}current{% endif %}" href="{% url 'card' %}">Card</a></li>
+        <li><a class="link {% if site_subsection == 'statistics' %}current{% endif %}" href="{% url 'statistics' %}">Statistics</a></li>
+        <li><a class="link {% if site_subsection == 'hero' %}current{% endif %}" href="{% url 'hero' %}">Hero</a></li>
+        <li><a class="link {% if site_subsection == 'case-study' %}current{% endif %}" href="{% url 'case-study' %}">Case study</a></li>
+        <li><a class="link {% if site_subsection == 'feature-list' %}current{% endif %}" href="{% url 'feature-list' %}">Feature list</a></li>
+        <li><a class="link {% if site_subsection == 'pagination' %}current{% endif %}" href="{% url 'pagination' %}">Pagination</a></li>
+        <li><a class="link {% if site_subsection == 'search' %}current{% endif %}" href="{% url 'search' %}">Search</a></li>
+      </ul>
+      {% endif %}
+
+      {% if site_section == 'header-footer' %}
+      <ul class="list container">
+        <li><a class="link {% if site_subsection == 'great_international_header' %}current{% endif %}" href="{% url 'great-international-header-footer' %}">International</a></li>
+        <li><a class="link {% if site_subsection == 'great_domestic_header' %}current{% endif %}" href="{% url 'great-domestic-header-footer' %}">Domestic</a></li>
+        <li><a class="link {% if site_subsection == 'invest_header' %}current{% endif %}" href="{% url 'invest-header' %}">Invest</a></li>
+      </ul>
+      {% endif %}
+
+      {% if site_section == 'forms' %}
+      <ul class="list container">
+        <li><a class="link {% if site_subsection == 'widgets' %}current{% endif %}" href="{% url 'widgets' %}">Widgets</a></li>
+        <li><a class="link {% if site_subsection == 'errors' %}current{% endif %}" href="{% url 'errors' %}">Errors</a></li>
+      </ul>
+      {% endif %}
+
+      {% if site_section == 'pages' %}
+      <ul class="list container">
+        <li><a class="link {% if site_subsection == '404' %}current{% endif %}" href="{% url '404' %}">404 error page</a></li>
+        <li><a class="link {% if site_subsection == '500' %}current{% endif %}" href="{% url '500' %}">500 error page</a></li>
+      </ul>
+      {% endif %}
+
+    </nav>
+
+  </div>
+
 </header>

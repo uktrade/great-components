@@ -8,8 +8,8 @@ from django.urls import set_urlconf
 from django.utils import translation
 from django.conf import settings
 
-from directory_components import middleware
-from directory_components.middleware import GADataMissingException
+from great_components import middleware
+from great_components.middleware import GADataMissingException
 
 
 class PrefixUrlMiddleware(middleware.AbstractPrefixUrlMiddleware):

@@ -1,6 +1,6 @@
 from django.forms import Textarea
 
-from directory_components import forms
+from great_components import forms
 from directory_constants import choices
 
 
@@ -11,12 +11,10 @@ class PrefixIdMixin:
 
 class TextBoxForm(PrefixIdMixin, forms.Form):
     text_field1 = forms.CharField(
-        label='Q1: Simple text field',
-        help_text='Some help text'
+        label='Q1: Simple text field'
     )
     url_field = forms.URLField(
-        label='Q2: URL field',
-        help_text='Some help text'
+        label='Q2: URL field'
     )
     email_field = forms.EmailField(
         label='Q3: Email field',
@@ -34,7 +32,7 @@ class TextBoxForm(PrefixIdMixin, forms.Form):
     text_field2 = forms.CharField(
         label='Q5: Custom css class on container',
         help_text='Some help text',
-        container_css_classes='border-purple border-thin padding-30',
+        container_css_classes='form-group bg-stone-30 p-m',
     )
 
 
@@ -122,6 +120,7 @@ class RadioForm(PrefixIdMixin, forms.Form):
 
 
 class DemoFormErrors(PrefixIdMixin, forms.Form):
+    error_summary_heading = 'There was a problem submitting the form'
 
     text_field1 = forms.CharField(
         label='Simple text field',

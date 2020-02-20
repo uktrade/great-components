@@ -1,0 +1,151 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load great_components %}
+
+{% block content %}
+
+{% static 'images/card_image01.jpg' as card_image01 %}
+{% static 'images/card_image02.jpg' as card_image02 %}
+
+<section class="">
+  <div class="container">
+
+    <h1 class="h-xl">Card</h1>
+    <p class="w-2-3">Cards stretch to fit their container. Grid columns collapse to one on smaller screens.</p>
+
+    <h2 class="h-l">CTA card</h2>
+    <p>An image with a call to action.</p>
+
+    <div class="grid">
+      <div class="c-1-2">
+        {% cta_card image_url=card_image01 text="Read our market guide for Germany" %}
+        {% code 'django' %}{% cta_card image_url=card_image01 text="Read our market guide for Germany" %}{% endcode %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="p-v-s bg-stone-30">
+  <div class="container">
+    <h2 class="h-l">Image with caption</h2>
+    <div class="grid">
+      <div class="c-1-2">
+        {% image_with_caption image_url=card_image01 main_caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor." sub_caption="Quis nostrud exercitation ullamco laboris" %}
+      </div>
+      <div class="c-1-2">
+        {% code 'django' %}{% image_with_caption image_url=card_image01 main_caption="Main image caption" sub_caption="Secondary image caption" %}{% endcode %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="p-v-s">
+  <div class="container">
+    <h2 class="h-l">Card</h2>
+
+    {% code 'django' %}{% card card_id="card-example" image=card_image02 url='#' title='Lorem ipsum' description='Lorem ipsum dolor sit amet...' ... other params %}{% endcode %}
+
+    <h3 class="h-s">Possible params:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Expected value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>card_id</td>
+        <td>String</td>
+        <td>Hyphenated string to use as the HTML ID of the element</td>
+      </tr>
+      <tr>
+        <td>title</td>
+        <td>String</td>
+        <td>The title of the card</td>
+      </tr>
+      <tr>
+        <td>description</td>
+        <td>String</td>
+        <td>Long description for the card</td>
+      </tr>
+      <tr>
+        <td>subheading</td>
+        <td>String</td>
+        <td>A smaller heading to display above the title</td>
+      </tr>
+      <tr>
+        <td>image</td>
+        <td>URL</td>
+        <td>The image shown at the top of the card</td>
+      </tr>
+      <tr>
+        <td>no_padding</td>
+        <td>Boolean</td>
+        <td>True = text extends to the very edge of the card</td>
+      </tr>
+      <tr>
+        <td>transparent</td>
+        <td>Boolean</td>
+        <td>True = no background colour is used</td>
+      </tr>
+    </table>
+
+  </div>
+</section>
+
+<section class="p-v-s bg-stone-30">
+  <div class="container">
+
+    <div class="grid">
+      <div class="c-1-4">
+        {% card card_id='card-example-image-description' image=card_image02 url='#' description='description. Lorem ipsum dolor sit amet, consectetur adipisicing elit' %}
+      </div>
+
+      <div class="c-1-4">
+        {% static 'images/card_image01.jpg' as card_image01 %}
+        {% static 'images/card_image02.jpg' as card_image02 %}
+        {% card card_id="card-example-image-title" image=card_image02 url='#' title='Title' %}
+      </div>
+
+      <div class="c-1-4">
+        {% card url='#' title='Lorem ipsum' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
+      </div>
+
+      <div class="c-1-4">
+        {% card url='#' title='Lorem ipsum' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' subheading='Article' no_padding=True transparent=True %}
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="c-1-2">
+        <h3 class="h-m">Cards can have HTML content</h3>
+        {% static 'images/card_image01.jpg' as card_image01 %}
+        {% static 'images/card_image02.jpg' as card_image02 %}
+        {% card image=card_image02 img_alt='Card image description' title='Card title' html_content='<h4>Card title</h4><p>Cards can also have html content</p><a href="#" class="g-button button-blue">Button</a>' %}
+        {% code 'django' %}{% card image=card_image02 title='Card title' html_content='...' %}{% endcode %}
+      </div>
+    </div>
+
+    <h2 class="h-m">Flex grid</h2>
+    <p class="w-2-3">Use the <code>.flex-grid</code> class to align the heights of cards in a grid. This does not not apply to <code>image_with_caption</code> or <code>cta_card</code>.</p>
+    <div class="flex-grid">
+      <div class="c-1-4">
+        {% card url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit' %}
+      </div>
+      <div class="c-1-4">
+        {% card image=card_image01 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
+      </div>
+      <div class="c-1-4">
+        {% cta_card image_url=card_image01 text="Dolor sit amet" %}
+      </div>
+      <div class="c-1-4">
+        {% image_with_caption image_url=card_image01 main_caption="Lorem ipsum" %}
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

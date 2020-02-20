@@ -3,7 +3,7 @@ from unittest.mock import Mock
 import pytest
 
 from directory_constants import urls
-from directory_components import context_processors
+from great_components import context_processors
 
 
 def test_analytics(settings):
@@ -14,7 +14,7 @@ def test_analytics(settings):
     actual = context_processors.analytics(None)
 
     assert actual == {
-        'directory_components_analytics': {
+        'great_components_analytics': {
             'GOOGLE_TAG_MANAGER_ID': '123',
             'GOOGLE_TAG_MANAGER_ENV': '?thing=1',
             'UTM_COOKIE_DOMAIN': '.thing.com',
@@ -28,7 +28,7 @@ def test_cookie_notice(settings):
     actual = context_processors.cookie_notice(None)
 
     assert actual == {
-        'directory_components_cookie_notice': {
+        'great_components_cookie_notice': {
             'PRIVACY_COOKIE_DOMAIN': '.thing.com',
         }
     }

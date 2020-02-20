@@ -1,0 +1,54 @@
+{% extends 'demo/base.html' %}
+{% load static %}
+{% load breadcrumbs pagination from great_components %}
+{% load code from demo_tags %}
+
+
+{% block inner_content %}
+
+<h1 class="h-xl">Pagination</h1>
+<p class="w-2-3">Pagination requires your page's view to create it's own <code>Paginator</code> object and pass this into the component. The view should include something like:</p>
+
+{% code 'python' %}
+  objects_being_displayed = []
+  page_size = 5
+
+  @property
+  def pagination(self):
+      paginator = Paginator(
+          self.objects_being_displayed,
+          self.page_size
+      )
+      return paginator.page(current_page_num or 1)
+{% endcode %}
+
+<h2 class="h-l">Few results</h2>
+{% code 'django' %}
+  {% pagination pagination_page=pagination_page %}
+{% endcode %}
+
+{% for pagination in pagination_page_few_pages %}
+  {% pagination pagination_page=pagination %}
+{% endfor %}
+
+<h2 class="h-l">Some results</h2>
+{% code 'django' %}
+  {% pagination pagination_page=pagination_page %}
+{% endcode %}
+
+
+{% for pagination in pagination_page_some_pages %}
+  {% pagination pagination_page=pagination %}
+{% endfor %}
+
+<h2 class="h-l">Many results</h2>
+{% code 'django' %}
+  {% pagination pagination_page=pagination_page %}
+{% endcode %}
+
+
+{% for pagination in pagination_page_many_pages %}
+  {% pagination pagination_page=pagination %}
+{% endfor %}
+
+{% endblock %}
