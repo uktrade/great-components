@@ -1,6 +1,13 @@
 # Changelog
 
-## 35.9.1
+## 1.1.0
+[Full Changelog](https://github.com/uktrade/great-components/pull/2)
+### Implemented enhancements
+- MVP-41 - Add GA360 Context Processor
+
+# Historic Changelog from Directory Components
+
+## 35.9.1 (= 1.0.0 in Great-Components)
 [Full Changelog](https://github.com/uktrade/directory-components/pull/321)
 ### Fixed bugs
 - TT-2225 - Fix `vault_update` so obfuscations are not upload to vault

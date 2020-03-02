@@ -1,9 +1,30 @@
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 
 import pytest
 
 from directory_constants import urls
 from great_components import context_processors
+
+
+@patch('django.utils.translation.get_language', Mock(return_value='de'))
+def test_ga360_context_processor_all_data(settings, request_logged_in):
+    settings.GA360_BUSINESS_UNIT = 'Test App'
+    context = context_processors.ga360(request_logged_in)
+    assert context['ga360'] == {
+        'business_unit': 'Test App',
+        'site_language': 'de',
+        'user_id': '1234',
+        'login_status': True
+    }
+
+
+def test_ga360_context_processor_no_data(request_logged_out):
+    context = context_processors.ga360(request_logged_out)
+    assert context['ga360'] == {
+        'site_language': 'en-gb',
+        'user_id': None,
+        'login_status': False
+    }
 
 
 def test_analytics(settings):
@@ -40,6 +61,7 @@ def sso_user():
         id=1,
         email='jim@example.com',
         spec=['id', 'email'],
+        hashed_uuid='1234'
     )
 
 
