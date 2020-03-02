@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='great_components',
-    version='35.10.0',
+    version='1.0.0',
     url='https://github.com/uktrade/great-components',
     license='MIT',
     author='DIT',
