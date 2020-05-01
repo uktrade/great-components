@@ -35,14 +35,15 @@ def build_anchor_id(element, suffix):
 
 
 def get_label(element):
-    return re.sub(r'^.* \- ', '', element.contents[0])
+    return re.sub(r'^.* \- ', '', element.text)
 
 
 @register.filter
 def add_anchors(value, suffix=''):
     soup = BeautifulSoup(value, 'html.parser')
     for element in soup.findAll('h2'):
-        element.attrs['id'] = build_anchor_id(element, suffix)
+        if element.text:
+            element.attrs['id'] = build_anchor_id(element, suffix)
     return mark_safe(str(soup))
 
 
@@ -50,7 +51,8 @@ def add_anchors(value, suffix=''):
 def add_anchors_to_all_headings(value, suffix=''):
     soup = BeautifulSoup(value, 'html.parser')
     for element in soup.find_all(re.compile('^h[1-6]$')):
-        element.attrs['id'] = build_anchor_id(element, suffix)
+        if element.text:
+            element.attrs['id'] = build_anchor_id(element, suffix)
     return mark_safe(str(soup))
 
 

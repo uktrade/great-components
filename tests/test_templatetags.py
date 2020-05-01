@@ -48,6 +48,30 @@ def test_add_anchors():
     )
 
 
+def test_add_anchors_empty():
+    template = Template(
+        '{% load add_anchors from great_components %}'
+        '{{ html|add_anchors:"-section" }}'
+    )
+
+    context = Context({
+        'html': '<br/>'
+                '<h2><b></b></h2>'
+                '<h2><b>Some title</b></h2>'
+                '<h2></h2>'
+                '<br/>'
+    })
+    html = template.render(context)
+
+    assert html == (
+        '<br/>'
+        '<h2><b></b></h2>'
+        '<h2 id="some-title-section"><b>Some title</b></h2>'
+        '<h2></h2>'
+        '<br/>'
+    )
+
+
 def test_add_href_target(rf):
     request = rf.get('/')
     request.META['HTTP_HOST'] = 'example.com'
@@ -120,6 +144,30 @@ def test_add_anchors_to_all_headings():
         '<h1 id="title-one-section">Title one</h1>'
         '<h2 id="title-two-section">Title two</h2>'
         '<h3 id="title-with-punctuation-section">Title: with punctuation!</h3>'
+        '<br/>'
+    )
+
+
+def test_add_anchors_to_all_headings_empty():
+    template = Template(
+        '{% load add_anchors_to_all_headings from great_components %}'
+        '{{ html|add_anchors_to_all_headings:"-section" }}'
+    )
+
+    context = Context({
+        'html': '<br/>'
+                '<h1><b></b></h1>'
+                '<h2></h2>'
+                '<h3>Title</h3>'
+                '<br/>'
+    })
+    html = template.render(context)
+
+    assert html == (
+        '<br/>'
+        '<h1><b></b></h1>'
+        '<h2></h2>'
+        '<h3 id="title-section">Title</h3>'
         '<br/>'
     )
 
