@@ -104,8 +104,8 @@ def test_ga360_mixin_for_logged_in_user_old_style(rf):
     request = rf.get('/')
     request.sso_user = Mock(
         hashed_uuid='a9a8f733-6bbb-4dca-a682-e8a0a18439e9',
-        spec_set=['hashed_uuid', 'is_staff'],
-        is_staff=False,
+        spec_set=['hashed_uuid', 'is_superuser'],
+        is_superuser=False,
     )
 
     with translation.override('de'):
@@ -140,7 +140,7 @@ def test_ga360_mixin_for_logged_in_user(rf):
         id=1,
         hashed_uuid='a9a8f733-6bbb-4dca-a682-e8a0a18439e9',
         is_authenticated=True,
-        is_staff=False,
+        is_superuser=False,
     )
 
     with translation.override('de'):
@@ -157,7 +157,7 @@ def test_ga360_mixin_for_logged_in_user(rf):
     assert ga360_data['site_language'] == 'de'
 
 
-def test_ga360_mixin_for_staff_user_old_style(rf):
+def test_ga360_mixin_for_admin_user_old_style(rf):
     class TestView(mixins.GA360Mixin, TemplateView):
         template_name = 'great_components/base.html'
 
@@ -174,7 +174,7 @@ def test_ga360_mixin_for_staff_user_old_style(rf):
     request.user = Mock(
         id=1,
         is_authenticated=True,
-        is_staff=True
+        is_superuser=True
     )
 
     with translation.override('de'):
