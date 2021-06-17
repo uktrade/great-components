@@ -75,6 +75,6 @@ class GA360Mixin:
         user = helpers.get_user(self.request)
         is_logged_in = helpers.get_is_authenticated(self.request)
         self.ga360_payload['login_status'] = is_logged_in
-        self.ga360_payload['user_id'] = user.hashed_uuid if is_logged_in else None
+        self.ga360_payload['user_id'] = user.hashed_uuid if (is_logged_in and not user.is_staff) else None
         self.ga360_payload['site_language'] = translation.get_language()
         return super().get_context_data(ga360=self.ga360_payload, *args, **kwargs)

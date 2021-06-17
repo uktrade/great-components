@@ -104,7 +104,8 @@ def test_ga360_mixin_for_logged_in_user_old_style(rf):
     request = rf.get('/')
     request.sso_user = Mock(
         hashed_uuid='a9a8f733-6bbb-4dca-a682-e8a0a18439e9',
-        spec_set=['hashed_uuid'],
+        spec_set=['hashed_uuid', 'is_staff'],
+        is_staff=False,
     )
 
     with translation.override('de'):
@@ -138,7 +139,8 @@ def test_ga360_mixin_for_logged_in_user(rf):
     request.user = Mock(
         id=1,
         hashed_uuid='a9a8f733-6bbb-4dca-a682-e8a0a18439e9',
-        is_authenticated=True
+        is_authenticated=True,
+        is_staff=False,
     )
 
     with translation.override('de'):
@@ -153,6 +155,36 @@ def test_ga360_mixin_for_logged_in_user(rf):
     assert ga360_data['user_id'] == 'a9a8f733-6bbb-4dca-a682-e8a0a18439e9'
     assert ga360_data['login_status'] is True
     assert ga360_data['site_language'] == 'de'
+
+
+def test_ga360_mixin_for_staff_user_old_style(rf):
+    class TestView(mixins.GA360Mixin, TemplateView):
+        template_name = 'great_components/base.html'
+
+        def __init__(self):
+            super().__init__()
+            self.set_ga360_payload(
+                page_id='TestPageId',
+                business_unit='Test App',
+                site_section='Test Section',
+                site_subsection='Test Page'
+            )
+
+    request = rf.get('/')
+    request.user = Mock(
+        id=1,
+        is_authenticated=True,
+        is_staff=True
+    )
+
+    with translation.override('de'):
+        response = TestView.as_view()(request)
+
+    assert response.context_data['ga360']
+    ga360_data = response.context_data['ga360']
+    assert ga360_data['user_id'] is None
+    assert ga360_data['login_status'] is True
+
 
 
 def test_ga360_mixin_for_anonymous_user_old_style(rf):
