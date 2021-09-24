@@ -1,4 +1,8 @@
 # Changelog
+## 1.1.3
+[Full Changelog](https://github.com/uktrade/great-components/pull/5)
+### Implemented enhancements
+- Upgrade directory-components
 
 ## 1.1.2
 [Full Changelog](https://github.com/uktrade/great-components/pull/4)
