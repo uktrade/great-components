@@ -11,7 +11,7 @@ from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
 from django.utils.text import slugify
-from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.templatetags.static import static
 
 from great_components.mixins import EnableTranslationsMixin
 
