@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.0
+[Full Changelog](https://github.com/uktrade/great-components/pull/9)
+### Implemented enhancements
+- Upgrade to be compatible with Django 3.2.15
+
 ## 2.0.0
 [Full Changelog](https://github.com/uktrade/great-components/pull/7)
 ### Implemented enhancements
