@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.2
+[Full Changelog](https://github.com/uktrade/great-components/pull/10)
+### Implemented enhancements
+- KLS-392 - Bump Django from 3.2.16 to < 4.0.0
+
 ## 2.1.1
 [Full Changelog](https://github.com/uktrade/great-components/pull/10)
 ### Implemented enhancements
