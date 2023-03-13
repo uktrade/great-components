@@ -1,7 +1,12 @@
 # Changelog
 
+## 2.1.3
+[Full Changelog](https://github.com/uktrade/great-components/pull/12)
+### Implemented enhancements
+- IOO-436 - Change directory constants version to <=23.0.0
+
 ## 2.1.2
-[Full Changelog](https://github.com/uktrade/great-components/pull/10)
+[Full Changelog](https://github.com/uktrade/great-components/pull/11)
 ### Implemented enhancements
 - KLS-392 - Bump Django from 3.2.16 to < 4.0.0
 
