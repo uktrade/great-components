@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2.0
+### Implemented enhancements
+[Full Changelog] (https://github.com/uktrade/great-components/pull/???)
+- KLS-549 - Bump JQuery from 3.3.0 to 3.5.0
+
 ## 2.1.2
 [Full Changelog](https://github.com/uktrade/great-components/pull/10)
 ### Implemented enhancements
