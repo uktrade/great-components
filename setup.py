@@ -55,7 +55,8 @@ setup(
             "termcolor==2.3.0",
             "toml==0.10.2",
             "tomli==2.0.1",
-            "urllib3==1.26.15",   
+            "urllib3==1.26.15",
+            "codecov",   
         ],
         "demo": [
             "lorem==0.1.1",
