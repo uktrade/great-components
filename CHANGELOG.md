@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2.0
+### Implemented enhancements
+[Full Changelog] (https://github.com/uktrade/great-components/pull/14)
+- KLS-569 - Bump Django from 3.5.0 to 4.2.1
+
 ## 2.1.3
 ### Implemented enhancements
 [Full Changelog] (https://github.com/uktrade/great-components/pull/13)
