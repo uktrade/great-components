@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2.1
+### Implemented enhancements
+[Full Changelog] ()
+- KLS-569 - Bump directory_constants to 23.1.0
+
 ## 2.2.0
 ### Implemented enhancements
 [Full Changelog] (https://github.com/uktrade/great-components/pull/14)
