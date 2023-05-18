@@ -14,7 +14,7 @@ setup(
     long_description_content_type="text/markdown",
     include_package_data=True,
     install_requires=[
-        "django>=3.2.18,<=4.2.1",
+        "django>=3.2.18,<=3.2.19",
         "beautifulsoup4>=4.6.0,<5.0.0",
         "directory-constants>=20.3.0,<23.0.0",
         "jsonschema>=3.0.1,<4.0.0",
