@@ -2,7 +2,7 @@
 
 ## 2.2.1
 ### Implemented enhancements
-[Full Changelog] ()
+[Full Changelog] (https://github.com/uktrade/great-components/pull/18)
 - KLS-569 - Downgrade Django from 4.2.1 to 3.2.19
 
 ## 2.2.0
