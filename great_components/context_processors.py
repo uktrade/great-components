@@ -66,7 +66,7 @@ def header_footer_processor(request):
     }
     header_footer_urls = {
         'about': urls.domestic.ABOUT,
-        'dit': urls.domestic.DIT,
+        'dit': urls.domestic.DBT,
         'get_finance': urls.domestic.GET_FINANCE,
         'ukef': urls.domestic.GET_FINANCE,
         'performance': urls.domestic.PERFORMANCE_DASHBOARD,
