@@ -194,7 +194,7 @@ def test_country_middleware_sets_country_cookie(
 
     def get_response(request):
         return response
-    
+
     request.session = client.session
     instance = middleware.CountryMiddleware(get_response)
 
@@ -212,7 +212,7 @@ def test_country_middleware_sets_default_cookie_name(client, rf):
 
     def get_response(request):
         return response
-    
+
     request.session = client.session
     instance = middleware.CountryMiddleware(get_response)
 
@@ -246,7 +246,7 @@ def test_county_middleware_sets_secure(client, rf):
 
     def get_response(request):
         return response
-    
+
     request.session = client.session
     instance = middleware.CountryMiddleware(get_response)
 
@@ -264,7 +264,7 @@ def test_county_middleware_sets_not_secure_if_flag_is_off(client, rf, settings):
 
     def get_response(request):
         return response
-    
+
     request.session = client.session
     instance = middleware.CountryMiddleware(get_response)
 
@@ -312,7 +312,7 @@ def test_locale_persist_middleware_handles_no_explicit_language(client, rf):
 
     def get_response(request):
         return response
-    
+
     request.session = client.session
     instance = middleware.PersistLocaleMiddleware(get_response)
 
@@ -330,7 +330,7 @@ def test_locale_persist_middleware_persists_explicit_language(client, rf):
 
     def get_response(request):
         return response
-    
+
     request.session = client.session
     instance = middleware.PersistLocaleMiddleware(get_response)
 
@@ -349,7 +349,7 @@ def test_locale_persist_middleware_sets_cross_domain(client, rf, settings):
 
     def get_response(request):
         return response
-    
+
     request.session = client.session
     instance = middleware.PersistLocaleMiddleware(get_response)
 
@@ -370,7 +370,7 @@ def test_locale_persist_middleware_deletes_deprecated_cookie(
 
     def get_response(request):
         return response
-    
+
     request.session = client.session
     instance = middleware.PersistLocaleMiddleware(get_response)
 
@@ -388,7 +388,7 @@ def test_locale_persist_middleware_sets_http_only(client, rf, settings):
 
     def get_response(request):
         return response
-    
+
     request.session = client.session
     instance = middleware.PersistLocaleMiddleware(get_response)
 
@@ -405,7 +405,7 @@ def test_locale_persist_middleware_sets_secure(client, rf, settings):
 
     def get_response(request):
         return response
-    
+
     request.session = client.session
     instance = middleware.PersistLocaleMiddleware(get_response)
 
@@ -422,7 +422,7 @@ def test_locale_persist_middleware_sets_not_secure_if_flag_is_off(client, rf, se
 
     def get_response(request):
         return response
-    
+
     request.session = client.session
     instance = middleware.PersistLocaleMiddleware(get_response)
 
@@ -502,7 +502,7 @@ def test_check_ga_360_tags_allows_valid_response():
 
     def get_response(request):
         return response
-    
+
     instance = middleware.CheckGATags(get_response)
 
     processed_response = instance.process_response({}, response)
@@ -516,7 +516,7 @@ def test_check_ga_360_allows_redirects():
 
     def get_response(request):
         return response
-    
+
     instance = middleware.CheckGATags(get_response)
 
     processed_response = instance.process_response({}, response)
@@ -531,7 +531,7 @@ def test_check_ga_360_allows_responses_marked_as_skip_ga360():
 
     def get_response(request):
         return response
-    
+
     instance = middleware.CheckGATags(get_response)
 
     processed_response = instance.process_response({}, response)
@@ -560,7 +560,7 @@ def test_check_ga_360_rejects_responses_without_a_ga360_payload():
 
     def get_response(request):
         return response
-    
+
     instance = middleware.CheckGATags(get_response)
 
     with pytest.raises(GADataMissingException) as exception:
@@ -576,7 +576,7 @@ def test_check_ga_360_rejects_responses_missing_a_required_field():
 
     def get_response(request):
         return response
-    
+
     instance = middleware.CheckGATags(get_response)
 
     with pytest.raises(GADataMissingException) as exception:
@@ -592,7 +592,7 @@ def test_check_ga_360_rejects_responses_where_a_required_field_is_null():
 
     def get_response(request):
         return response
-    
+
     instance = middleware.CheckGATags(get_response)
 
     with pytest.raises(GADataMissingException) as exception:
@@ -607,7 +607,7 @@ def test_check_ga_360_allows_null_values_for_nullable_fields():
 
     def get_response(request):
         return response
-    
+
     instance = middleware.CheckGATags(get_response)
 
     processed_response = instance.process_response({}, response)

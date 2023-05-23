@@ -42,7 +42,7 @@ urlpatterns = [
     ),
 
     # FORMS
-    url(
+    re_path(
         r'^forms/$',
         views.BasePageView.as_view(),
         {
