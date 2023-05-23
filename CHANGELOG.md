@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.3.0
+### Implemented enhancements
+[Full Changelog] ()
+- KLS-622 - Upgrade Django to 4.2
+
 ## 2.2.1
 ### Implemented enhancements
 [Full Changelog] (https://github.com/uktrade/great-components/pull/18)

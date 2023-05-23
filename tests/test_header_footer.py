@@ -103,7 +103,7 @@ def test_urls_exist_in_domestic_header(url, settings):
     urls.domestic.TERMS_AND_CONDITIONS,
     urls.domestic.ACCESSIBILITY,
     urls.domestic.PERFORMANCE_DASHBOARD,
-    urls.domestic.DBT,
+    urls.domestic.DIT,
 ])
 def test_urls_exist_in_domestic_footer(url, settings):
     context = {
@@ -122,7 +122,7 @@ def test_urls_exist_in_domestic_footer(url, settings):
     urls.domestic.PRIVACY_AND_COOKIES,
     urls.domestic.TERMS_AND_CONDITIONS,
     urls.domestic.ACCESSIBILITY,
-    urls.domestic.DBT,
+    urls.domestic.DIT,
 ])
 def test_urls_exist_in_international_footer(url, settings):
     context = {
@@ -199,7 +199,7 @@ def test_domestic_header_ids_match_urls_and_text(
     (
         'Department for International Trade on GOV.UK',
         'footer-dit',
-        urls.domestic.DBT
+        urls.domestic.DIT
     ),
     (
         'Go to the page for international businesses',
@@ -250,7 +250,7 @@ def test_domestic_footer_ids_match_urls_and_text(
     (
         'Department for International Trade on GOV.UK',
         'footer-dit',
-        urls.domestic.DBT
+        urls.domestic.DIT
     ),
     (
         'Go to the page for UK businesses',

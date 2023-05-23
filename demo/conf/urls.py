@@ -1,9 +1,9 @@
-from django.conf.urls import url
+from django.urls import re_path
 
 from demo import views
 
 urlpatterns = [
-    url(
+    re_path(
         r'^$',
         views.IndexPageView.as_view(),
         {'template_name': 'demo/index.html'},
@@ -11,7 +11,7 @@ urlpatterns = [
     ),
 
     # PAGES
-    url(
+    re_path(
         r'^pages/$',
         views.BasePageView.as_view(),
         {
@@ -20,7 +20,7 @@ urlpatterns = [
         },
         name='pages',
     ),
-    url(
+    re_path(
         r'^pages/404/$',
         views.BasePageView.as_view(),
         {
@@ -30,7 +30,7 @@ urlpatterns = [
         },
         name='404',
     ),
-    url(
+    re_path(
         r'^pages/500/$',
         views.BasePageView.as_view(),
         {
@@ -51,7 +51,7 @@ urlpatterns = [
         },
         name='forms',
     ),
-    url(
+    re_path(
         r'^forms/widgets/$',
         views.DemoFormView.as_view(),
         {
@@ -61,7 +61,7 @@ urlpatterns = [
         },
         name='widgets',
     ),
-    url(
+    re_path(
         r'^forms/errors/$',
         views.DemoFormErrorsView.as_view(),
         {
@@ -73,7 +73,7 @@ urlpatterns = [
     ),
 
     # ATOMS
-    url(
+    re_path(
         r'^atoms/$',
         views.BasePageView.as_view(),
         {
@@ -82,7 +82,7 @@ urlpatterns = [
         },
         name='atoms',
     ),
-    url(
+    re_path(
         r'^atoms/typography/$',
         views.BasePageView.as_view(),
         {
@@ -92,7 +92,7 @@ urlpatterns = [
         },
         name='typography',
     ),
-    url(
+    re_path(
         r'^atoms/list/$',
         views.BasePageView.as_view(),
         {
@@ -102,7 +102,7 @@ urlpatterns = [
         },
         name='list',
     ),
-    url(
+    re_path(
         r'^atoms/table/$',
         views.BasePageView.as_view(),
         {
@@ -112,7 +112,7 @@ urlpatterns = [
         },
         name='table',
     ),
-    url(
+    re_path(
         r'^atoms/colour/$',
         views.BasePageView.as_view(),
         {
@@ -122,7 +122,7 @@ urlpatterns = [
         },
         name='colour',
     ),
-    url(
+    re_path(
         r'^atoms/grid/$',
         views.BasePageView.as_view(),
         {
@@ -132,7 +132,7 @@ urlpatterns = [
         },
         name='grid',
     ),
-    url(
+    re_path(
         r'^atoms/spacing/$',
         views.BasePageView.as_view(),
         {
@@ -142,7 +142,7 @@ urlpatterns = [
         },
         name='spacing',
     ),
-    url(
+    re_path(
         r'^atoms/responsive/$',
         views.BasePageView.as_view(),
         {
@@ -152,7 +152,7 @@ urlpatterns = [
         },
         name='responsive',
     ),
-    url(
+    re_path(
         r'^atoms/visually-hidden/$',
         views.BasePageView.as_view(),
         {
@@ -162,7 +162,7 @@ urlpatterns = [
         },
         name='visually-hidden',
     ),
-    url(
+    re_path(
         r'^atoms/underline/$',
         views.BasePageView.as_view(),
         {
@@ -172,7 +172,7 @@ urlpatterns = [
         },
         name='underline',
     ),
-    url(
+    re_path(
         r'^atoms/button/$',
         views.BasePageView.as_view(),
         {
@@ -184,7 +184,7 @@ urlpatterns = [
     ),
 
     # MOLECULES
-    url(
+    re_path(
         r'^molecules/$',
         views.BasePageView.as_view(),
         {
@@ -193,7 +193,7 @@ urlpatterns = [
         },
         name='molecules',
     ),
-    url(
+    re_path(
         r'^molecules/details/$',
         views.DetailsView.as_view(),
         {
@@ -203,7 +203,7 @@ urlpatterns = [
         },
         name='details',
     ),
-    url(
+    re_path(
         r'^molecules/panel/$',
         views.DetailsView.as_view(),
         {
@@ -213,7 +213,7 @@ urlpatterns = [
         },
         name='panel',
     ),
-    url(
+    re_path(
         r'^molecules/banner/$',
         views.BasePageView.as_view(),
         {
@@ -223,7 +223,7 @@ urlpatterns = [
         },
         name='banner',
     ),
-    url(
+    re_path(
         r'^molecules/message-box/$',
         views.BasePageView.as_view(),
         {
@@ -233,7 +233,7 @@ urlpatterns = [
         },
         name='message-box',
     ),
-    url(
+    re_path(
         r'^molecules/breadcrumbs/$',
         views.BreadcrumbsDemoPageView.as_view(),
         {
@@ -243,7 +243,7 @@ urlpatterns = [
         },
         name='breadcrumbs',
     ),
-    url(
+    re_path(
         r'^molecules/content-list/$',
         views.DetailsView.as_view(),
         {
@@ -253,7 +253,7 @@ urlpatterns = [
         },
         name='content-list',
     ),
-    url(
+    re_path(
         r'^molecules/error-reporting/$',
         views.DetailsView.as_view(),
         {
@@ -263,7 +263,7 @@ urlpatterns = [
         },
         name='error-reporting',
     ),
-    url(
+    re_path(
         r'^molecules/fact-sheet/$',
         views.BasePageView.as_view(),
         {
@@ -275,7 +275,7 @@ urlpatterns = [
     ),
 
     # COMPONENTS
-    url(
+    re_path(
         r'^components/$',
         views.BasePageView.as_view(),
         {
@@ -284,7 +284,7 @@ urlpatterns = [
         },
         name='components',
     ),
-    url(
+    re_path(
         r'^components/card/$',
         views.BasePageView.as_view(),
         {
@@ -294,7 +294,7 @@ urlpatterns = [
         },
         name='card',
     ),
-    url(
+    re_path(
         r'^components/hero/$',
         views.BasePageView.as_view(),
         {
@@ -304,7 +304,7 @@ urlpatterns = [
         },
         name='hero',
     ),
-    url(
+    re_path(
         r'^components/statistics/$',
         views.DemoStatsView.as_view(),
         {
@@ -314,7 +314,7 @@ urlpatterns = [
         },
         name='statistics',
     ),
-    url(
+    re_path(
         r'^components/pagination/$',
         views.DemoPaginationView.as_view(),
         {
@@ -324,7 +324,7 @@ urlpatterns = [
         },
         name='pagination',
     ),
-    url(
+    re_path(
         r'^components/search/$',
         views.SearchPageComponentsDemoPageView.as_view(),
         {
@@ -334,7 +334,7 @@ urlpatterns = [
         },
         name='search',
     ),
-    url(
+    re_path(
         r'^components/feature-list/$',
         views.FeatureListView.as_view(),
         {
@@ -344,7 +344,7 @@ urlpatterns = [
         },
         name='feature-list',
     ),
-    url(
+    re_path(
         r'^components/case-study/$',
         views.FeatureListView.as_view(),
         {
@@ -356,7 +356,7 @@ urlpatterns = [
     ),
 
     # HEADER & FOOTER
-    url(
+    re_path(
         r'^header-footer/$',
         views.BasePageView.as_view(),
         {
@@ -365,26 +365,26 @@ urlpatterns = [
         },
         name='header-footer',
     ),
-    url(
+    re_path(
         r'^header-footer/domestic/$',
         views.DomesticHeaderFooterView.as_view(),
         {'template_name': 'demo/header-footer/domestic.html'},
         name='great-domestic-header-footer',
     ),
-    url(
+    re_path(
         r'^header-footer/international/$',
         views.InternationalHeaderView.as_view(),
         {'template_name': 'demo/header-footer/international.html'},
         name='great-international-header-footer',
     ),
-    url(
+    re_path(
         r'^header-footer/invest/$',
         views.InvestHeaderView.as_view(),
         {'template_name': 'demo/header-footer/invest.html'},
         name='invest-header',
     ),
 
-    url(
+    re_path(
         r'^analytics/$',
         views.BasePageView.as_view(),
         {
@@ -393,7 +393,7 @@ urlpatterns = [
         },
         name='analytics',
     ),
-    url(
+    re_path(
         r'^elements/$',
         views.BasePageView.as_view(),
         {
@@ -402,7 +402,7 @@ urlpatterns = [
         },
         name='elements',
     ),
-    url(
+    re_path(
         r'^featured-articles/$',
         views.FeaturedArticlesView.as_view(),
         {
@@ -411,7 +411,7 @@ urlpatterns = [
         },
         name='featured-articles',
     ),
-    url(
+    re_path(
         r'^google-tag-manager/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/google-tag-manager.html'},

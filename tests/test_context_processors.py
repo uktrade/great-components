@@ -137,7 +137,7 @@ def test_header_footer_processor(settings):
         'manage_legal_and_ethical_compliance': 'https://exred.com/advice/manage-legal-and-ethical-compliance/',
         'prepare_for_export_procedures_and_logistics': 'https://exred.com/advice/prepare-for-export-procedures-and-logistics/',  # noqa
         'about': 'https://exred.com/about/',
-        'dit': urls.domestic.DBT,
+        'dit': urls.domestic.DIT,
         'advice': 'https://exred.com/advice/',
         'markets': 'https://exred.com/markets/',
         'search': 'https://exred.com/search/',
