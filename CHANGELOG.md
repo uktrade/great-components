@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.3.1
+### Implemented enhancements
+[Full Changelog] ()
+- KLS-1009 - Upgrade JQuery to 3.5.0
+
 ## 2.3.0
 ### Implemented enhancements
 [Full Changelog] (https://github.com/uktrade/great-components/pull/20)
