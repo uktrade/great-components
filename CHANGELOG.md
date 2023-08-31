@@ -4,7 +4,7 @@
 ### Implemented enhancements
 [Full Changelog] (https://github.com/uktrade/great-components/pull/22)
 - KLS-019 - Added Analytics to UKEA signin page.
-- 
+
 ## 2.3.0
 ### Implemented enhancements
 [Full Changelog] (https://github.com/uktrade/great-components/pull/20)
