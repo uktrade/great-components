@@ -64,12 +64,14 @@ class GA360Mixin:
         self.ga360_payload = {}
         super().__init__(*args, **kwargs)
 
-    def set_ga360_payload(self, page_id, business_unit, site_section, site_subsection=None):
+    def set_ga360_payload(self, page_id, business_unit, site_section, site_subsection=None, referer_url=None):
         self.ga360_payload['page_id'] = page_id
         self.ga360_payload['business_unit'] = business_unit
         self.ga360_payload['site_section'] = site_section
         if site_subsection:
             self.ga360_payload['site_subsection'] = site_subsection
+        if referer_url:
+            self.ga360_payload['referer_url'] = referer_url
 
     def get_context_data(self, *args, **kwargs):
         user = helpers.get_user(self.request)
