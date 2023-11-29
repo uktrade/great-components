@@ -99,7 +99,7 @@ def test_ga360_mixin_for_logged_in_user_old_style(rf):
                 business_unit='Test App',
                 site_section='Test Section',
                 site_subsection='Test Page',
-                referer_url='http:anyurl.com'
+                referer_url='http://anyurl.com'
             )
 
     request = rf.get('/')
@@ -118,7 +118,7 @@ def test_ga360_mixin_for_logged_in_user_old_style(rf):
     assert ga360_data['business_unit'] == 'Test App'
     assert ga360_data['site_section'] == 'Test Section'
     assert ga360_data['site_subsection'] == 'Test Page'
-    assert ga360_data['referer_url'] == 'http:anyurl.com'
+    assert ga360_data['referer_url'] == 'http://anyurl.com'
     assert ga360_data['user_id'] == 'a9a8f733-6bbb-4dca-a682-e8a0a18439e9'
     assert ga360_data['login_status'] is True
     assert ga360_data['site_language'] == 'de'
@@ -135,7 +135,7 @@ def test_ga360_mixin_for_logged_in_user(rf):
                 business_unit='Test App',
                 site_section='Test Section',
                 site_subsection='Test Page',
-                referer_url='http:anyurl.com'
+                referer_url='http://anyurl.com'
             )
 
     request = rf.get('/')
@@ -155,7 +155,7 @@ def test_ga360_mixin_for_logged_in_user(rf):
     assert ga360_data['business_unit'] == 'Test App'
     assert ga360_data['site_section'] == 'Test Section'
     assert ga360_data['site_subsection'] == 'Test Page'
-    assert ga360_data['referer_url'] == 'http:anyurl.com'
+    assert ga360_data['referer_url'] == 'http://anyurl.com'
     assert ga360_data['user_id'] == 'a9a8f733-6bbb-4dca-a682-e8a0a18439e9'
     assert ga360_data['login_status'] is True
     assert ga360_data['site_language'] == 'de'
@@ -172,7 +172,7 @@ def test_ga360_mixin_for_admin_user_old_style(rf):
                 business_unit='Test App',
                 site_section='Test Section',
                 site_subsection='Test Page',
-                referer_url='http:anyurl.com'
+                referer_url='http://anyurl.com'
             )
 
     request = rf.get('/')
@@ -202,7 +202,7 @@ def test_ga360_mixin_for_anonymous_user_old_style(rf):
                 business_unit='Test App',
                 site_section='Test Section',
                 site_subsection='Test Page',
-                referer_url='http:anyurl.com'
+                referer_url='http://anyurl.com'
             )
 
     request = rf.get('/')
@@ -228,7 +228,7 @@ def test_ga360_mixin_for_anonymous_user(rf):
                 business_unit='Test App',
                 site_section='Test Section',
                 site_subsection='Test Page',
-                referer_url='http:anyurl.com'
+                referer_url='http://anyurl.com'
             )
 
     request = rf.get('/')
