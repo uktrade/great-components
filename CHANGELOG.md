@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.5.2
+### Implemented enhancements
+[Full Changelog] (https://github.com/uktrade/great-components/pull/26) (23-01-2024)
+- KLS-1825 - Set Django minimum to 4.2.7
+
 ## 2.3.0
 ### Implemented enhancements
 [Full Changelog] (https://github.com/uktrade/great-components/pull/20)
