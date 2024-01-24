@@ -2,7 +2,7 @@
 
 ## 2.5.3
 ### Implemented enhancements
-[Full Changelog] () (24-01-2024)
+[Full Changelog] (https://github.com/uktrade/great-components/pull/27) (24-01-2024)
 - KLS-1882 - Dont add the current page to the Breadcrumbs class
 
 ## 2.5.2
