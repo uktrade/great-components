@@ -679,10 +679,10 @@ def test_breadcrumbs():
         '<li><a href="/foo"></a></li>'
         '<li><a href="/bar"></a></li>'
         '<li><a href="/baz"></a></li>'
-        '<li aria-current="page"><span>Current Page</span></li>'
         '</ol>'
         '</nav>'
     )
+    
     assert rendered_html.replace('\n', '') == expected_html
 
 
@@ -710,7 +710,6 @@ def test_breadcrumbs_context_variables():
         '<li><a href="/foo">Foo</a></li>'
         '<li><a href="/bar">Bar</a></li>'
         '<li><a href="/baz">Baz</a></li>'
-        '<li aria-current="page"><span>Current Page</span></li>'
         '</ol>'
         '</nav>'
     )

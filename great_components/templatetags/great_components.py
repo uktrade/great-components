@@ -293,10 +293,11 @@ class Breadcrumbs(template.Node):
             output_soup.find('ol').append(element)
 
         # adding the current page
-        current = template.Variable(self.bit).resolve(context)
-        output_soup.find('ol').append(
-            f'<li aria-current="page"><span>{current}</span></li>'
-        )
+        # DEU 24/1/2024 KLS-1882 - dont add current page to Breadcrumb
+        # current = template.Variable(self.bit).resolve(context)
+        # output_soup.find('ol').append(
+        #     f'<li aria-current="page"><span>{current}</span></li>'
+        # )
         return output_soup.decode(formatter=None)
 
 
