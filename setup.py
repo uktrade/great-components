@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="great_components",
-    version="2.5.2",
+    version="2.5.3",
     url="https://github.com/uktrade/great-components",
     license="MIT",
     author="DIT",
@@ -14,9 +14,9 @@ setup(
     long_description_content_type="text/markdown",
     include_package_data=True,
     install_requires=[
-        "django>=4.2.7,<4.8",
+        "django>=4.2.7,<4.2.8",
         "beautifulsoup4>=4.6.0,<5.0.0",
-        "directory-constants>=24.1.0,<=25.0",
+        "directory-constants>=24.1.0,<25.0",
         "jsonschema>=3.0.1,<4.0.0",
     ],
     extras_require={
