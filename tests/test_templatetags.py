@@ -682,7 +682,6 @@ def test_breadcrumbs():
         '</ol>'
         '</nav>'
     )
-    
     assert rendered_html.replace('\n', '') == expected_html
 
 
