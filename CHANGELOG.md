@@ -2,7 +2,7 @@
 
 ## 2.6.2
 ### Implemented enhancements
-[Full Changelog] () (19-02-2024)
+[Full Changelog] (https://github.com/uktrade/great-components/pull/31) (19-02-2024)
 - KLS-1948 - Bump Django to min 4.2.10
 
 ## 2.5.3
