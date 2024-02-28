@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.6.3
+### Implemented enhancements
+[Full Changelog] (https://github.com/uktrade/great-components/pull/32) (28-02-2024)
+- KLS-1995 - Update meta tags across great
+
 ## 2.6.2
 ### Implemented enhancements
 [Full Changelog] (https://github.com/uktrade/great-components/pull/31) (19-02-2024)
