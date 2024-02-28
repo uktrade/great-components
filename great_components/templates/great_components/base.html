@@ -18,10 +18,7 @@
         {% endblock %}
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>
-            {% block head_title %}{% endblock %}
-        </title>
-
+        
         {% block head_favicon %}
             <link href='{% static 'great_components/images/favicon-192x192.png' %}' rel='shortcut icon' type='image/png'>
             <!--[if IE]> <link rel="icon" href="{% static 'great_components/images/favicon.ico' %}" type="image/x-icon" /> <![endif]-->
@@ -78,10 +75,6 @@
         {% block head_other %}{% endblock %}
 
         {% block head_sharing_metadata %}
-            {% if request %}
-                <meta property="og:image" content="{% static_absolute 'great_components/images/opengraph-image.png' %}">
-                <meta property="og:url" content="{{ request.build_absolute_uri }}" />
-            {% endif %}
         {% endblock %}
     </head>
 
