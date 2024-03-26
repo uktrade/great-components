@@ -296,7 +296,7 @@ class Breadcrumbs(template.Node):
         output = output_soup.findAll('a')
         for anchor in output:
             anchor['tabindex'] = '-1'
-            
+
         return output_soup.decode(formatter=None)
 
 
