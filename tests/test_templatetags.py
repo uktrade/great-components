@@ -676,12 +676,13 @@ def test_breadcrumbs():
     expected_html = (
         '<nav aria-label="Breadcrumb" class="g-breadcrumbs">'
         '<ol>'
-        '<li><a href="/foo"></a></li>'
-        '<li><a href="/bar"></a></li>'
-        '<li><a href="/baz"></a></li>'
+        '<li><a href="/foo" tabindex="-1"></a></li>'
+        '<li><a href="/bar" tabindex="-1"></a></li>'
+        '<li><a href="/baz" tabindex="-1"></a></li>'
         '</ol>'
         '</nav>'
     )
+  
     assert rendered_html.replace('\n', '') == expected_html
 
 
@@ -706,9 +707,9 @@ def test_breadcrumbs_context_variables():
     expected_html = (
         '<nav aria-label="Breadcrumb" class="g-breadcrumbs">'
         '<ol>'
-        '<li><a href="/foo">Foo</a></li>'
-        '<li><a href="/bar">Bar</a></li>'
-        '<li><a href="/baz">Baz</a></li>'
+        '<li><a href="/foo" tabindex="-1">Foo</a></li>'
+        '<li><a href="/bar" tabindex="-1">Bar</a></li>'
+        '<li><a href="/baz" tabindex="-1">Baz</a></li>'
         '</ol>'
         '</nav>'
     )
