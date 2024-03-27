@@ -292,12 +292,11 @@ class Breadcrumbs(template.Node):
             element.append(link)
             output_soup.find('ol').append(element)
 
-        # adding the current page
-        # DEU 24/1/2024 KLS-1882 - dont add current page to Breadcrumb
-        # current = template.Variable(self.bit).resolve(context)
-        # output_soup.find('ol').append(
-        #     f'<li aria-current="page"><span>{current}</span></li>'
-        # )
+        # remove tabbing through breadcrumbs
+        output = output_soup.findAll('a')
+        for anchor in output:
+            anchor['tabindex'] = '-1'
+
         return output_soup.decode(formatter=None)
 
 

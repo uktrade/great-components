@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.6.4
+### Implemented enhancements
+[Full Changelog] (https://github.com/uktrade/great-components/pull/33) (26-03-2024)
+- GREATUK-87 - skip breadcrumbs when tabbing
+
 ## 2.6.3
 ### Implemented enhancements
 [Full Changelog] (https://github.com/uktrade/great-components/pull/32) (28-02-2024)

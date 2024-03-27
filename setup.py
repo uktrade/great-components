@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="great_components",
-    version="2.6.3",
+    version="2.6.4",
     url="https://github.com/uktrade/great-components",
     license="MIT",
     author="DIT",
@@ -56,7 +56,7 @@ setup(
             "toml==0.10.2",
             "tomli==2.0.1",
             "urllib3==1.26.15",
-            "codecov",   
+            "codecov",
         ],
         "demo": [
             "lorem==0.1.1",
