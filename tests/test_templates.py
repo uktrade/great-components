@@ -36,8 +36,13 @@ def test_google_tag_manager():
     assert expected_head in html
     assert expected_body in html
     # sanity check
-    assert 'www.googletagmanager.com' in expected_head
-    assert 'www.googletagmanager.com' in expected_body
+    gtm_hosts = [
+        'www.googletagmanager.com'
+    ]
+
+    for host in gtm_hosts:
+        assert host in expected_head
+        assert host in expected_body
 
 
 def test_google_tag_manager_env():
