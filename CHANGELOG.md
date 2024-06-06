@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.6.5
+### Implemented enhancements
+[Full Changelog] (https://github.com/uktrade/great-components/pull/34) (06-06-2024)
+- GREATUK-541: Fix codeql incomplete substring issue
+
 ## 2.6.4
 ### Implemented enhancements
 [Full Changelog] (https://github.com/uktrade/great-components/pull/33) (26-03-2024)
