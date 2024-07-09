@@ -216,4 +216,3 @@ def test_sentry_returns_expected_features(settings):
             'SENTRY_BROWSER_TRACES_SAMPLE_RATE': 30,
         }
     }
-
