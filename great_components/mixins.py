@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.utils import translation
+import requests
 from great_components import helpers, forms
+import uuid
 
 
 class EnableTranslationsMixin:
@@ -73,10 +75,37 @@ class GA360Mixin:
         if referer_url:
             self.ga360_payload['referer_url'] = referer_url
 
+    def __send_to_ga4(self):
+        requests.post(
+            settings.GA4_API_URL,
+            params={
+                'api_secret': settings.GA4_API_SECRET,
+                'measurement_id': settings.GA4_MEASUREMENT_ID,
+            },
+            json={
+                'client_id': str(uuid.uuid4()),
+                'events': [{
+                    'name': 'page_view',
+                    'params': {
+                        'page_id': self.ga360_payload.get('page_id'),
+                        'business_unit': self.ga360_payload.get('business_unit'),
+                        'site_section': self.ga360_payload.get('site_section'),
+                        'site_subsection': self.ga360_payload.get('site_subsection'),
+                        'referer_url': self.ga360_payload.get('referer_url'),
+                        'login_status': self.ga360_payload.get('login_status'),
+                        'user_id': self.ga360_payload.get('user_id'),
+                        'site_language': self.ga360_payload.get('site_language'),
+
+                    }
+                }],
+            },
+        )
+
     def get_context_data(self, *args, **kwargs):
         user = helpers.get_user(self.request)
         is_logged_in = helpers.get_is_authenticated(self.request)
         self.ga360_payload['login_status'] = is_logged_in
         self.ga360_payload['user_id'] = user.hashed_uuid if (is_logged_in and not user.is_superuser) else None
         self.ga360_payload['site_language'] = translation.get_language()
+        self.__send_to_ga4()
         return super().get_context_data(ga360=self.ga360_payload, *args, **kwargs)
