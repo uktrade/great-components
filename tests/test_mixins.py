@@ -1,10 +1,11 @@
-from unittest.mock import Mock
+from unittest.mock import Mock, patch, MagicMock
 
+from django.conf import settings
 from django.contrib.auth.models import AnonymousUser
 from django.utils import translation
 from django.views.generic import TemplateView
-
 from great_components import mixins
+from unittest.mock import ANY
 
 
 def test_language_display_mixin(rf, settings):
@@ -88,7 +89,13 @@ def test_cms_language_switcher_active_language_available(rf):
     assert context['form'].initial['lang'] == 'de'
 
 
-def test_ga360_mixin_for_logged_in_user_old_style(rf):
+@patch('great_components.mixins.requests.post')
+def test_ga360_mixin_for_logged_in_user_old_style(mock_post, rf):
+    settings.GA4_API_URL = 'http://test'
+    settings.GA4_API_SECRET = 'secret'
+    settings.GA4_MEASUREMENT_ID = '12345'
+    mock_post.return_value = MagicMock(status_code=200, json=lambda: {'success': True})
+
     class TestView(mixins.GA360Mixin, TemplateView):
         template_name = 'great_components/base.html'
 
@@ -122,9 +129,39 @@ def test_ga360_mixin_for_logged_in_user_old_style(rf):
     assert ga360_data['user_id'] == 'a9a8f733-6bbb-4dca-a682-e8a0a18439e9'
     assert ga360_data['login_status'] is True
     assert ga360_data['site_language'] == 'de'
+    mock_post.assert_called_with(
+        'http://test',
+        params={
+                'api_secret': 'secret',
+                'measurement_id': '12345',
+            },
+        json={
+                'client_id': ANY,
+                'events': [{
+                    'name': 'page_view',
+                    'params': {
+                        'page_id': 'TestPageId',
+                        'business_unit': 'Test App',
+                        'site_section': 'Test Section',
+                        'site_subsection': 'Test Page',
+                        'referer_url': 'http://anyurl.com',
+                        'login_status': True,
+                        'user_id': 'a9a8f733-6bbb-4dca-a682-e8a0a18439e9',
+                        'site_language': 'de',
+
+                    }
+                }],
+            },
+    )
 
 
-def test_ga360_mixin_for_logged_in_user(rf):
+@patch('great_components.mixins.requests.post')
+def test_ga360_mixin_for_logged_in_user(mock_post, rf):
+    settings.GA4_API_URL = 'http://test'
+    settings.GA4_API_SECRET = 'secret'
+    settings.GA4_MEASUREMENT_ID = '12345'
+    mock_post.return_value = MagicMock(status_code=200, json=lambda: {'success': True})
+
     class TestView(mixins.GA360Mixin, TemplateView):
         template_name = 'great_components/base.html'
 
@@ -159,9 +196,39 @@ def test_ga360_mixin_for_logged_in_user(rf):
     assert ga360_data['user_id'] == 'a9a8f733-6bbb-4dca-a682-e8a0a18439e9'
     assert ga360_data['login_status'] is True
     assert ga360_data['site_language'] == 'de'
+    mock_post.assert_called_with(
+        'http://test',
+        params={
+                'api_secret': 'secret',
+                'measurement_id': '12345',
+            },
+        json={
+                'client_id': ANY,
+                'events': [{
+                    'name': 'page_view',
+                    'params': {
+                        'page_id': 'TestPageId',
+                        'business_unit': 'Test App',
+                        'site_section': 'Test Section',
+                        'site_subsection': 'Test Page',
+                        'referer_url': 'http://anyurl.com',
+                        'login_status': True,
+                        'user_id': 'a9a8f733-6bbb-4dca-a682-e8a0a18439e9',
+                        'site_language': 'de',
+
+                    }
+                }],
+            },
+    )
 
 
-def test_ga360_mixin_for_admin_user_old_style(rf):
+@patch('great_components.mixins.requests.post')
+def test_ga360_mixin_for_admin_user_old_style(mock_post, rf):
+    settings.GA4_API_URL = 'http://test'
+    settings.GA4_API_SECRET = 'secret'
+    settings.GA4_MEASUREMENT_ID = '12345'
+    mock_post.return_value = MagicMock(status_code=200, json=lambda: {'success': True})
+
     class TestView(mixins.GA360Mixin, TemplateView):
         template_name = 'great_components/base.html'
 
@@ -189,9 +256,39 @@ def test_ga360_mixin_for_admin_user_old_style(rf):
     ga360_data = response.context_data['ga360']
     assert ga360_data['user_id'] is None
     assert ga360_data['login_status'] is True
+    mock_post.assert_called_with(
+        'http://test',
+        params={
+                'api_secret': 'secret',
+                'measurement_id': '12345',
+            },
+        json={
+                'client_id': ANY,
+                'events': [{
+                    'name': 'page_view',
+                    'params': {
+                        'page_id': 'TestPageId',
+                        'business_unit': 'Test App',
+                        'site_section': 'Test Section',
+                        'site_subsection': 'Test Page',
+                        'referer_url': 'http://anyurl.com',
+                        'login_status': True,
+                        'user_id': None,
+                        'site_language': 'de',
+
+                    }
+                }],
+            },
+    )
 
 
-def test_ga360_mixin_for_anonymous_user_old_style(rf):
+@patch('great_components.mixins.requests.post')
+def test_ga360_mixin_for_anonymous_user_old_style(mock_post, rf):
+    settings.GA4_API_URL = 'http://test'
+    settings.GA4_API_SECRET = 'secret'
+    settings.GA4_MEASUREMENT_ID = '12345'
+    mock_post.return_value = MagicMock(status_code=200, json=lambda: {'success': True})
+
     class TestView(mixins.GA360Mixin, TemplateView):
         template_name = 'great_components/base.html'
 
@@ -215,9 +312,39 @@ def test_ga360_mixin_for_anonymous_user_old_style(rf):
     ga360_data = response.context_data['ga360']
     assert ga360_data['user_id'] is None
     assert ga360_data['login_status'] is False
+    mock_post.assert_called_with(
+        'http://test',
+        params={
+                'api_secret': 'secret',
+                'measurement_id': '12345',
+            },
+        json={
+                'client_id': ANY,
+                'events': [{
+                    'name': 'page_view',
+                    'params': {
+                        'page_id': 'TestPageId',
+                        'business_unit': 'Test App',
+                        'site_section': 'Test Section',
+                        'site_subsection': 'Test Page',
+                        'referer_url': 'http://anyurl.com',
+                        'login_status': False,
+                        'user_id': None,
+                        'site_language': 'de',
+
+                    }
+                }],
+            },
+    )
 
 
-def test_ga360_mixin_for_anonymous_user(rf):
+@patch('great_components.mixins.requests.post')
+def test_ga360_mixin_for_anonymous_user(mock_post, rf):
+    settings.GA4_API_URL = 'http://test'
+    settings.GA4_API_SECRET = 'secret'
+    settings.GA4_MEASUREMENT_ID = '12345'
+    mock_post.return_value = MagicMock(status_code=200, json=lambda: {'success': True})
+
     class TestView(mixins.GA360Mixin, TemplateView):
         template_name = 'great_components/base.html'
 
@@ -241,6 +368,30 @@ def test_ga360_mixin_for_anonymous_user(rf):
     ga360_data = response.context_data['ga360']
     assert ga360_data['user_id'] is None
     assert ga360_data['login_status'] is False
+    mock_post.assert_called_with(
+        'http://test',
+        params={
+                'api_secret': 'secret',
+                'measurement_id': '12345',
+            },
+        json={
+                'client_id': ANY,
+                'events': [{
+                    'name': 'page_view',
+                    'params': {
+                        'page_id': 'TestPageId',
+                        'business_unit': 'Test App',
+                        'site_section': 'Test Section',
+                        'site_subsection': 'Test Page',
+                        'referer_url': 'http://anyurl.com',
+                        'login_status': False,
+                        'user_id': None,
+                        'site_language': 'de',
+
+                    }
+                }],
+            },
+    )
 
 
 def test_ga360_mixin_does_not_share_data_between_instances():
