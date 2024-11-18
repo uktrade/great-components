@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="great_components",
-    version="2.6.6",
+    version="2.7.0",
     url="https://github.com/uktrade/great-components",
     license="MIT",
     author="DIT",
