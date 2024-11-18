@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.6.6
+## 2.7.0
 ### Implemented enhancements
 [Full Changelog] (https://github.com/uktrade/great-components/pull/36) (06-06-2024)
 - GREATUK-1279: Add server side tracking 
