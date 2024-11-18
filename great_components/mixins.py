@@ -1,8 +1,11 @@
+import logging
 from django.conf import settings
 from django.utils import translation
 import requests
 from great_components import helpers, forms
 import uuid
+
+logger = logging.getLogger(__name__)
 
 
 class EnableTranslationsMixin:
@@ -76,7 +79,8 @@ class GA360Mixin:
             self.ga360_payload['referer_url'] = referer_url
 
     def __send_to_ga4(self):
-        requests.post(
+        logger.info('Sending to Google Analytics 4 (GA4)')
+        req = requests.post(
             settings.GA4_API_URL,
             params={
                 'api_secret': settings.GA4_API_SECRET,
@@ -100,6 +104,7 @@ class GA360Mixin:
                 }],
             },
         )
+        logger.info('Request status code %s', req.status_code)
 
     def get_context_data(self, *args, **kwargs):
         user = helpers.get_user(self.request)
