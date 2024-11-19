@@ -95,11 +95,7 @@ class GA360Mixin:
                         'business_unit': self.ga360_payload.get('business_unit'),
                         'site_section': self.ga360_payload.get('site_section'),
                         'site_subsection': self.ga360_payload.get('site_subsection'),
-                        'referer_url': self.ga360_payload.get('referer_url'),
-                        'login_status': self.ga360_payload.get('login_status'),
-                        'user_id': self.ga360_payload.get('user_id'),
                         'site_language': self.ga360_payload.get('site_language'),
-
                     }
                 }],
             },
