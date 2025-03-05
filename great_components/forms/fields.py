@@ -87,7 +87,17 @@ class DirectoryComponentsFieldMixin:
 
     @property
     def widget_css_classes(self):
-        return self.widget.attrs['class']
+        try:
+            return self.widget.attrs['class']
+        except (KeyError, AttributeError):
+            return ''
+    
+    @property
+    def label_css_classes(self):
+        try:
+            return self.widget.attrs['label_class']
+        except (KeyError, AttributeError):
+            return ''
 
     def get_bound_field(self, form, field_name):
         return DirectoryComponentsBoundField(form, self, field_name)
