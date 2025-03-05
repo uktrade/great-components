@@ -77,6 +77,7 @@ class DirectoryComponentsFieldMixin:
         super().__init__(*args, **kwargs)
         if not hasattr(self.widget, 'css_class_name'):
             self.widget.attrs['class'] = self.widget.attrs.get('class', '') + ' form-control'
+            self.widget.attrs['label_class'] = self.widget.attrs.get('label_class', '')
         self.label_suffix = ''
         self._container_css_classes = container_css_classes
 
