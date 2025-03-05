@@ -91,7 +91,7 @@ class DirectoryComponentsFieldMixin:
             return self.widget.attrs['class']
         except (KeyError, AttributeError):
             return ''
-    
+
     @property
     def label_css_classes(self):
         try:
