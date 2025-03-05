@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.7.3
+### Implemented enhancements
+[Full Changelog]() (https://github.com/uktrade/great-components/pull/39) 
+(05-03-2025)
+* GRTLV-632 Add new field class property to access explicit widget classes via the field object
+
 ## 2.7.2
 ### Implemented enhancements
 [Full Changelog] (https://github.com/uktrade/great-components/pull/38) (06-06-2024)
