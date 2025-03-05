@@ -84,7 +84,7 @@ class DirectoryComponentsFieldMixin:
     def container_css_classes(self):
         widget_class = getattr(self.widget, 'container_css_classes', '')
         return f'{self._container_css_classes} {widget_class}'
-    
+
     @property
     def widget_css_classes(self):
         return self.widget.attrs['class']
