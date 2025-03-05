@@ -69,11 +69,13 @@ def test_explicit_widget_attrs(field_class):
     field = field_class()
 
     field_explicit_attrs = field_class(
-        widget=TextInput(attrs={'class': 'a-class'})
+        widget=TextInput(attrs={'class': 'a-class', 'label-class': 'b-class'})
     )
 
     assert field.widget.attrs['class'] == ' form-control'
     assert field_explicit_attrs.widget.attrs['class'] == 'a-class form-control'
+    assert field_explicit_attrs.widget_css_classes == 'a-class form-control'
+    assert field_explicit_attrs.label_css_classes == 'b-class'
 
 
 @pytest.mark.parametrize('field_class', field_classes)
